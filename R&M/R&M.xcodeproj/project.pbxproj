@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,8 @@
 		57F194F8257D90D7002C0B3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57F194F6257D90D7002C0B3B /* LaunchScreen.storyboard */; };
 		57F19503257D90D7002C0B3B /* R_MTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F19502257D90D7002C0B3B /* R_MTests.swift */; };
 		57F19538257D92AA002C0B3B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F19537257D92AA002C0B3B /* SceneDelegate.swift */; };
+		57F19547257D94B4002C0B3B /* MauriNet in Frameworks */ = {isa = PBXBuildFile; productRef = 57F19546257D94B4002C0B3B /* MauriNet */; };
+		57F1954C257D94EE002C0B3B /* MauriUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 57F1954B257D94EE002C0B3B /* MauriUtils */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57F19547257D94B4002C0B3B /* MauriNet in Frameworks */,
+				57F1954C257D94EE002C0B3B /* MauriUtils in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +140,10 @@
 			dependencies = (
 			);
 			name = "R&M";
+			packageProductDependencies = (
+				57F19546257D94B4002C0B3B /* MauriNet */,
+				57F1954B257D94EE002C0B3B /* MauriUtils */,
+			);
 			productName = "R&M";
 			productReference = 57F194E8257D90D2002C0B3B /* R&M.app */;
 			productType = "com.apple.product-type.application";
@@ -185,6 +193,10 @@
 				Base,
 			);
 			mainGroup = 57F194DF257D90D2002C0B3B;
+			packageReferences = (
+				57F19545257D94B4002C0B3B /* XCRemoteSwiftPackageReference "MauriNet" */,
+				57F1954A257D94EE002C0B3B /* XCRemoteSwiftPackageReference "MauriUtils" */,
+			);
 			productRefGroup = 57F194E9257D90D2002C0B3B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -484,6 +496,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		57F19545257D94B4002C0B3B /* XCRemoteSwiftPackageReference "MauriNet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:mchirino89/MauriNet.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.2.0;
+			};
+		};
+		57F1954A257D94EE002C0B3B /* XCRemoteSwiftPackageReference "MauriUtils" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:mchirino89/MauriUtils.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		57F19546257D94B4002C0B3B /* MauriNet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57F19545257D94B4002C0B3B /* XCRemoteSwiftPackageReference "MauriNet" */;
+			productName = MauriNet;
+		};
+		57F1954B257D94EE002C0B3B /* MauriUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57F1954A257D94EE002C0B3B /* XCRemoteSwiftPackageReference "MauriUtils" */;
+			productName = MauriUtils;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 57F194E0257D90D2002C0B3B /* Project object */;
 }
