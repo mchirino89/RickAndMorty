@@ -15,6 +15,7 @@
 		57F19538257D92AA002C0B3B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F19537257D92AA002C0B3B /* SceneDelegate.swift */; };
 		57F19547257D94B4002C0B3B /* MauriNet in Frameworks */ = {isa = PBXBuildFile; productRef = 57F19546257D94B4002C0B3B /* MauriNet */; };
 		57F1954C257D94EE002C0B3B /* MauriUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 57F1954B257D94EE002C0B3B /* MauriUtils */; };
+		57F19553257D9E10002C0B3B /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 57F19552257D9E10002C0B3B /* SnapshotTesting */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57F19553257D9E10002C0B3B /* SnapshotTesting in Frameworks */,
 				57F19547257D94B4002C0B3B /* MauriNet in Frameworks */,
 				57F1954C257D94EE002C0B3B /* MauriUtils in Frameworks */,
 			);
@@ -143,6 +145,7 @@
 			packageProductDependencies = (
 				57F19546257D94B4002C0B3B /* MauriNet */,
 				57F1954B257D94EE002C0B3B /* MauriUtils */,
+				57F19552257D9E10002C0B3B /* SnapshotTesting */,
 			);
 			productName = "R&M";
 			productReference = 57F194E8257D90D2002C0B3B /* R&M.app */;
@@ -196,6 +199,7 @@
 			packageReferences = (
 				57F19545257D94B4002C0B3B /* XCRemoteSwiftPackageReference "MauriNet" */,
 				57F1954A257D94EE002C0B3B /* XCRemoteSwiftPackageReference "MauriUtils" */,
+				57F19551257D9E10002C0B3B /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 57F194E9257D90D2002C0B3B /* Products */;
 			projectDirPath = "";
@@ -304,6 +308,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -318,7 +323,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -365,6 +370,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -373,7 +379,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -391,6 +397,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F7CXK2PKWD;
 				INFOPLIST_FILE = "R&M/Setup/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -410,6 +417,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F7CXK2PKWD;
 				INFOPLIST_FILE = "R&M/Setup/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -514,6 +522,14 @@
 				version = 1.1.0;
 			};
 		};
+		57F19551257D9E10002C0B3B /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -526,6 +542,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 57F1954A257D94EE002C0B3B /* XCRemoteSwiftPackageReference "MauriUtils" */;
 			productName = MauriUtils;
+		};
+		57F19552257D9E10002C0B3B /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57F19551257D9E10002C0B3B /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
