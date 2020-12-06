@@ -89,4 +89,5 @@ fastlane/test_output
 
 iOSInjectionProject/
 
+# Omit local app's assets icons
 icon/
