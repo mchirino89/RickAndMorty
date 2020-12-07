@@ -9,14 +9,21 @@ import XCTest
 @testable import R_M
 
 final class CharactersRepoTestCases: XCTestCase {
-    func testCharactersQueryFetch() {
-        // Given
-        let fakeRequestManager = FakeRequestManagerSuccessResponse()
-        let characterRepo = CharacterStoredRepo(networkService: fakeRequestManager)
-        let testExpectation = expectation(description: "API consumption expectation")
+    var fakeRequestManager: FakeRequestManagerSuccessResponse!
+    var characterRepo: CharacterStoredRepo!
+    var testExpectation: XCTestExpectation!
 
-        // When
-        characterRepo.allCharacters { result in
+    override func tearDown() {
+        super.tearDown()
+        fakeRequestManager = nil
+        characterRepo = nil
+        testExpectation = nil
+    }
+
+    func testCharactersQueryFetch() {
+        givenRepoWiringSetup()
+        whenAllCharactersQueryIsExecuted { [unowned self] result in
+            // Then
             switch result {
             case .success(let characters):
                 XCTAssertNotEqual(characters.count, 0)
@@ -26,6 +33,18 @@ final class CharactersRepoTestCases: XCTestCase {
                 testExpectation.fulfill()
             }
         }
+    }
+}
+
+private extension CharactersRepoTestCases {
+    func givenRepoWiringSetup() {
+        fakeRequestManager = FakeRequestManagerSuccessResponse()
+        characterRepo = CharacterStoredRepo(networkService: fakeRequestManager)
+        testExpectation = expectation(description: "API consumption expectation")
+    }
+
+    func whenAllCharactersQueryIsExecuted(onCompletion: @escaping CharacterResult) {
+        characterRepo.allCharacters(onCompletion: onCompletion)
 
         wait(for: [testExpectation], timeout: 0.1)
     }
