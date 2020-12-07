@@ -7,20 +7,20 @@
 
 import Foundation
 
-struct CharacterLocation: Decodable {
+struct CharacterLocationDTO: Codable {
     let name: String
 }
 
-struct Character: Decodable {
-    let identifier: String
+struct CharacterDTO: Codable {
+    let identifier: Int
     let name: String
     let status: String
     let species: String
     let gender: String
-    let avatar: String
-    let endpoint: String
-    let origin: CharacterLocation
-    let currentLocation: CharacterLocation
+    let avatar: URL
+    let endpoint: URL
+    let origin: CharacterLocationDTO
+    let currentLocation: CharacterLocationDTO
 
     private enum CodingKeys: String, CodingKey {
         case identifier = "id"

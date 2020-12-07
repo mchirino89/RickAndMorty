@@ -9,6 +9,6 @@
 	<key>charactersEndpoint</key>
 	<string>character</string>
 	<key>filterTypeEndpoint</key>
-	<string>type</string>
+	<string>species</string>
 </dict>
 </plist>

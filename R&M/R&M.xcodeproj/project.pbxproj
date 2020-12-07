@@ -12,8 +12,11 @@
 		576C7523257E537200487859 /* RepoSetup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 576C7522257E537200487859 /* RepoSetup.plist */; };
 		576C752B257E675900487859 /* RepoSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C752A257E675900487859 /* RepoSetup.swift */; };
 		576C752F257E71D100487859 /* EndpointBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C752E257E71D100487859 /* EndpointBuilder.swift */; };
-		576C7545257E7D4600487859 /* R_MTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C7544257E7D4600487859 /* R_MTests.swift */; };
 		576C7549257E7D7600487859 /* CharactersRepoTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C7548257E7D7600487859 /* CharactersRepoTestCases.swift */; };
+		57A9AF68257EDBF000C54808 /* RequestManagerFakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A9AF67257EDBF000C54808 /* RequestManagerFakes.swift */; };
+		57A9AF75257EDE7600C54808 /* MultipleCharacters.json in Resources */ = {isa = PBXBuildFile; fileRef = 57A9AF74257EDE7600C54808 /* MultipleCharacters.json */; };
+		57A9AF79257EDF7500C54808 /* Species.json in Resources */ = {isa = PBXBuildFile; fileRef = 57A9AF78257EDF7500C54808 /* Species.json */; };
+		57A9AF7D257EE27D00C54808 /* ResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A9AF7C257EE27D00C54808 /* ResponseDTO.swift */; };
 		57F194EC257D90D2002C0B3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F194EB257D90D2002C0B3B /* AppDelegate.swift */; };
 		57F194F0257D90D2002C0B3B /* MainListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F194EF257D90D2002C0B3B /* MainListViewController.swift */; };
 		57F194F5257D90D7002C0B3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F194F4257D90D7002C0B3B /* Assets.xcassets */; };
@@ -40,8 +43,11 @@
 		576C7522257E537200487859 /* RepoSetup.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RepoSetup.plist; sourceTree = "<group>"; };
 		576C752A257E675900487859 /* RepoSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoSetup.swift; sourceTree = "<group>"; };
 		576C752E257E71D100487859 /* EndpointBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointBuilder.swift; sourceTree = "<group>"; };
-		576C7544257E7D4600487859 /* R_MTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R_MTests.swift; sourceTree = "<group>"; };
 		576C7548257E7D7600487859 /* CharactersRepoTestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepoTestCases.swift; sourceTree = "<group>"; };
+		57A9AF67257EDBF000C54808 /* RequestManagerFakes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManagerFakes.swift; sourceTree = "<group>"; };
+		57A9AF74257EDE7600C54808 /* MultipleCharacters.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MultipleCharacters.json; sourceTree = "<group>"; };
+		57A9AF78257EDF7500C54808 /* Species.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Species.json; sourceTree = "<group>"; };
+		57A9AF7C257EE27D00C54808 /* ResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDTO.swift; sourceTree = "<group>"; };
 		57F194E8257D90D2002C0B3B /* R&M.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "R&M.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F194EB257D90D2002C0B3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57F194EF257D90D2002C0B3B /* MainListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				576C74E1257E468300487859 /* CharacterDTO.swift */,
+				57A9AF7C257EE27D00C54808 /* ResponseDTO.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -113,6 +120,8 @@
 		576C7534257E7BFC00487859 /* TestDoubles */ = {
 			isa = PBXGroup;
 			children = (
+				57A9AF6E257EDCB500C54808 /* Mocks */,
+				57A9AF6F257EDCC000C54808 /* Fakes */,
 			);
 			path = TestDoubles;
 			sourceTree = "<group>";
@@ -120,8 +129,42 @@
 		576C753B257E7C4F00487859 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
+				57F19504257D90D7002C0B3B /* Info.plist */,
 			);
 			path = Setup;
+			sourceTree = "<group>";
+		};
+		576C7552257E7DC600487859 /* TestCases */ = {
+			isa = PBXGroup;
+			children = (
+				576C7548257E7D7600487859 /* CharactersRepoTestCases.swift */,
+			);
+			path = TestCases;
+			sourceTree = "<group>";
+		};
+		57A9AF6D257EDCAB00C54808 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				57A9AF74257EDE7600C54808 /* MultipleCharacters.json */,
+				57A9AF78257EDF7500C54808 /* Species.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		57A9AF6E257EDCB500C54808 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				57A9AF6D257EDCAB00C54808 /* JSON */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		57A9AF6F257EDCC000C54808 /* Fakes */ = {
+			isa = PBXGroup;
+			children = (
+				57A9AF67257EDBF000C54808 /* RequestManagerFakes.swift */,
+			);
+			path = Fakes;
 			sourceTree = "<group>";
 		};
 		57F194DF257D90D2002C0B3B = {
@@ -156,11 +199,9 @@
 		57F19501257D90D7002C0B3B /* R&MTests */ = {
 			isa = PBXGroup;
 			children = (
-				576C7544257E7D4600487859 /* R_MTests.swift */,
-				57F19504257D90D7002C0B3B /* Info.plist */,
 				576C753B257E7C4F00487859 /* Setup */,
+				576C7552257E7DC600487859 /* TestCases */,
 				576C7534257E7BFC00487859 /* TestDoubles */,
-				576C7548257E7D7600487859 /* CharactersRepoTestCases.swift */,
 			);
 			path = "R&MTests";
 			sourceTree = "<group>";
@@ -293,6 +334,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57A9AF79257EDF7500C54808 /* Species.json in Resources */,
+				57A9AF75257EDE7600C54808 /* MultipleCharacters.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +348,7 @@
 			files = (
 				57F194F0257D90D2002C0B3B /* MainListViewController.swift in Sources */,
 				576C752F257E71D100487859 /* EndpointBuilder.swift in Sources */,
+				57A9AF7D257EE27D00C54808 /* ResponseDTO.swift in Sources */,
 				576C752B257E675900487859 /* RepoSetup.swift in Sources */,
 				576C751F257E4A5000487859 /* CharactersRepo.swift in Sources */,
 				576C74E2257E468300487859 /* CharacterDTO.swift in Sources */,
@@ -317,8 +361,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				576C7545257E7D4600487859 /* R_MTests.swift in Sources */,
 				576C7549257E7D7600487859 /* CharactersRepoTestCases.swift in Sources */,
+				57A9AF68257EDBF000C54808 /* RequestManagerFakes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,7 +554,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F7CXK2PKWD;
-				INFOPLIST_FILE = "R&MTests/Info.plist";
+				INFOPLIST_FILE = "R&MTests/Setup/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -534,7 +578,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F7CXK2PKWD;
-				INFOPLIST_FILE = "R&MTests/Info.plist";
+				INFOPLIST_FILE = "R&MTests/Setup/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

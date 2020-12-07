@@ -8,7 +8,7 @@
 import MauriNet
 import MauriUtils
 
-typealias CharacterResult = (Result<[Character], NetworkError>) -> Void
+typealias CharacterResult = (Result<[CharacterDTO], NetworkError>) -> Void
 
 protocol CharacterStorable {
     func allCharacters(onCompletion: @escaping CharacterResult)
@@ -32,7 +32,13 @@ struct CharacterStoredRepo: CharacterStorable {
         networkService.request(assembledRequest) { result in
             switch result {
             case .success(let retrievedData):
-                print(retrievedData)
+                do {
+                    let successfulResponse: ResponseDTO = try JSONDecodable.map(input: retrievedData)
+
+                    onCompletion(.success(successfulResponse.results))
+                } catch {
+                    onCompletion(.failure(NetworkError.forbiddenResource))
+                }
             case .failure(let producedError):
                 print(producedError)
             }
