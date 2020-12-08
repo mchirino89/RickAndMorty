@@ -12,14 +12,17 @@ protocol Coordinator {
     func checkDetails(for characterId: Int)
 }
 
-struct MainCoordinator {
+final class MainCoordinator {
     var mainNavigator: UINavigationController?
     var rootViewController: UIViewController?
 }
 
 extension MainCoordinator: Coordinator {
     func start() {
-        
+        let mainListController = MainListViewController(viewModel: MainListViewModel())
+        mainNavigator = UINavigationController(rootViewController: mainListController)
+
+        rootViewController = mainNavigator
     }
 
     func checkDetails(for characterId: Int) {

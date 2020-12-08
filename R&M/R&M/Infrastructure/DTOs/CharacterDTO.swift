@@ -19,8 +19,8 @@ struct CharacterDTO: Codable {
     let gender: String
     let avatar: URL
     let endpoint: URL
-    let origin: CharacterLocationDTO
-    let currentLocation: CharacterLocationDTO
+    private let origin: CharacterLocationDTO
+    private let currentLocation: CharacterLocationDTO
 
     private enum CodingKeys: String, CodingKey {
         case identifier = "id"
