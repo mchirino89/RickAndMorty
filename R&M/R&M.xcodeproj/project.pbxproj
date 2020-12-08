@@ -12,6 +12,10 @@
 		5728C606257FA4F8003FC989 /* MainListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728C605257FA4F8003FC989 /* MainListViewModel.swift */; };
 		5728C60A257FA512003FC989 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728C609257FA512003FC989 /* CharacterViewModel.swift */; };
 		572F61E225802B8B00B3952F /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572F61E125802B8B00B3952F /* Layout.swift */; };
+		572F61E52580352000B3952F /* MultipleCharacters.json in Resources */ = {isa = PBXBuildFile; fileRef = 57A9AF74257EDE7600C54808 /* MultipleCharacters.json */; };
+		572F61E92580357C00B3952F /* ListCharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572F61E82580357C00B3952F /* ListCharacterCell.swift */; };
+		576331DB25824D2700F87CC4 /* ListContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576331DA25824D2700F87CC4 /* ListContent.swift */; };
+		576331E125825DAF00F87CC4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576331E025825DAF00F87CC4 /* Constants.swift */; };
 		576C74E2257E468300487859 /* CharacterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C74E1257E468300487859 /* CharacterDTO.swift */; };
 		576C751F257E4A5000487859 /* CharactersRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C751E257E4A5000487859 /* CharactersRepo.swift */; };
 		576C7523257E537200487859 /* RepoSetup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 576C7522257E537200487859 /* RepoSetup.plist */; };
@@ -48,6 +52,9 @@
 		5728C605257FA4F8003FC989 /* MainListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListViewModel.swift; sourceTree = "<group>"; };
 		5728C609257FA512003FC989 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
 		572F61E125802B8B00B3952F /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		572F61E82580357C00B3952F /* ListCharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCharacterCell.swift; sourceTree = "<group>"; };
+		576331DA25824D2700F87CC4 /* ListContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListContent.swift; sourceTree = "<group>"; };
+		576331E025825DAF00F87CC4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		576C74E1257E468300487859 /* CharacterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDTO.swift; sourceTree = "<group>"; };
 		576C751E257E4A5000487859 /* CharactersRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepo.swift; sourceTree = "<group>"; };
 		576C7522257E537200487859 /* RepoSetup.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RepoSetup.plist; sourceTree = "<group>"; };
@@ -112,8 +119,18 @@
 			children = (
 				572F61E125802B8B00B3952F /* Layout.swift */,
 				57F194EF257D90D2002C0B3B /* MainListViewController.swift */,
+				572F61E82580357C00B3952F /* ListCharacterCell.swift */,
+				576331DA25824D2700F87CC4 /* ListContent.swift */,
+				576331E025825DAF00F87CC4 /* Constants.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		576331DE25825D8E00F87CC4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		576C74DD257E460600487859 /* Infrastructure */ = {
@@ -225,6 +242,7 @@
 		57F194EA257D90D2002C0B3B /* R&M */ = {
 			isa = PBXGroup;
 			children = (
+				576331DE25825D8E00F87CC4 /* Core */,
 				57F1952D257D915A002C0B3B /* Delivery */,
 				576C74DD257E460600487859 /* Infrastructure */,
 				57F1952A257D9153002C0B3B /* Setup */,
@@ -366,6 +384,7 @@
 				57F194F8257D90D7002C0B3B /* LaunchScreen.storyboard in Resources */,
 				576C7523257E537200487859 /* RepoSetup.plist in Resources */,
 				57F194F5257D90D7002C0B3B /* Assets.xcassets in Resources */,
+				572F61E52580352000B3952F /* MultipleCharacters.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,13 +405,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				57F194F0257D90D2002C0B3B /* MainListViewController.swift in Sources */,
+				576331DB25824D2700F87CC4 /* ListContent.swift in Sources */,
 				576C752F257E71D100487859 /* EndpointBuilder.swift in Sources */,
 				57A9AF7D257EE27D00C54808 /* ResponseDTO.swift in Sources */,
 				576C752B257E675900487859 /* RepoSetup.swift in Sources */,
+				576331E125825DAF00F87CC4 /* Constants.swift in Sources */,
 				576C751F257E4A5000487859 /* CharactersRepo.swift in Sources */,
 				572F61E225802B8B00B3952F /* Layout.swift in Sources */,
 				576C74E2257E468300487859 /* CharacterDTO.swift in Sources */,
 				5728C60A257FA512003FC989 /* CharacterViewModel.swift in Sources */,
+				572F61E92580357C00B3952F /* ListCharacterCell.swift in Sources */,
 				57F194EC257D90D2002C0B3B /* AppDelegate.swift in Sources */,
 				5728C602257FA41E003FC989 /* MainCoordinator.swift in Sources */,
 				57F19538257D92AA002C0B3B /* SceneDelegate.swift in Sources */,
