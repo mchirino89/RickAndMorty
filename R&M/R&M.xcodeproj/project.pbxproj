@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5728C5F7257F928A003FC989 /* FailureRequestManagerMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728C5F6257F928A003FC989 /* FailureRequestManagerMocks.swift */; };
+		5728C602257FA41E003FC989 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728C601257FA41E003FC989 /* MainCoordinator.swift */; };
+		5728C606257FA4F8003FC989 /* MainListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728C605257FA4F8003FC989 /* MainListViewModel.swift */; };
+		5728C60A257FA512003FC989 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728C609257FA512003FC989 /* CharacterViewModel.swift */; };
 		576C74E2257E468300487859 /* CharacterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C74E1257E468300487859 /* CharacterDTO.swift */; };
 		576C751F257E4A5000487859 /* CharactersRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C751E257E4A5000487859 /* CharactersRepo.swift */; };
 		576C7523257E537200487859 /* RepoSetup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 576C7522257E537200487859 /* RepoSetup.plist */; };
@@ -40,6 +43,9 @@
 
 /* Begin PBXFileReference section */
 		5728C5F6257F928A003FC989 /* FailureRequestManagerMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureRequestManagerMocks.swift; sourceTree = "<group>"; };
+		5728C601257FA41E003FC989 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		5728C605257FA4F8003FC989 /* MainListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListViewModel.swift; sourceTree = "<group>"; };
+		5728C609257FA512003FC989 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
 		576C74E1257E468300487859 /* CharacterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDTO.swift; sourceTree = "<group>"; };
 		576C751E257E4A5000487859 /* CharactersRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepo.swift; sourceTree = "<group>"; };
 		576C7522257E537200487859 /* RepoSetup.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RepoSetup.plist; sourceTree = "<group>"; };
@@ -82,6 +88,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5728C5FC257FA3FB003FC989 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				5728C601257FA41E003FC989 /* MainCoordinator.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		5728C5FD257FA403003FC989 /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				5728C605257FA4F8003FC989 /* MainListViewModel.swift */,
+				5728C609257FA512003FC989 /* CharacterViewModel.swift */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		5728C5FE257FA40F003FC989 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				57F194EF257D90D2002C0B3B /* MainListViewController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		576C74DD257E460600487859 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,7 +262,9 @@
 		57F1952D257D915A002C0B3B /* Delivery */ = {
 			isa = PBXGroup;
 			children = (
-				57F194EF257D90D2002C0B3B /* MainListViewController.swift */,
+				5728C5FD257FA403003FC989 /* Business */,
+				5728C5FC257FA3FB003FC989 /* Navigation */,
+				5728C5FE257FA40F003FC989 /* UI */,
 			);
 			path = Delivery;
 			sourceTree = "<group>";
@@ -355,8 +388,11 @@
 				576C752B257E675900487859 /* RepoSetup.swift in Sources */,
 				576C751F257E4A5000487859 /* CharactersRepo.swift in Sources */,
 				576C74E2257E468300487859 /* CharacterDTO.swift in Sources */,
+				5728C60A257FA512003FC989 /* CharacterViewModel.swift in Sources */,
 				57F194EC257D90D2002C0B3B /* AppDelegate.swift in Sources */,
+				5728C602257FA41E003FC989 /* MainCoordinator.swift in Sources */,
 				57F19538257D92AA002C0B3B /* SceneDelegate.swift in Sources */,
+				5728C606257FA4F8003FC989 /* MainListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

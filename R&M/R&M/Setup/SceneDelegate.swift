@@ -24,11 +24,20 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
 
-        guard let windowScene = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else {
+            return
+        }
 
+        let rootCoordinator = MainCoordinator()
+        rootCoordinator.start()
+
+        buildMainWindow(for: windowScene, with: rootCoordinator.rootViewController)
+    }
+
+    private func buildMainWindow(for windowScene: UIWindowScene, with rootController: UIViewController?) {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = MainListViewController()
+        window?.rootViewController = rootController
         window?.makeKeyAndVisible()
     }
 }
