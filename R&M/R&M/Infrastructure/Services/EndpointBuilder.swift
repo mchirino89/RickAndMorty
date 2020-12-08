@@ -20,12 +20,13 @@ struct EndpointBuilder {
         self.path = path
         self.queryParameters = queryParameters
     }
-    
+
     func assembleRequest() -> URLRequest {
         switch APIEndpoint(host: host).buildRequest(for: path, with: queryParameters) {
         case .success(let assembledRequest):
             return assembledRequest
         case .failure:
+            // TODO: this might be handled in a better way.
             return URLRequest(url: URL.init(validURL: ""))
         }
     }

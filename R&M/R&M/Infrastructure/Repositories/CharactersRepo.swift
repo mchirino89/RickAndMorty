@@ -5,6 +5,7 @@
 //  Created by Mauricio Chirino on 07/12/20.
 //
 
+import Foundation
 import MauriNet
 import MauriUtils
 
@@ -29,19 +30,7 @@ struct CharacterStoredRepo: CharacterStorable {
         let assembledRequest = EndpointBuilder(host: endpointSetup.host,
                                                path: endpointSetup.charactersEndpoint).assembleRequest()
 
-        networkService.request(assembledRequest) { result in
-            switch result {
-            case .success(let retrievedData):
-                do {
-                    let successfulResponse: ResponseDTO = try JSONDecodable.map(input: retrievedData)
-                    onCompletion(.success(successfulResponse.results))
-                } catch {
-                    onCompletion(.failure(NetworkError.forbiddenResource))
-                }
-            case .failure(let producedError):
-                print(producedError)
-            }
-        }
+        fetchOnAPI(using: assembledRequest, onCompletion: onCompletion)
     }
 
     func filteredCharacters(by species: String, onCompletion: @escaping CharacterResult) {
@@ -50,6 +39,10 @@ struct CharacterStoredRepo: CharacterStorable {
                                                path: endpointSetup.charactersEndpoint,
                                                queryParameters: queryParameters).assembleRequest()
 
+        fetchOnAPI(using: assembledRequest, onCompletion: onCompletion)
+    }
+
+    private func fetchOnAPI(using assembledRequest: URLRequest, onCompletion: @escaping CharacterResult) {
         networkService.request(assembledRequest) { result in
             switch result {
             case .success(let retrievedData):
@@ -57,10 +50,10 @@ struct CharacterStoredRepo: CharacterStorable {
                     let successfulResponse: ResponseDTO = try JSONDecodable.map(input: retrievedData)
                     onCompletion(.success(successfulResponse.results))
                 } catch {
-                    onCompletion(.failure(NetworkError.forbiddenResource))
+                    onCompletion(.failure(.conflictOnResource))
                 }
             case .failure(let producedError):
-                print(producedError)
+                onCompletion(.failure(producedError))
             }
         }
     }
