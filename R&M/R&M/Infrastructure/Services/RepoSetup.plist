@@ -5,7 +5,7 @@
 	<key>description</key>
 	<string>General API setup</string>
 	<key>host</key>
-	<string>rickandmortyapi.com/api/</string>
+	<string>rickandmortyapi.com/api</string>
 	<key>charactersEndpoint</key>
 	<string>character</string>
 	<key>filterTypeEndpoint</key>

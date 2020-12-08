@@ -26,7 +26,23 @@ final class CharactersRepoTestCases: XCTestCase {
             // Then
             switch result {
             case .success(let characters):
-                XCTAssertNotEqual(characters.count, 0)
+                XCTAssertEqual(characters.count, 5)
+                testExpectation.fulfill()
+            case .failure:
+                XCTFail("Success fake response shouldn't thrown an error")
+                testExpectation.fulfill()
+            }
+        }
+    }
+
+    func testCharactersFilterQueryFetch() {
+        givenRepoWiringSetup()
+        whenFilteredCharactersQueryIsExecuted { [unowned self] result in
+            // Then
+            switch result {
+            case .success(let characters):
+                XCTAssertEqual(characters.count, 6)
+                XCTAssertEqual(characters.filter { $0.species.lowercased() == "human" }.count, 0)
                 testExpectation.fulfill()
             case .failure:
                 XCTFail("Success fake response shouldn't thrown an error")
@@ -45,6 +61,12 @@ private extension CharactersRepoTestCases {
 
     func whenAllCharactersQueryIsExecuted(onCompletion: @escaping CharacterResult) {
         characterRepo.allCharacters(onCompletion: onCompletion)
+
+        wait(for: [testExpectation], timeout: 0.1)
+    }
+
+    func whenFilteredCharactersQueryIsExecuted(onCompletion: @escaping CharacterResult) {
+        characterRepo.filteredCharacters(by: "species", onCompletion: onCompletion)
 
         wait(for: [testExpectation], timeout: 0.1)
     }

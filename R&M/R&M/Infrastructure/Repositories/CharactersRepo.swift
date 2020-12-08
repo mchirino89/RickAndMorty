@@ -34,7 +34,6 @@ struct CharacterStoredRepo: CharacterStorable {
             case .success(let retrievedData):
                 do {
                     let successfulResponse: ResponseDTO = try JSONDecodable.map(input: retrievedData)
-
                     onCompletion(.success(successfulResponse.results))
                 } catch {
                     onCompletion(.failure(NetworkError.forbiddenResource))
@@ -45,6 +44,24 @@ struct CharacterStoredRepo: CharacterStorable {
         }
     }
 
-    func filteredCharacters(by type: String, onCompletion: @escaping CharacterResult) {
+    func filteredCharacters(by species: String, onCompletion: @escaping CharacterResult) {
+        let queryParameters: [String: String] = [endpointSetup.filterTypeEndpoint: species]
+        let assembledRequest = EndpointBuilder(host: endpointSetup.host,
+                                               path: endpointSetup.charactersEndpoint,
+                                               queryParameters: queryParameters).assembleRequest()
+
+        networkService.request(assembledRequest) { result in
+            switch result {
+            case .success(let retrievedData):
+                do {
+                    let successfulResponse: ResponseDTO = try JSONDecodable.map(input: retrievedData)
+                    onCompletion(.success(successfulResponse.results))
+                } catch {
+                    onCompletion(.failure(NetworkError.forbiddenResource))
+                }
+            case .failure(let producedError):
+                print(producedError)
+            }
+        }
     }
 }
