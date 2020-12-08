@@ -1,0 +1,123 @@
+{
+    "info": {
+        "count": 6,
+        "pages": 1,
+        "next": "https://rickandmortyapi.com/api/character?page=2&species=Mythological",
+        "prev": null
+    },
+    "results": [{
+        "id": 40,
+        "name": "Beth's Mytholog",
+        "status": "Dead",
+        "species": "Mythological Creature",
+        "type": "Mytholog",
+        "gender": "Female",
+        "origin": {
+            "name": "Nuptia 4",
+            "url": "https://rickandmortyapi.com/api/location/13"
+        },
+        "location": {
+            "name": "Nuptia 4",
+            "url": "https://rickandmortyapi.com/api/location/13"
+        },
+        "image": "https://rickandmortyapi.com/api/character/avatar/40.jpeg",
+        "episode": ["https://rickandmortyapi.com/api/episode/18"],
+        "url": "https://rickandmortyapi.com/api/character/40",
+        "created": "2017-11-05T10:02:26.701Z"
+    }, {
+        "id": 41,
+        "name": "Big Boobed Waitress",
+        "status": "Alive",
+        "species": "Mythological Creature",
+        "type": "",
+        "gender": "Female",
+        "origin": {
+            "name": "Fantasy World",
+            "url": "https://rickandmortyapi.com/api/location/48"
+        },
+        "location": {
+            "name": "Fantasy World",
+            "url": "https://rickandmortyapi.com/api/location/48"
+        },
+        "image": "https://rickandmortyapi.com/api/character/avatar/41.jpeg",
+        "episode": ["https://rickandmortyapi.com/api/episode/5"],
+        "url": "https://rickandmortyapi.com/api/character/41",
+        "created": "2017-11-05T10:13:45.960Z"
+    }, {
+        "id": 63,
+        "name": "Centaur",
+        "status": "Alive",
+        "species": "Mythological Creature",
+        "type": "Centaur",
+        "gender": "Male",
+        "origin": {
+            "name": "unknown",
+            "url": ""
+        },
+        "location": {
+            "name": "Mr. Goldenfold's dream",
+            "url": "https://rickandmortyapi.com/api/location/18"
+        },
+        "image": "https://rickandmortyapi.com/api/character/avatar/63.jpeg",
+        "episode": ["https://rickandmortyapi.com/api/episode/2"],
+        "url": "https://rickandmortyapi.com/api/character/63",
+        "created": "2017-11-05T12:22:17.848Z"
+    }, {
+        "id": 66,
+        "name": "Coach Feratu (Balik Alistane)",
+        "status": "Dead",
+        "species": "Mythological Creature",
+        "type": "Vampire",
+        "gender": "Male",
+        "origin": {
+            "name": "Earth (Replacement Dimension)",
+            "url": "https://rickandmortyapi.com/api/location/20"
+        },
+        "location": {
+            "name": "Earth (Replacement Dimension)",
+            "url": "https://rickandmortyapi.com/api/location/20"
+        },
+        "image": "https://rickandmortyapi.com/api/character/avatar/66.jpeg",
+        "episode": ["https://rickandmortyapi.com/api/episode/18"],
+        "url": "https://rickandmortyapi.com/api/character/66",
+        "created": "2017-11-30T11:10:10.491Z"
+    }, {
+        "id": 89,
+        "name": "Dale",
+        "status": "Dead",
+        "species": "Mythological Creature",
+        "type": "Giant",
+        "gender": "Male",
+        "origin": {
+            "name": "Giant's Town",
+            "url": "https://rickandmortyapi.com/api/location/14"
+        },
+        "location": {
+            "name": "Giant's Town",
+            "url": "https://rickandmortyapi.com/api/location/14"
+        },
+        "image": "https://rickandmortyapi.com/api/character/avatar/89.jpeg",
+        "episode": ["https://rickandmortyapi.com/api/episode/5"],
+        "url": "https://rickandmortyapi.com/api/character/89",
+        "created": "2017-12-01T10:32:08.340Z"
+    }, {
+        "id": 93,
+        "name": "Diablo Verde",
+        "status": "Dead",
+        "species": "Mythological Creature",
+        "type": "Demon",
+        "gender": "Male",
+        "origin": {
+            "name": "unknown",
+            "url": ""
+        },
+        "location": {
+            "name": "Dorian 5",
+            "url": "https://rickandmortyapi.com/api/location/29"
+        },
+        "image": "https://rickandmortyapi.com/api/character/avatar/93.jpeg",
+        "episode": ["https://rickandmortyapi.com/api/episode/25"],
+        "url": "https://rickandmortyapi.com/api/character/93",
+        "created": "2017-12-01T11:36:16.467Z"
+    }]
+}
