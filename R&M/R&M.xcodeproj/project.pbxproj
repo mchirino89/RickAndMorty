@@ -117,13 +117,37 @@
 		5728C5FE257FA40F003FC989 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				572F61E125802B8B00B3952F /* Layout.swift */,
-				57F194EF257D90D2002C0B3B /* MainListViewController.swift */,
-				572F61E82580357C00B3952F /* ListCharacterCell.swift */,
-				576331DA25824D2700F87CC4 /* ListContent.swift */,
-				576331E025825DAF00F87CC4 /* Constants.swift */,
+				573E7D5025851372001C5459 /* Cross */,
+				573E7D4F258512FA001C5459 /* Detail */,
+				573E7D4C258512F2001C5459 /* List */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		573E7D4C258512F2001C5459 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				572F61E82580357C00B3952F /* ListCharacterCell.swift */,
+				576331DA25824D2700F87CC4 /* ListContent.swift */,
+				57F194EF257D90D2002C0B3B /* MainListViewController.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		573E7D4F258512FA001C5459 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		573E7D5025851372001C5459 /* Cross */ = {
+			isa = PBXGroup;
+			children = (
+				576331E025825DAF00F87CC4 /* Constants.swift */,
+				572F61E125802B8B00B3952F /* Layout.swift */,
+			);
+			path = Cross;
 			sourceTree = "<group>";
 		};
 		576331DE25825D8E00F87CC4 /* Core */ = {

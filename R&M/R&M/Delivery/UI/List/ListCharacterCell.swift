@@ -10,14 +10,11 @@ import UIKit
 final class ListCharacterCell: UICollectionViewCell {
     private lazy var nameLabel: UILabel = buildLabel(textStyle: .callout)
     private lazy var statusLabel: UILabel = buildLabel(textStyle: .footnote)
-
-    private lazy var descriptionStackView = buildStackView(for: [nameLabel,
-                                                                 statusLabel],
-                                                           alignment: .leading)
+    private lazy var descriptionStackView = buildStackView(for: [nameLabel, statusLabel], alignment: .leading)
 
     private lazy var thumbnailPlaceholderView: UIView = {
         let placeholderView = UIView()
-        placeholderView.backgroundColor = .blue
+        placeholderView.backgroundColor = .systemBlue
 
         placeholderView
             .heightAnchor
@@ -31,8 +28,7 @@ final class ListCharacterCell: UICollectionViewCell {
         return placeholderView
     }()
 
-    private lazy var containerStackView = buildStackView(for: [thumbnailPlaceholderView,
-                                                               descriptionStackView],
+    private lazy var containerStackView = buildStackView(for: [thumbnailPlaceholderView, descriptionStackView],
                                                          axis: .horizontal,
                                                          alignment: .center)
 
@@ -52,14 +48,13 @@ final class ListCharacterCell: UICollectionViewCell {
 }
 
 private extension ListCharacterCell {
-    func buildLabel(textStyle: UIFont.TextStyle,
-                    backgroundColor: UIColor = .white) -> UILabel {
+    func buildLabel(textStyle: UIFont.TextStyle, backgroundColor: UIColor = .white) -> UILabel {
         let label = UILabel()
-        label.textColor = .darkText
+        label.textColor = ColorCatalogue.text.color
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         label.minimumScaleFactor = 0.75
-        label.backgroundColor = backgroundColor
+        label.backgroundColor = .clear
         label.font = .preferredFont(forTextStyle: textStyle)
 
         return label

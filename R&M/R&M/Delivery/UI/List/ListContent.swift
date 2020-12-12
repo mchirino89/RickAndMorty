@@ -40,6 +40,6 @@ final class ListContent: UICollectionView {
     init(frame: CGRect) {
         super.init(frame: frame, collectionViewLayout: LayoutBuilder.assembleGridLayout())
         register(ListCharacterCell.self, forCellWithReuseIdentifier: ListContent.cellIdentifier)
-        backgroundColor = .white
+        backgroundColor = .systemBackground
     }
 }
