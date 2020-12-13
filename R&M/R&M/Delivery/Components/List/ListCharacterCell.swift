@@ -8,9 +8,9 @@
 import UIKit
 
 final class ListCharacterCell: UICollectionViewCell {
-    private lazy var nameLabel: UILabel = buildLabel(textStyle: .callout)
-    private lazy var statusLabel: UILabel = buildLabel(textStyle: .footnote)
-    private lazy var descriptionStackView = buildStackView(for: [nameLabel, statusLabel], alignment: .leading)
+    private lazy var titleLabel: UILabel = buildLabel(textStyle: .callout)
+    private lazy var subtitleLabel: UILabel = buildLabel(textStyle: .footnote)
+    private lazy var descriptionStackView = buildStackView(for: [titleLabel, subtitleLabel], alignment: .leading)
 
     private lazy var thumbnailPlaceholderView: UIView = {
         let placeholderView = UIView()
@@ -36,14 +36,19 @@ final class ListCharacterCell: UICollectionViewCell {
         super.layoutSubviews()
 
         contentView.addSubview(containerStackView, constraints: [
-            pinAllEdges(margin: UIConstants.standardPadding)
+            pinAllEdges(margin: 16)
         ])
         roundImage()
     }
 
     func setInformation(_ information: CharacterDTO) {
-        nameLabel.text = information.name
-        statusLabel.text = information.status
+        titleLabel.text = information.name
+        subtitleLabel.text = information.status
+    }
+
+    func setRelatedInformation(_ information: CharacterDummyDTO) {
+        titleLabel.text = information.name
+        subtitleLabel.text = information.species
     }
 }
 

@@ -22,6 +22,9 @@ extension MainCoordinator: Coordinator {
         let mainListController = MainListViewController(viewModel: MainListViewModel())
         mainNavigator = UINavigationController(rootViewController: mainListController)
 
+//        let detailsController = DetailsViewController()
+//        mainNavigator = UINavigationController(rootViewController: detailsController)
+
         rootViewController = mainNavigator
     }
 
