@@ -8,9 +8,12 @@
 import UIKit
 
 final class CharacterCell: UICollectionViewCell {
-    private lazy var titleLabel: UILabel = buildLabel(textStyle: .callout)
-    private lazy var subtitleLabel: UILabel = buildLabel(textStyle: .footnote)
-    private lazy var descriptionStackView = buildStackView(for: [titleLabel, subtitleLabel], alignment: .leading)
+    private lazy var titleLabel: UILabel = LabelBuilder.assemble(textStyle: .callout)
+    private lazy var subtitleLabel: UILabel = LabelBuilder.assemble(textStyle: .footnote)
+    private lazy var descriptionStackView: UIStackView = {
+        StackBuilder.assemble(basedOn: StackSetup(arrangedSubviews: [titleLabel, subtitleLabel],
+                                                  alignment: .leading))
+    }()
 
     private lazy var thumbnailPlaceholderView: UIView = {
         let placeholderView = UIView()
@@ -28,9 +31,12 @@ final class CharacterCell: UICollectionViewCell {
         return placeholderView
     }()
 
-    private lazy var containerStackView = buildStackView(for: [thumbnailPlaceholderView, descriptionStackView],
-                                                         axis: .horizontal,
-                                                         alignment: .center)
+    private lazy var containerStackView: UIStackView = {
+        StackBuilder.assemble(basedOn: StackSetup(arrangedSubviews: [thumbnailPlaceholderView, descriptionStackView],
+                                                  axis: .horizontal,
+                                                  alignment: .center))
+    }()
+
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -53,32 +59,6 @@ final class CharacterCell: UICollectionViewCell {
 }
 
 private extension CharacterCell {
-    func buildLabel(textStyle: UIFont.TextStyle, backgroundColor: UIColor = .white) -> UILabel {
-        let label = UILabel()
-        label.textColor = ColorCatalogue.text.color
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
-        label.minimumScaleFactor = 0.75
-        label.backgroundColor = .clear
-        label.font = .preferredFont(forTextStyle: textStyle)
-
-        return label
-    }
-
-    func buildStackView(for arrangedSubviews: [UIView],
-                        axis: NSLayoutConstraint.Axis = .vertical,
-                        spacing: CGFloat = UIConstants.standardPadding,
-                        alignment: UIStackView.Alignment,
-                        distribution: UIStackView.Distribution = .fill) -> UIStackView {
-        let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
-        stackView.axis = axis
-        stackView.spacing = spacing
-        stackView.alignment = alignment
-        stackView.distribution = distribution
-
-        return stackView
-    }
-
     private func roundImage() {
         thumbnailPlaceholderView.layer.masksToBounds = false
         thumbnailPlaceholderView.layer.cornerRadius = thumbnailPlaceholderView.frame.height / 2
@@ -86,5 +66,3 @@ private extension CharacterCell {
         thumbnailPlaceholderView.layoutIfNeeded()
     }
 }
-
-

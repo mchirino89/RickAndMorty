@@ -10,6 +10,9 @@
 		572164ED25867A3600180C9C /* DetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572164EC25867A3600180C9C /* DetailContentView.swift */; };
 		572164F125867A9400180C9C /* LayoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572164F025867A9400180C9C /* LayoutBuilder.swift */; };
 		572164FF2586994F00180C9C /* SnapshotTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572164FE2586994F00180C9C /* SnapshotTestCases.swift */; };
+		5721650D2586ABD000180C9C /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5721650C2586ABD000180C9C /* InformationView.swift */; };
+		572165122586AC6D00180C9C /* LabelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572165112586AC6D00180C9C /* LabelBuilder.swift */; };
+		572165162586ACF700180C9C /* StackBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572165152586ACF700180C9C /* StackBuilder.swift */; };
 		5728C5F7257F928A003FC989 /* FailureRequestManagerMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728C5F6257F928A003FC989 /* FailureRequestManagerMocks.swift */; };
 		5728C602257FA41E003FC989 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728C601257FA41E003FC989 /* MainCoordinator.swift */; };
 		5728C606257FA4F8003FC989 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728C605257FA4F8003FC989 /* CharacterViewModel.swift */; };
@@ -53,6 +56,9 @@
 		572164EC25867A3600180C9C /* DetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentView.swift; sourceTree = "<group>"; };
 		572164F025867A9400180C9C /* LayoutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutBuilder.swift; sourceTree = "<group>"; };
 		572164FE2586994F00180C9C /* SnapshotTestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTestCases.swift; sourceTree = "<group>"; };
+		5721650C2586ABD000180C9C /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
+		572165112586AC6D00180C9C /* LabelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelBuilder.swift; sourceTree = "<group>"; };
+		572165152586ACF700180C9C /* StackBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackBuilder.swift; sourceTree = "<group>"; };
 		5728C5F6257F928A003FC989 /* FailureRequestManagerMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureRequestManagerMocks.swift; sourceTree = "<group>"; };
 		5728C601257FA41E003FC989 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		5728C605257FA4F8003FC989 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
@@ -103,6 +109,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		572165102586AC5E00180C9C /* Builders */ = {
+			isa = PBXGroup;
+			children = (
+				572164F025867A9400180C9C /* LayoutBuilder.swift */,
+				572165112586AC6D00180C9C /* LabelBuilder.swift */,
+				572165152586ACF700180C9C /* StackBuilder.swift */,
+			);
+			path = Builders;
+			sourceTree = "<group>";
+		};
 		5728C5FC257FA3FB003FC989 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +138,7 @@
 		5728C5FE257FA40F003FC989 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				572165102586AC5E00180C9C /* Builders */,
 				573E7D5025851372001C5459 /* Cross */,
 				573E7D4F258512FA001C5459 /* Detail */,
 				573E7D4C258512F2001C5459 /* List */,
@@ -144,6 +161,7 @@
 			children = (
 				57EED3F0258566D100A46A6B /* DetailsViewController.swift */,
 				572164EC25867A3600180C9C /* DetailContentView.swift */,
+				5721650C2586ABD000180C9C /* InformationView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -153,7 +171,6 @@
 			children = (
 				576331E025825DAF00F87CC4 /* Constants.swift */,
 				572F61E125802B8B00B3952F /* Layout.swift */,
-				572164F025867A9400180C9C /* LayoutBuilder.swift */,
 			);
 			path = Cross;
 			sourceTree = "<group>";
@@ -443,6 +460,7 @@
 				57A9AF7D257EE27D00C54808 /* ResponseDTO.swift in Sources */,
 				576C752B257E675900487859 /* RepoSetup.swift in Sources */,
 				572164ED25867A3600180C9C /* DetailContentView.swift in Sources */,
+				572165162586ACF700180C9C /* StackBuilder.swift in Sources */,
 				576331E125825DAF00F87CC4 /* Constants.swift in Sources */,
 				576C751F257E4A5000487859 /* CharactersRepo.swift in Sources */,
 				572F61E225802B8B00B3952F /* Layout.swift in Sources */,
@@ -452,7 +470,9 @@
 				57EED3F1258566D100A46A6B /* DetailsViewController.swift in Sources */,
 				57F194EC257D90D2002C0B3B /* AppDelegate.swift in Sources */,
 				5728C602257FA41E003FC989 /* MainCoordinator.swift in Sources */,
+				5721650D2586ABD000180C9C /* InformationView.swift in Sources */,
 				57F19538257D92AA002C0B3B /* SceneDelegate.swift in Sources */,
+				572165122586AC6D00180C9C /* LabelBuilder.swift in Sources */,
 				5728C606257FA4F8003FC989 /* CharacterViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
