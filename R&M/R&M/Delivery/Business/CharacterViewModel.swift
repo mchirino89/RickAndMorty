@@ -7,5 +7,4 @@
 
 import Foundation
 
-final class CharacterViewModel {
-}
+final class CharacterViewModel { }

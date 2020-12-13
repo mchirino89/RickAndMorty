@@ -9,7 +9,7 @@ import MauriUtils
 import UIKit
 
 final class MainListViewController: UIViewController {
-    private let viewModel: MainListViewModel
+    private let viewModel: CharacterViewModel
     private lazy var listView: ListContentView = {
         let listing = ListContentView(frame: view.frame)
         listing.dataSource = self
@@ -23,7 +23,7 @@ final class MainListViewController: UIViewController {
         return mock
     }()
 
-    init(viewModel: MainListViewModel) {
+    init(viewModel: CharacterViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

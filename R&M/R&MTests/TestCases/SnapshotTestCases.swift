@@ -12,7 +12,7 @@ import XCTest
 final class SnapshotTestCases: XCTestCase {
     func testUILayoutForCharacterListing() {
         // Given
-        let mockController = MainListViewController(viewModel: MainListViewModel())
+        let mockController = MainListViewController(viewModel: CharacterViewModel())
 
         // When
         let dummyNavigation = UINavigationController(rootViewController: mockController)
