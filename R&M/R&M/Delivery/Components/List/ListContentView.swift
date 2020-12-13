@@ -1,5 +1,5 @@
 //
-//  ListContent.swift
+//  ListContentView.swift
 //  R&M
 //
 //  Created by Mauricio Chirino on 10/12/20.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ListContent: UICollectionView {
+final class ListContentView: UICollectionView {
     static let cellIdentifier: String = "characterCell"
 
     required init?(coder: NSCoder) {
@@ -16,7 +16,7 @@ final class ListContent: UICollectionView {
 
     init(frame: CGRect) {
         super.init(frame: frame, collectionViewLayout: LayoutBuilder.assembleGridLayout())
-        register(ListCharacterCell.self, forCellWithReuseIdentifier: ListContent.cellIdentifier)
+        register(CharacterCell.self, forCellWithReuseIdentifier: ListContentView.cellIdentifier)
         backgroundColor = .systemBackground
     }
 }

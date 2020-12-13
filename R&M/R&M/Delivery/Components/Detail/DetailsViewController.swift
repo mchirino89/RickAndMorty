@@ -68,7 +68,7 @@ extension DetailsViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let characterCell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailContentView.cellIdentifier,
-                                                               for: indexPath) as! ListCharacterCell
+                                                               for: indexPath) as! CharacterCell
 
         characterCell.setRelatedInformation(characterDataSource)
         return characterCell

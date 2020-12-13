@@ -10,8 +10,8 @@ import UIKit
 
 final class MainListViewController: UIViewController {
     private let viewModel: MainListViewModel
-    private lazy var listView: ListContent = {
-        let listing = ListContent(frame: view.frame)
+    private lazy var listView: ListContentView = {
+        let listing = ListContentView(frame: view.frame)
         listing.dataSource = self
 
         return listing
@@ -54,8 +54,8 @@ extension MainListViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let characterCell = collectionView.dequeueReusableCell(withReuseIdentifier: ListContent.cellIdentifier,
-                                                               for: indexPath) as! ListCharacterCell
+        let characterCell = collectionView.dequeueReusableCell(withReuseIdentifier: ListContentView.cellIdentifier,
+                                                               for: indexPath) as! CharacterCell
 
         characterCell.setInformation(characters.results[indexPath.row])
         return characterCell

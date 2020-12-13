@@ -19,11 +19,11 @@ final class MainCoordinator {
 
 extension MainCoordinator: Coordinator {
     func start() {
-        let mainListController = MainListViewController(viewModel: MainListViewModel())
-        mainNavigator = UINavigationController(rootViewController: mainListController)
+//        let mainListController = MainListViewController(viewModel: MainListViewModel())
+//        mainNavigator = UINavigationController(rootViewController: mainListController)
 
-//        let detailsController = DetailsViewController()
-//        mainNavigator = UINavigationController(rootViewController: detailsController)
+        let detailsController = DetailsViewController()
+        mainNavigator = UINavigationController(rootViewController: detailsController)
 
         rootViewController = mainNavigator
     }
