@@ -52,7 +52,7 @@ final class DetailsViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         view.addSubview(containerStackView, constraints: [
-            pinAllEdges(margin: 16)
+            pinAllEdges()
         ])
 
         detailView.translatesAutoresizingMaskIntoConstraints = false
@@ -63,7 +63,7 @@ final class DetailsViewController: UIViewController {
 
 extension DetailsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
+        10
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
