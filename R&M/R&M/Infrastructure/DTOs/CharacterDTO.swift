@@ -19,8 +19,16 @@ struct CharacterDTO: Codable {
     let gender: String
     let avatar: URL
     let endpoint: URL
-    let origin: CharacterLocationDTO
-    let currentLocation: CharacterLocationDTO
+    private let originLocation: CharacterLocationDTO
+    private let currentLocation: CharacterLocationDTO
+
+    var origin: String {
+        originLocation.name
+    }
+
+    var current: String {
+        currentLocation.name
+    }
 
     private enum CodingKeys: String, CodingKey {
         case identifier = "id"
@@ -30,7 +38,7 @@ struct CharacterDTO: Codable {
         case gender
         case avatar = "image"
         case endpoint = "url"
-        case origin
+        case originLocation = "origin"
         case currentLocation = "location"
     }
 }

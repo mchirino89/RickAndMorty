@@ -7,10 +7,6 @@
 
 import UIKit
 
-private var areTestsRunning: Bool {
-    NSClassFromString("XCTest") != nil
-}
-
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
@@ -20,15 +16,20 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard !areTestsRunning else {
+        guard let windowScene = (scene as? UIWindowScene) else {
             return
         }
 
-        guard let windowScene = (scene as? UIWindowScene) else { return }
+        let rootCoordinator = MainCoordinator()
+        rootCoordinator.start()
 
+        buildMainWindow(for: windowScene, with: rootCoordinator.rootViewController)
+    }
+
+    private func buildMainWindow(for windowScene: UIWindowScene, with rootController: UIViewController?) {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = MainListViewController()
+        window?.rootViewController = rootController
         window?.makeKeyAndVisible()
     }
 }
