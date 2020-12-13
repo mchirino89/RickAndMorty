@@ -8,7 +8,9 @@
 import UIKit
 
 struct LabelBuilder {
-    static func assemble(textStyle: UIFont.TextStyle, backgroundColor: UIColor = .white) -> UILabel {
+    static func assemble(textStyle: UIFont.TextStyle,
+                         backgroundColor: UIColor = .clear,
+                         text: String = "") -> UILabel {
         let label = UILabel()
         label.textColor = ColorCatalogue.text.color
         label.lineBreakMode = .byWordWrapping
@@ -16,6 +18,7 @@ struct LabelBuilder {
         label.minimumScaleFactor = 0.75
         label.backgroundColor = .clear
         label.font = .preferredFont(forTextStyle: textStyle)
+        label.text = text
 
         return label
     }

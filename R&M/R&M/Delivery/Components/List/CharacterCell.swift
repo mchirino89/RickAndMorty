@@ -44,7 +44,7 @@ final class CharacterCell: UICollectionViewCell {
         contentView.addSubview(containerStackView, constraints: [
             pinAllEdges(margin: 16)
         ])
-        roundImage()
+        thumbnailPlaceholderView.rounded()
     }
 
     func setInformation(_ information: CharacterDTO) {
@@ -52,17 +52,8 @@ final class CharacterCell: UICollectionViewCell {
         subtitleLabel.text = information.status
     }
 
-    func setRelatedInformation(_ information: CharacterDummyDTO) {
+    func setRelatedInformation(_ information: CharacterDTO) {
         titleLabel.text = information.name
         subtitleLabel.text = information.species
-    }
-}
-
-private extension CharacterCell {
-    private func roundImage() {
-        thumbnailPlaceholderView.layer.masksToBounds = false
-        thumbnailPlaceholderView.layer.cornerRadius = thumbnailPlaceholderView.frame.height / 2
-        thumbnailPlaceholderView.clipsToBounds = true
-        thumbnailPlaceholderView.layoutIfNeeded()
     }
 }

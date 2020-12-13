@@ -17,7 +17,7 @@ struct StackSetup {
     init(arrangedSubviews: [UIView],
          axis: NSLayoutConstraint.Axis = .vertical,
          spacing: CGFloat = UIConstants.standardPadding,
-         alignment: UIStackView.Alignment,
+         alignment: UIStackView.Alignment = .fill,
          distribution: UIStackView.Distribution = .fill) {
         self.arrangedSubviews = arrangedSubviews
         self.axis = axis

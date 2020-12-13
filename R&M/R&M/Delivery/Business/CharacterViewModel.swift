@@ -7,4 +7,10 @@
 
 import Foundation
 
-final class CharacterViewModel { }
+final class CharacterViewModel {
+    let character: CharacterDTO
+
+    init(character: CharacterDTO) {
+        self.character = character
+    }
+}

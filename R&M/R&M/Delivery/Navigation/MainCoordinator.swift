@@ -5,6 +5,7 @@
 //  Created by Mauricio Chirino on 08/12/20.
 //
 
+import MauriUtils
 import UIKit
 
 protocol Coordinator {
@@ -21,8 +22,9 @@ extension MainCoordinator: Coordinator {
     func start() {
 //        let mainListController = MainListViewController(viewModel: CharacterViewModel())
 //        mainNavigator = UINavigationController(rootViewController: mainListController)
+        let mockCharacter: CharacterDTO = try! FileReader().decodeJSON(from: "Rick")
 
-        let detailsController = DetailsViewController()
+        let detailsController = DetailsViewController(viewModel: CharacterViewModel(character: mockCharacter))
         mainNavigator = UINavigationController(rootViewController: detailsController)
 
         rootViewController = mainNavigator
