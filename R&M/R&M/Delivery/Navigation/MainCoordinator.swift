@@ -20,12 +20,12 @@ final class MainCoordinator {
 
 extension MainCoordinator: Coordinator {
     func start() {
-//        let mainListController = MainListViewController(viewModel: CharacterViewModel())
+//        let mockCharacter: CharacterDTO = try! FileReader().decodeJSON(from: "Rick")
+//        let mainListController = MainListViewController(viewModel: CharacterViewModel(character: mockCharacter))
 //        mainNavigator = UINavigationController(rootViewController: mainListController)
-        let mockCharacter: CharacterDTO = try! FileReader().decodeJSON(from: "Rick")
 
-        let detailsController = DetailsViewController(viewModel: CharacterViewModel(character: mockCharacter))
-        mainNavigator = UINavigationController(rootViewController: detailsController)
+//        let detailsController = DetailsViewController(viewModel: CharacterViewModel(character: mockCharacter))
+//        mainNavigator = UINavigationController(rootViewController: detailsController)
 
         rootViewController = mainNavigator
     }

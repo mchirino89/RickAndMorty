@@ -9,22 +9,19 @@ import MauriUtils
 import UIKit
 
 final class MainListViewController: UIViewController {
-    private let viewModel: CharacterViewModel
     private lazy var listView: ListContentView = {
         let listing = ListContentView(frame: view.frame)
-        listing.dataSource = self
+        listing.dataSource = dataSource
 
         return listing
     }()
 
-    private lazy var characters: ResponseDTO = {
-        let mock: ResponseDTO = try! FileReader().decodeJSON(from: "MultipleCharacters")
+    private let dataSource: CharacterDataSource
+    private let viewModel: CharacterViewModel
 
-        return mock
-    }()
-
-    init(viewModel: CharacterViewModel) {
-        self.viewModel = viewModel
+    init(charactersRepo: CharacterStorable) {
+        dataSource = CharacterDataSource()
+        viewModel = CharacterViewModel(dataSource: dataSource, charactersRepo: charactersRepo)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -35,30 +32,23 @@ final class MainListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+        wireListBehavior()
     }
 }
 
 private extension MainListViewController {
     func initialSetup() {
-        title = Dictionary.mainTitle.rawValue
+        title = ListDictionary.title.rawValue
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubview(listView)
     }
-}
 
-extension MainListViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
-        characters.results.count
-    }
+    func wireListBehavior() {
+        dataSource.render { [weak listView] retrievedCharacters in
+            listView?.reloadData()
+        }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let characterCell = collectionView.dequeueReusableCell(withReuseIdentifier: ListContentView.cellIdentifier,
-                                                               for: indexPath) as! CharacterCell
-
-        characterCell.setInformation(characters.results[indexPath.row])
-        return characterCell
+        viewModel.fetchCharacters()
     }
 }

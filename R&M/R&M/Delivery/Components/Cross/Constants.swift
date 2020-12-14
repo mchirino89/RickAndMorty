@@ -9,12 +9,17 @@ import UIKit
 
 struct UIConstants {
     static let standardPadding: CGFloat = 8
+    static let fullPadding: CGFloat = 8
 }
 
 // This could very well match keys from a localized .string file
-enum Dictionary: String {
-    case mainTitle = "Rick and Morty"
-    case detailTitle = "Details"
+enum ListDictionary: String {
+    case title = "Rick and Morty"
+}
+
+enum DetailsDictionary: String {
+    case title = "Details"
+    case otherSpecies = "Other similar species"
 }
 
 enum ColorCatalogue: String {

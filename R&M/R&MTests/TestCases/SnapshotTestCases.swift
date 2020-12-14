@@ -35,13 +35,13 @@ final class SnapshotTestCases: XCTestCase {
 
 private extension SnapshotTestCases {
     func givenMockList() {
-        let mockCharacter: CharacterDTO = try! FileReader().decodeJSON(from: "Rick")
-        mockController = MainListViewController(viewModel: CharacterViewModel(character: mockCharacter))
+        mockController = MainListViewController(charactersRepo: CharacterRepoMockSuccess())
     }
 
     func givenMockDetails() {
         let mockCharacter: CharacterDTO = try! FileReader().decodeJSON(from: "Rick")
-        mockController = DetailsViewController(viewModel: CharacterViewModel(character: mockCharacter))
+        mockController = DetailsViewController(charactersRepo: CharacterRepoMockSuccess(),
+                                               currentCharacter: mockCharacter)
     }
 
     func whenNavigationOccurs() {

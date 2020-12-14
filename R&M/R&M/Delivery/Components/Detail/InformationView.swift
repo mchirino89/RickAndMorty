@@ -21,19 +21,20 @@ private enum Card: String {
 final class InformationView: UIView {
     private lazy var avatarImageView: UIView = {
         let placeholderView = UIView()
-        placeholderView.backgroundColor = .blue
+        placeholderView.backgroundColor = .systemBlue
 
         return placeholderView
     }()
 
     private lazy var containerStackView: UIStackView = {
         StackBuilder.assemble(basedOn: StackSetup(arrangedSubviews: [avatarImageView],
-                                                  spacing: UIConstants.standardPadding * 2,
+                                                  spacing: UIConstants.fullPadding,
                                                   alignment: .center))
     }()
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        backgroundColor = .clear
         viewLayoutSetup()
     }
 
