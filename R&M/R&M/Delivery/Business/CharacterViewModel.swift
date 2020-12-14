@@ -7,10 +7,29 @@
 
 import Foundation
 
-final class CharacterViewModel {
-    let character: CharacterDTO
+struct CharacterViewModel /*: GenericSourcable*/ {
+//    typealias T = CharacterDTO
+//    weak var data: Dynamic<[CharacterDTO]>?
 
-    init(character: CharacterDTO) {
-        self.character = character
+    weak var dataSource: GenericDataSource<CharacterDTO>?
+    private let charactersRepo: CharacterStorable
+
+    init(dataSource: GenericDataSource<CharacterDTO>?,
+         charactersRepo: CharacterStorable) {
+        self.dataSource = dataSource
+        self.charactersRepo = charactersRepo
+    }
+
+    func fetchCharacters() {
+        charactersRepo.allCharacters { result in
+            performUIUpdate {
+                switch result {
+                case .success(let retrievedCharacters):
+                    dataSource?.data.value = retrievedCharacters
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
     }
 }

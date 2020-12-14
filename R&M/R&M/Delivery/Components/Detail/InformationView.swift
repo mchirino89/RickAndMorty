@@ -28,7 +28,7 @@ final class InformationView: UIView {
 
     private lazy var containerStackView: UIStackView = {
         StackBuilder.assemble(basedOn: StackSetup(arrangedSubviews: [avatarImageView],
-                                                  spacing: UIConstants.standardPadding * 2,
+                                                  spacing: UIConstants.fullPadding,
                                                   alignment: .center))
     }()
 
