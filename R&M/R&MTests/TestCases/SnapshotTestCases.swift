@@ -11,27 +11,44 @@ import XCTest
 @testable import R_M
 
 final class SnapshotTestCases: XCTestCase {
+    var mockController: UIViewController!
+    var dummyNavigation: UINavigationController!
+
+    override func tearDown() {
+        super.tearDown()
+        mockController = nil
+        dummyNavigation = nil
+    }
+
     func testUILayoutForCharacterListing() {
-        // Given
-        let mockCharacter: CharacterDTO = try! FileReader().decodeJSON(from: "Rick")
-        let mockController = MainListViewController(viewModel: CharacterViewModel(character: mockCharacter))
-
-        // When
-        let dummyNavigation = UINavigationController(rootViewController: mockController)
-
-        // Then
-        assertSnapshot(matching: dummyNavigation, as: .image(on: .iPhone8))
+        givenMockList()
+        whenNavigationOccurs()
+        thenAssertProperRendering(on: #function)
     }
 
     func testUILayoutForDetailsRendering() {
-        // Given
+        givenMockDetails()
+        whenNavigationOccurs()
+        thenAssertProperRendering(on: #function)
+    }
+}
+
+private extension SnapshotTestCases {
+    func givenMockList() {
         let mockCharacter: CharacterDTO = try! FileReader().decodeJSON(from: "Rick")
-        let mockController = DetailsViewController(viewModel: CharacterViewModel(character: mockCharacter))
+        mockController = MainListViewController(viewModel: CharacterViewModel(character: mockCharacter))
+    }
 
-        // When
-        let dummyNavigation = UINavigationController(rootViewController: mockController)
+    func givenMockDetails() {
+        let mockCharacter: CharacterDTO = try! FileReader().decodeJSON(from: "Rick")
+        mockController = DetailsViewController(viewModel: CharacterViewModel(character: mockCharacter))
+    }
 
-        // Then
-        assertSnapshot(matching: dummyNavigation, as: .image(on: .iPhone8))
+    func whenNavigationOccurs() {
+        dummyNavigation = UINavigationController(rootViewController: mockController)
+    }
+
+    func thenAssertProperRendering(on scenario: String) {
+        assertSnapshot(matching: dummyNavigation, as: .image(on: .iPhone8), testName: scenario)
     }
 }
