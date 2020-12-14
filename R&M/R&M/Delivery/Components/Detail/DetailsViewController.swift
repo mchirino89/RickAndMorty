@@ -40,7 +40,15 @@ final class DetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+    }
+}
+
+private extension DetailsViewController {
+    func setup() {
+        title = Dictionary.detailTitle.rawValue
         view.backgroundColor = .systemBackground
+        navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubview(containerStackView, constraints: [
             pinAllEdges()
         ])
@@ -48,6 +56,7 @@ final class DetailsViewController: UIViewController {
         detailView.translatesAutoresizingMaskIntoConstraints = false
         detailView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/3).isActive = true
         informationView.render(basedOn: viewModel.character)
+        containerStackView.layoutIfNeeded()
     }
 }
 
@@ -58,7 +67,7 @@ extension DetailsViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let characterCell: CharacterCell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailContentView.cellIdentifier,
+        let characterCell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailContentView.cellIdentifier,
                                                                for: indexPath) as! CharacterCell
 
         characterCell.setRelatedInformation(viewModel.character)

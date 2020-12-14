@@ -7,6 +7,17 @@
 
 import UIKit
 
+private enum Card: String {
+    case name
+    case species
+    case origin
+    case status
+
+    var value: String {
+        rawValue.capitalized
+    }
+}
+
 final class InformationView: UIView {
     private lazy var avatarImageView: UIView = {
         let placeholderView = UIView()
@@ -25,22 +36,20 @@ final class InformationView: UIView {
     }
 
     func render(basedOn character: CharacterDTO) {
-        containerStackView.addArrangedSubview(buildCard(tag: "Name",
-                                                        content: character.name))
-        containerStackView.addArrangedSubview(buildCard(tag: "Species",
-                                                        content: character.species))
-        containerStackView.addArrangedSubview(buildCard(tag: "Origin",
-                                                        content: character.origin))
-        containerStackView.addArrangedSubview(buildCard(tag: "Status",
-                                                        content: character.status))
+        containerStackView.addArrangedSubview(buildCard(tag: Card.name.value,
+                                                        content: character.name,
+                                                        textStyle: .title3))
+        containerStackView.addArrangedSubview(buildCard(tag: Card.species.value, content: character.species))
+        containerStackView.addArrangedSubview(buildCard(tag: Card.origin.value, content: character.origin))
+        containerStackView.addArrangedSubview(buildCard(tag: Card.status.value, content: character.status))
     }
 }
 
 private extension InformationView {
-    func buildCard(tag: String, content: String) -> UIStackView {
+    func buildCard(tag: String, content: String, textStyle: UIFont.TextStyle = .callout) -> UIStackView {
         let tagLabel = LabelBuilder.assemble(textStyle: .callout, text: tag)
         tagLabel.textAlignment = .right
-        let contentLabel = LabelBuilder.assemble(textStyle: .callout, text: content)
+        let contentLabel = LabelBuilder.assemble(textStyle: textStyle, text: content)
         contentLabel.textAlignment = .left
 
         return StackBuilder.assemble(basedOn: StackSetup(arrangedSubviews: [tagLabel, contentLabel],
@@ -62,6 +71,5 @@ private extension InformationView {
             .constraint(equalTo: avatarImageView.heightAnchor)
             .isActive = true
         avatarImageView.rounded()
-        avatarImageView.layoutIfNeeded()
     }
 }
