@@ -11,10 +11,10 @@ struct CharacterViewModel /*: GenericSourcable*/ {
 //    typealias T = CharacterDTO
 //    weak var data: Dynamic<[CharacterDTO]>?
 
-    weak var dataSource: GenericDataSource<CharacterDTO>?
+    weak var dataSource: DataSource<CharacterDTO>?
     private let charactersRepo: CharacterStorable
 
-    init(dataSource: GenericDataSource<CharacterDTO>?,
+    init(dataSource: DataSource<CharacterDTO>?,
          charactersRepo: CharacterStorable) {
         self.dataSource = dataSource
         self.charactersRepo = charactersRepo

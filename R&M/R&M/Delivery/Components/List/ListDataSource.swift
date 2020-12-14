@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ListDataSource: GenericDataSource<CharacterDTO> {
+final class ListDataSource: DataSource<CharacterDTO> {
     func render(completion: @escaping (([CharacterDTO]) -> Void)) {
         data.bindAndFire {
             completion($0)
