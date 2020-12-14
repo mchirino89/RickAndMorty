@@ -16,18 +16,12 @@ struct CharacterDTO: Codable {
     let name: String
     let status: String
     let species: String
-    let gender: String
     let avatar: URL
     let endpoint: URL
     private let originLocation: CharacterLocationDTO
-    private let currentLocation: CharacterLocationDTO
 
     var origin: String {
         originLocation.name
-    }
-
-    var current: String {
-        currentLocation.name
     }
 
     private enum CodingKeys: String, CodingKey {
@@ -35,10 +29,8 @@ struct CharacterDTO: Codable {
         case name
         case status
         case species
-        case gender
         case avatar = "image"
         case endpoint = "url"
         case originLocation = "origin"
-        case currentLocation = "location"
     }
 }

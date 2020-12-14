@@ -27,7 +27,9 @@ final class InformationView: UIView {
     }()
 
     private lazy var containerStackView: UIStackView = {
-        StackBuilder.assemble(basedOn: StackSetup(arrangedSubviews: [avatarImageView], alignment: .center))
+        StackBuilder.assemble(basedOn: StackSetup(arrangedSubviews: [avatarImageView],
+                                                  spacing: UIConstants.standardPadding * 2,
+                                                  alignment: .center))
     }()
 
     override func layoutSubviews() {
@@ -42,6 +44,10 @@ final class InformationView: UIView {
         containerStackView.addArrangedSubview(buildCard(tag: Card.species.value, content: character.species))
         containerStackView.addArrangedSubview(buildCard(tag: Card.origin.value, content: character.origin))
         containerStackView.addArrangedSubview(buildCard(tag: Card.status.value, content: character.status))
+
+        let speciesTitle = LabelBuilder.assemble(textStyle: .title3, text: "Other similar species")
+        speciesTitle.textAlignment = .left
+        containerStackView.addArrangedSubview(speciesTitle)
     }
 }
 
@@ -59,12 +65,12 @@ private extension InformationView {
 
     func viewLayoutSetup() {
         self.addSubview(containerStackView, constraints: [
-            pinAllEdges(margin: 16)
+            pinAllEdges(margin: UIConstants.standardPadding)
         ])
 
         avatarImageView
             .heightAnchor
-            .constraint(equalToConstant: bounds.height * 0.5)
+            .constraint(equalToConstant: bounds.height * 0.33)
             .isActive = true
         avatarImageView
             .widthAnchor
