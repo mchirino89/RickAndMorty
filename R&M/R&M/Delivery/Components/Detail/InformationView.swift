@@ -21,7 +21,7 @@ private enum Card: String {
 final class InformationView: UIView {
     private lazy var avatarImageView: UIView = {
         let placeholderView = UIView()
-        placeholderView.backgroundColor = .blue
+        placeholderView.backgroundColor = .systemBlue
 
         return placeholderView
     }()
@@ -34,6 +34,7 @@ final class InformationView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        backgroundColor = .clear
         viewLayoutSetup()
     }
 

@@ -8,15 +8,11 @@
 import UIKit
 
 final class DetailsViewController: UIViewController {
-    private lazy var informationView: InformationView = {
-        let dummyView = InformationView()
-        dummyView.backgroundColor = .clear
-        return dummyView
-    }()
+    private let informationView: InformationView = InformationView()
 
     private lazy var detailView: DetailContentView = {
         let details = DetailContentView(frame: view.frame)
-        details.dataSource = self
+        details.dataSource = dataSource
 
         return details
     }()
@@ -27,10 +23,14 @@ final class DetailsViewController: UIViewController {
                                                   alignment: .fill))
     }()
 
-    private let viewModel: CharacterViewModel
+    private let viewModel: DetailsViewModel
+    private let dataSource: CharacterDataSource
 
-    init(viewModel: CharacterViewModel) {
-        self.viewModel = viewModel
+    init(charactersRepo: CharacterStorable, currentCharacter: CharacterDTO) {
+        dataSource = CharacterDataSource()
+        viewModel = DetailsViewModel(dataSource: dataSource,
+                                     charactersRepo: charactersRepo,
+                                     currentCharacter: currentCharacter)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -41,6 +41,7 @@ final class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        renderView()
     }
 }
 
@@ -55,23 +56,14 @@ private extension DetailsViewController {
 
         detailView.translatesAutoresizingMaskIntoConstraints = false
         detailView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/3).isActive = true
-//        informationView.render(basedOn: viewModel.character)
+        dataSource.render { [weak detailView] retrievedCharacters in
+            detailView?.reloadData()
+        }
+    }
+
+    func renderView() {
+        informationView.render(basedOn: viewModel.currentCharacter)
+        viewModel.fetchRelatedSpecies()
         containerStackView.layoutIfNeeded()
     }
-}
-
-extension DetailsViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let characterCell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailContentView.cellIdentifier,
-                                                               for: indexPath) as! CharacterCell
-
-//        characterCell.setRelatedInformation(viewModel.character)
-        return characterCell
-    }
-
 }

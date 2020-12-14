@@ -16,18 +16,11 @@ final class MainListViewController: UIViewController {
         return listing
     }()
 
-    let dataSource: ListDataSource
-
-    private lazy var characters: ResponseDTO = {
-        let mock: ResponseDTO = try! FileReader().decodeJSON(from: "MultipleCharacters")
-
-        return mock
-    }()
-
+    private let dataSource: CharacterDataSource
     private let viewModel: CharacterViewModel
 
     init(charactersRepo: CharacterStorable) {
-        dataSource = ListDataSource()
+        dataSource = CharacterDataSource()
         viewModel = CharacterViewModel(dataSource: dataSource, charactersRepo: charactersRepo)
         super.init(nibName: nil, bundle: nil)
     }

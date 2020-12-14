@@ -1,24 +1,25 @@
 //
-//  CharacterViewModel.swift
+//  DetailsViewModel.swift
 //  R&M
 //
-//  Created by Mauricio Chirino on 08/12/20.
+//  Created by Mauricio Chirino on 14/12/20.
 //
 
-import Foundation
-
-struct CharacterViewModel {
+struct DetailsViewModel {
     private weak var dataSource: DataSource<CharacterDTO>?
     private let charactersRepo: CharacterStorable
+    let currentCharacter: CharacterDTO
 
     init(dataSource: DataSource<CharacterDTO>?,
-         charactersRepo: CharacterStorable) {
+         charactersRepo: CharacterStorable,
+         currentCharacter: CharacterDTO) {
         self.dataSource = dataSource
         self.charactersRepo = charactersRepo
+        self.currentCharacter = currentCharacter
     }
 
-    func fetchCharacters() {
-        charactersRepo.allCharacters { result in
+    func fetchRelatedSpecies() {
+        charactersRepo.filteredCharacters(by: currentCharacter.species) { result in
             performUIUpdate {
                 switch result {
                 case .success(let retrievedCharacters):

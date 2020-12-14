@@ -21,11 +21,7 @@ struct Dynamic<T> {
         self.value = value
     }
 
-    mutating func bind(_ listener: Listener?) {
-        self.listener = listener
-    }
-
-    mutating func bindAndFire(_ listener: Listener?) {
+    mutating func update(_ listener: Listener?) {
         self.listener = listener
         listener?(value)
     }

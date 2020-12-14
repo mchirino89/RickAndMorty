@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		5705E29225875E5500866645 /* DynamicValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705E29125875E5500866645 /* DynamicValue.swift */; };
 		5705E296258760CE00866645 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705E295258760CE00866645 /* DataSource.swift */; };
-		5705E29A2587637A00866645 /* ListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705E2992587637A00866645 /* ListDataSource.swift */; };
+		5705E29A2587637A00866645 /* CharacterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705E2992587637A00866645 /* CharacterDataSource.swift */; };
 		5705E29E25876DB500866645 /* SyntacticSugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705E29D25876DB500866645 /* SyntacticSugar.swift */; };
 		5705E2A82587775500866645 /* CharacterRepoMockSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705E2A72587775500866645 /* CharacterRepoMockSuccess.swift */; };
 		571B05692586D8B5008B3590 /* Rick.json in Resources */ = {isa = PBXBuildFile; fileRef = 571B05682586D8B5008B3590 /* Rick.json */; };
@@ -21,6 +21,7 @@
 		572165122586AC6D00180C9C /* LabelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572165112586AC6D00180C9C /* LabelBuilder.swift */; };
 		572165162586ACF700180C9C /* StackBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572165152586ACF700180C9C /* StackBuilder.swift */; };
 		5721651A2586AF4200180C9C /* UIImageView+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572165192586AF4200180C9C /* UIImageView+Round.swift */; };
+		5725C3252587800A003BAF93 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C3242587800A003BAF93 /* DetailsViewModel.swift */; };
 		5728C5F7257F928A003FC989 /* FailureRequestManagerMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728C5F6257F928A003FC989 /* FailureRequestManagerMocks.swift */; };
 		5728C602257FA41E003FC989 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728C601257FA41E003FC989 /* MainCoordinator.swift */; };
 		5728C606257FA4F8003FC989 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728C605257FA4F8003FC989 /* CharacterViewModel.swift */; };
@@ -63,7 +64,7 @@
 /* Begin PBXFileReference section */
 		5705E29125875E5500866645 /* DynamicValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicValue.swift; sourceTree = "<group>"; };
 		5705E295258760CE00866645 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
-		5705E2992587637A00866645 /* ListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataSource.swift; sourceTree = "<group>"; };
+		5705E2992587637A00866645 /* CharacterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDataSource.swift; sourceTree = "<group>"; };
 		5705E29D25876DB500866645 /* SyntacticSugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyntacticSugar.swift; sourceTree = "<group>"; };
 		5705E2A72587775500866645 /* CharacterRepoMockSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRepoMockSuccess.swift; sourceTree = "<group>"; };
 		571B05682586D8B5008B3590 /* Rick.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Rick.json; sourceTree = "<group>"; };
@@ -74,6 +75,7 @@
 		572165112586AC6D00180C9C /* LabelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelBuilder.swift; sourceTree = "<group>"; };
 		572165152586ACF700180C9C /* StackBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackBuilder.swift; sourceTree = "<group>"; };
 		572165192586AF4200180C9C /* UIImageView+Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Round.swift"; sourceTree = "<group>"; };
+		5725C3242587800A003BAF93 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		5728C5F6257F928A003FC989 /* FailureRequestManagerMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureRequestManagerMocks.swift; sourceTree = "<group>"; };
 		5728C601257FA41E003FC989 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		5728C605257FA4F8003FC989 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				5728C605257FA4F8003FC989 /* CharacterViewModel.swift */,
+				5725C3242587800A003BAF93 /* DetailsViewModel.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -183,7 +186,7 @@
 				572F61E82580357C00B3952F /* CharacterCell.swift */,
 				576331DA25824D2700F87CC4 /* ListContentView.swift */,
 				57F194EF257D90D2002C0B3B /* MainListViewController.swift */,
-				5705E2992587637A00866645 /* ListDataSource.swift */,
+				5705E2992587637A00866645 /* CharacterDataSource.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -511,13 +514,14 @@
 				576C74E2257E468300487859 /* CharacterDTO.swift in Sources */,
 				572F61E92580357C00B3952F /* CharacterCell.swift in Sources */,
 				572164F125867A9400180C9C /* LayoutBuilder.swift in Sources */,
+				5725C3252587800A003BAF93 /* DetailsViewModel.swift in Sources */,
 				57EED3F1258566D100A46A6B /* DetailsViewController.swift in Sources */,
 				57F194EC257D90D2002C0B3B /* AppDelegate.swift in Sources */,
 				5728C602257FA41E003FC989 /* MainCoordinator.swift in Sources */,
 				5721650D2586ABD000180C9C /* InformationView.swift in Sources */,
 				57F19538257D92AA002C0B3B /* SceneDelegate.swift in Sources */,
 				572165122586AC6D00180C9C /* LabelBuilder.swift in Sources */,
-				5705E29A2587637A00866645 /* ListDataSource.swift in Sources */,
+				5705E29A2587637A00866645 /* CharacterDataSource.swift in Sources */,
 				5728C606257FA4F8003FC989 /* CharacterViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

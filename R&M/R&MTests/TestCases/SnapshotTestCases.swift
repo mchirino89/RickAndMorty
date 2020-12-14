@@ -26,11 +26,11 @@ final class SnapshotTestCases: XCTestCase {
         thenAssertProperRendering(on: #function)
     }
 
-//    func testUILayoutForDetailsRendering() {
-//        givenMockDetails()
-//        whenNavigationOccurs()
-//        thenAssertProperRendering(on: #function)
-//    }
+    func testUILayoutForDetailsRendering() {
+        givenMockDetails()
+        whenNavigationOccurs()
+        thenAssertProperRendering(on: #function)
+    }
 }
 
 private extension SnapshotTestCases {
@@ -38,10 +38,11 @@ private extension SnapshotTestCases {
         mockController = MainListViewController(charactersRepo: CharacterRepoMockSuccess())
     }
 
-//    func givenMockDetails() {
-//        let mockCharacter: CharacterDTO = try! FileReader().decodeJSON(from: "Rick")
-//        mockController = DetailsViewController(viewModel: CharacterViewModel(character: mockCharacter))
-//    }
+    func givenMockDetails() {
+        let mockCharacter: CharacterDTO = try! FileReader().decodeJSON(from: "Rick")
+        mockController = DetailsViewController(charactersRepo: CharacterRepoMockSuccess(),
+                                               currentCharacter: mockCharacter)
+    }
 
     func whenNavigationOccurs() {
         dummyNavigation = UINavigationController(rootViewController: mockController)
