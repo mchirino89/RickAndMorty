@@ -17,8 +17,8 @@ enum ScrollingDirection {
             return NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                           heightDimension: .fractionalHeight(0.2))
         case .horizontal:
-            return NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.3),
-                                          heightDimension: .fractionalHeight(0.2))
+            return NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.6),
+                                          heightDimension: .fractionalHeight(1))
         }
     }
 

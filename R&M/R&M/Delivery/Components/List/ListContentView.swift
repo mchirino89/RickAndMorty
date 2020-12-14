@@ -17,6 +17,6 @@ final class ListContentView: UICollectionView {
     init(frame: CGRect) {
         super.init(frame: frame, collectionViewLayout: LayoutBuilder.assembleGridLayout())
         register(CharacterCell.self, forCellWithReuseIdentifier: ListContentView.cellIdentifier)
-        backgroundColor = .systemBackground
+        backgroundColor = .clear
     }
 }

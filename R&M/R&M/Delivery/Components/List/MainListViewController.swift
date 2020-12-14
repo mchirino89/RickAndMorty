@@ -40,7 +40,8 @@ final class MainListViewController: UIViewController {
 
 private extension MainListViewController {
     func initialSetup() {
-        title = "Rick and Morty"
+        title = Dictionary.mainTitle.rawValue
+        view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubview(listView)
     }

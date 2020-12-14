@@ -7,24 +7,13 @@
 
 import UIKit
 
-struct CharacterDummyDTO: Hashable {
-    let id: Int
-    let name: String
-    let origin: String
-    let species: String
-    let status: String
-    let avatar: UIImage?
-    let episodes: [String]
-}
-
 final class DetailsViewController: UIViewController {
-    let characterDataSource: CharacterDummyDTO = CharacterDummyDTO(id: 1,
-                                                         name: "Rick Sanchez",
-                                                         origin: "Earth",
-                                                         species: "Human",
-                                                         status: "Alive",
-                                                         avatar: UIImage(named: "rick.jpg"),
-                                                         episodes: ["pilot", "rickadele", "pickle rick"])
+    private lazy var informationView: InformationView = {
+        let dummyView = InformationView()
+        dummyView.backgroundColor = .clear
+        return dummyView
+    }()
+
     private lazy var detailView: DetailContentView = {
         let details = DetailContentView(frame: view.frame)
         details.dataSource = self
@@ -32,45 +21,56 @@ final class DetailsViewController: UIViewController {
         return details
     }()
 
-    private lazy var informationView: UIView = {
-        let dummyView = UIView()
-        dummyView.backgroundColor = .red
-        return dummyView
-    }()
-
     private lazy var containerStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [informationView, detailView])
-        stackView.distribution = .fill
-//        stackView.spacing = 16
-        stackView.axis = .vertical
-//        stackView.alignment = .fill
-
-        return stackView
+        StackBuilder.assemble(basedOn: StackSetup(arrangedSubviews: [informationView, detailView],
+                                                  spacing: 0,
+                                                  alignment: .fill))
     }()
+
+    private let viewModel: CharacterViewModel
+
+    init(viewModel: CharacterViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+    }
+}
+
+private extension DetailsViewController {
+    func setup() {
+        title = Dictionary.detailTitle.rawValue
         view.backgroundColor = .systemBackground
+        navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubview(containerStackView, constraints: [
-            pinAllEdges(margin: 16)
+            pinAllEdges()
         ])
 
         detailView.translatesAutoresizingMaskIntoConstraints = false
         detailView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/3).isActive = true
+        informationView.render(basedOn: viewModel.character)
+        containerStackView.layoutIfNeeded()
     }
-
 }
 
 extension DetailsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
+        10
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let characterCell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailContentView.cellIdentifier,
                                                                for: indexPath) as! CharacterCell
 
-        characterCell.setRelatedInformation(characterDataSource)
+        characterCell.setRelatedInformation(viewModel.character)
         return characterCell
     }
 
