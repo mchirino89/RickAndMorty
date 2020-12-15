@@ -28,4 +28,8 @@ final class CharacterRepoMockSuccess: CharacterStorable {
 
         onCompletion(.success(characters))
     }
+
+    func avatar(from URL: URL, onCompletion: @escaping AvatarResult) {
+        onCompletion(.success(Data()))
+    }
 }

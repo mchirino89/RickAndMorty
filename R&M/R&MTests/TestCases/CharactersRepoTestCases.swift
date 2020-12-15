@@ -51,6 +51,13 @@ final class CharactersRepoTestCases: XCTestCase {
             self.thenVerifyProperErrorIsCaught(from: result, errorType: .serverDown)
         }
     }
+
+    func testAvatarRetrievalFromServer() {
+        givenRepoWiringSetup()
+        whenAvatarIsRequested { [unowned self] result in
+            self.thenVerifyProperDataForAvatarReceived(from: result)
+        }
+    }
 }
 
 private extension CharactersRepoTestCases {
@@ -74,6 +81,12 @@ private extension CharactersRepoTestCases {
 
     func whenFilteredCharactersQueryIsExecuted(onCompletion: @escaping CharacterResult) {
         characterRepo.filteredCharacters(by: "species", onCompletion: onCompletion)
+
+        wait(for: [testExpectation], timeout: 0.1)
+    }
+
+    func whenAvatarIsRequested(onCompletion: @escaping AvatarResult) {
+        characterRepo.avatar(from: URL(validURL: "avatar"), onCompletion: onCompletion)
 
         wait(for: [testExpectation], timeout: 0.1)
     }
@@ -109,6 +122,17 @@ private extension CharactersRepoTestCases {
             testExpectation.fulfill()
         case .failure(let receivedError):
             XCTAssertEqual(receivedError, errorType)
+            testExpectation.fulfill()
+        }
+    }
+
+    func thenVerifyProperDataForAvatarReceived(from result: Result<Data, NetworkError>) {
+        switch result {
+        case .success(let data):
+            XCTAssertFalse(data.isEmpty)
+            testExpectation.fulfill()
+        case .failure(let receivedError):
+            XCTFail("Success fake response shouldn't thrown this error \(receivedError.localizedDescription)")
             testExpectation.fulfill()
         }
     }
