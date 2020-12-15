@@ -12,12 +12,12 @@ final class NavigationTestCases: XCTestCase {
     var mockController: MainListViewController!
     var dummyNavigation: UINavigationController!
     var navigationSpy: CoordinatorSpy!
-    var fakeInteractor: ListInteractorFake!
+    var fakeInteractor: ListInteractorDummy!
 
     override func setUp() {
         super.setUp()
         navigationSpy = CoordinatorSpy()
-        fakeInteractor = ListInteractorFake()
+        fakeInteractor = ListInteractorDummy()
     }
 
     override func tearDown() {

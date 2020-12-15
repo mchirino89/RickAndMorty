@@ -44,7 +44,7 @@
 		57CEE8D025884B7700F1EAF7 /* MultipleCharacters.json in Resources */ = {isa = PBXBuildFile; fileRef = 57A9AF74257EDE7600C54808 /* MultipleCharacters.json */; };
 		57CEE8E12588515000F1EAF7 /* ListInteractable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEE8E02588515000F1EAF7 /* ListInteractable.swift */; };
 		57CEE8E72588517700F1EAF7 /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEE8E62588517700F1EAF7 /* ListInteractor.swift */; };
-		57CEE8EB2588524A00F1EAF7 /* ListInteractorFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEE8EA2588524900F1EAF7 /* ListInteractorFake.swift */; };
+		57CEE8EB2588524A00F1EAF7 /* ListInteractorDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEE8EA2588524900F1EAF7 /* ListInteractorDummy.swift */; };
 		57CEE8EE258856BE00F1EAF7 /* Species.json in Resources */ = {isa = PBXBuildFile; fileRef = 57A9AF78257EDF7500C54808 /* Species.json */; };
 		57EED3F1258566D100A46A6B /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EED3F0258566D100A46A6B /* DetailsViewController.swift */; };
 		57F194EC257D90D2002C0B3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F194EB257D90D2002C0B3B /* AppDelegate.swift */; };
@@ -103,7 +103,7 @@
 		57CEE8C82588388F00F1EAF7 /* NavigationTestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTestCases.swift; sourceTree = "<group>"; };
 		57CEE8E02588515000F1EAF7 /* ListInteractable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractable.swift; sourceTree = "<group>"; };
 		57CEE8E62588517700F1EAF7 /* ListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
-		57CEE8EA2588524900F1EAF7 /* ListInteractorFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractorFake.swift; sourceTree = "<group>"; };
+		57CEE8EA2588524900F1EAF7 /* ListInteractorDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractorDummy.swift; sourceTree = "<group>"; };
 		57EED3F0258566D100A46A6B /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		57F194E8257D90D2002C0B3B /* R&M.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "R&M.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F194EB257D90D2002C0B3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -272,6 +272,7 @@
 		576C7534257E7BFC00487859 /* TestDoubles */ = {
 			isa = PBXGroup;
 			children = (
+				57CEE8F32588604400F1EAF7 /* Dummies */,
 				57A9AF6F257EDCC000C54808 /* Fakes */,
 				57A9AF6E257EDCB500C54808 /* Mocks */,
 				57CEE8C12588374100F1EAF7 /* Spies */,
@@ -301,8 +302,8 @@
 			isa = PBXGroup;
 			children = (
 				57A9AF74257EDE7600C54808 /* MultipleCharacters.json */,
-				57A9AF78257EDF7500C54808 /* Species.json */,
 				571B05682586D8B5008B3590 /* Rick.json */,
+				57A9AF78257EDF7500C54808 /* Species.json */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -311,8 +312,8 @@
 			isa = PBXGroup;
 			children = (
 				5705E2A62587774100866645 /* CharacterRepo */,
-				5705E2A12587773900866645 /* RequestManager */,
 				57A9AF6D257EDCAB00C54808 /* JSON */,
+				5705E2A12587773900866645 /* RequestManager */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -321,7 +322,6 @@
 			isa = PBXGroup;
 			children = (
 				57A9AF67257EDBF000C54808 /* RequestManagerFakes.swift */,
-				57CEE8EA2588524900F1EAF7 /* ListInteractorFake.swift */,
 			);
 			path = Fakes;
 			sourceTree = "<group>";
@@ -350,6 +350,14 @@
 				57CEE8E62588517700F1EAF7 /* ListInteractor.swift */,
 			);
 			path = Actions;
+			sourceTree = "<group>";
+		};
+		57CEE8F32588604400F1EAF7 /* Dummies */ = {
+			isa = PBXGroup;
+			children = (
+				57CEE8EA2588524900F1EAF7 /* ListInteractorDummy.swift */,
+			);
+			path = Dummies;
 			sourceTree = "<group>";
 		};
 		57F194DF257D90D2002C0B3B = {
@@ -574,7 +582,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				576C7549257E7D7600487859 /* CharactersRepoTestCases.swift in Sources */,
-				57CEE8EB2588524A00F1EAF7 /* ListInteractorFake.swift in Sources */,
+				57CEE8EB2588524A00F1EAF7 /* ListInteractorDummy.swift in Sources */,
 				57CEE8C32588375200F1EAF7 /* CoordinatorSpy.swift in Sources */,
 				57CEE8C92588388F00F1EAF7 /* NavigationTestCases.swift in Sources */,
 				572164FF2586994F00180C9C /* SnapshotTestCases.swift in Sources */,
