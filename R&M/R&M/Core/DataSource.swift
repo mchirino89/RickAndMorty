@@ -8,5 +8,9 @@
 import Foundation
 
 class DataSource<T>: NSObject {
-    var data: Dynamic<[T]> = Dynamic([])
+    var data: Dynamic<[T]>
+
+    override init() {
+        data = Dynamic([])
+    }
 }

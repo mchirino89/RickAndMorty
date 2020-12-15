@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Dynamic<T> {
+class Dynamic<T> {
     typealias Listener = (T) -> ()
     var listener: Listener?
 
@@ -21,7 +21,7 @@ struct Dynamic<T> {
         self.value = value
     }
 
-    mutating func update(_ listener: Listener?) {
+    func update(_ listener: Listener?) {
         self.listener = listener
         listener?(value)
     }

@@ -17,7 +17,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
 
-        let rootCoordinator = MainCoordinator(characterRepo: CharacterRepoMockSuccess())
+        let rootCoordinator = MainCoordinator(characterRepo: CharacterStoredRepo())
         rootCoordinator.start()
 
         buildMainWindow(for: windowScene, with: rootCoordinator.rootViewController)

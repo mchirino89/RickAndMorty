@@ -52,7 +52,9 @@ private extension MainListViewController {
 
     func wireListBehavior() {
         dataSource.render { [weak listView] retrievedCharacters in
-            listView?.reloadData()
+            performUIUpdate {
+                listView?.reloadData()
+            }
         }
 
         listListener.listView = listView

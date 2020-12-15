@@ -42,6 +42,7 @@ final class DetailsViewController: UIViewController {
         super.viewDidLoad()
         setup()
         renderView()
+        renderCoincidences()
     }
 }
 
@@ -56,14 +57,19 @@ private extension DetailsViewController {
 
         detailView.translatesAutoresizingMaskIntoConstraints = false
         detailView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/3).isActive = true
-        dataSource.render { [weak detailView] retrievedCharacters in
-            detailView?.reloadData()
-        }
     }
 
     func renderView() {
         informationView.render(basedOn: viewModel.currentCharacter)
         viewModel.fetchRelatedSpecies()
         containerStackView.layoutIfNeeded()
+    }
+
+    func renderCoincidences() {
+        dataSource.render { [weak detailView] retrievedCharacters in
+            performUIUpdate {
+                detailView?.reloadData()
+            }
+        }
     }
 }

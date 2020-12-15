@@ -22,14 +22,12 @@ struct CharacterViewModel {
 
     func fetchCharacters() {
         charactersRepo.allCharacters { result in
-            performUIUpdate {
-                switch result {
-                case .success(let retrievedCharacters):
-                    dataSource?.data.value = retrievedCharacters
-                case .failure(let error):
-                    #warning("Add proper UI error handling")
-                    print(error)
-                }
+            switch result {
+            case .success(let retrievedCharacters):
+                dataSource?.data.value = retrievedCharacters
+            case .failure(let error):
+                #warning("Add proper UI error handling")
+                print(error)
             }
         }
     }
