@@ -14,23 +14,25 @@ protocol Coordinator {
 }
 
 final class MainCoordinator {
-    var mainNavigator: UINavigationController?
-    var rootViewController: UIViewController?
+    var rootViewController: UINavigationController
     let characterRepo: CharacterStorable
 
     init(characterRepo: CharacterStorable) {
         self.characterRepo = characterRepo
+        rootViewController = UINavigationController()
     }
 }
 
 extension MainCoordinator: Coordinator {
     func start() {
         let mainListController = MainListViewController(charactersRepo: characterRepo, navigationListener: self)
-        mainNavigator = UINavigationController(rootViewController: mainListController)
-
-        rootViewController = mainNavigator
+        rootViewController.setViewControllers([mainListController], animated: false)
     }
 
     func checkDetails(for selectedCharacter: CharacterDTO) {
+        let detailsController = DetailsViewController(charactersRepo: characterRepo,
+                                                      currentCharacter: selectedCharacter)
+
+        rootViewController.present(detailsController, animated: true)
     }
 }

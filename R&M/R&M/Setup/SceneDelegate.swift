@@ -23,7 +23,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         buildMainWindow(for: windowScene, with: rootCoordinator.rootViewController)
     }
 
-    private func buildMainWindow(for windowScene: UIWindowScene, with rootController: UIViewController?) {
+    private func buildMainWindow(for windowScene: UIWindowScene, with rootController: UINavigationController?) {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = rootController

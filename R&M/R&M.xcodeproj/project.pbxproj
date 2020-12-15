@@ -45,6 +45,7 @@
 		57CEE8E12588515000F1EAF7 /* ListInteractable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEE8E02588515000F1EAF7 /* ListInteractable.swift */; };
 		57CEE8E72588517700F1EAF7 /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEE8E62588517700F1EAF7 /* ListInteractor.swift */; };
 		57CEE8EB2588524A00F1EAF7 /* ListInteractorFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEE8EA2588524900F1EAF7 /* ListInteractorFake.swift */; };
+		57CEE8EE258856BE00F1EAF7 /* Species.json in Resources */ = {isa = PBXBuildFile; fileRef = 57A9AF78257EDF7500C54808 /* Species.json */; };
 		57EED3F1258566D100A46A6B /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EED3F0258566D100A46A6B /* DetailsViewController.swift */; };
 		57F194EC257D90D2002C0B3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F194EB257D90D2002C0B3B /* AppDelegate.swift */; };
 		57F194F0257D90D2002C0B3B /* MainListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F194EF257D90D2002C0B3B /* MainListViewController.swift */; };
@@ -512,6 +513,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57F194F8257D90D7002C0B3B /* LaunchScreen.storyboard in Resources */,
+				57CEE8EE258856BE00F1EAF7 /* Species.json in Resources */,
 				576C7523257E537200487859 /* RepoSetup.plist in Resources */,
 				57F194F5257D90D7002C0B3B /* Assets.xcassets in Resources */,
 				57CEE8D025884B7700F1EAF7 /* MultipleCharacters.json in Resources */,

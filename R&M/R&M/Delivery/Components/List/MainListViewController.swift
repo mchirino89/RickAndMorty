@@ -55,8 +55,8 @@ private extension MainListViewController {
             listView?.reloadData()
         }
 
-        listListener.delegate = self
         listListener.listView = listView
+        listListener.delegate = self
         viewModel.fetchCharacters()
     }
 }
