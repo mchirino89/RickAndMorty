@@ -13,6 +13,10 @@ final class CharacterDataSource: DataSource<CharacterDTO> {
             completion($0)
         }
     }
+
+    func selectedCharacter(at index: Int) -> CharacterDTO {
+        data.value[index]
+    }
 }
 
 extension CharacterDataSource: UICollectionViewDataSource {
