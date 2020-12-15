@@ -1,5 +1,5 @@
 //
-//  CharacterViewModel.swift
+//  ListViewModel.swift
 //  R&M
 //
 //  Created by Mauricio Chirino on 08/12/20.
@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct CharacterViewModel {
+typealias CharacterThumbnailResult = (Result<(Data, Int), Error>) -> Void
+
+struct ListViewModel {
     private weak var dataSource: DataSource<CharacterDTO>?
     private let charactersRepo: CharacterStorable
     private var navigationListener: Coordinator
@@ -28,6 +30,19 @@ struct CharacterViewModel {
             case .failure(let error):
                 #warning("Add proper UI error handling")
                 print(error)
+            }
+        }
+    }
+
+    func fetchAvatars(onCompletion: @escaping CharacterThumbnailResult) {
+        dataSource?.data.value.enumerated().forEach { index, element in
+            charactersRepo.avatar(from: element.avatar) { result in
+                switch result {
+                case .success(let avatarData):
+                    onCompletion(.success((avatarData, index)))
+                case .failure(let error):
+                    onCompletion(.failure(error))
+                }
             }
         }
     }

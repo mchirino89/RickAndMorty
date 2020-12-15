@@ -17,7 +17,7 @@ final class MainListViewController: UIViewController {
     }()
 
     private let dataSource: CharacterDataSource
-    private let viewModel: CharacterViewModel
+    private let viewModel: ListViewModel
     private var listListener: ListInteractable
 
     init(charactersRepo: CharacterStorable,
@@ -25,7 +25,7 @@ final class MainListViewController: UIViewController {
          listListener: ListInteractable = ListInteractor()) {
         self.listListener = listListener
         dataSource = CharacterDataSource()
-        viewModel = CharacterViewModel(dataSource: dataSource,
+        viewModel = ListViewModel(dataSource: dataSource,
                                        charactersRepo: charactersRepo,
                                        navigationListener: navigationListener)
         super.init(nibName: nil, bundle: nil)
@@ -39,6 +39,7 @@ final class MainListViewController: UIViewController {
         super.viewDidLoad()
         initialSetup()
         wireListBehavior()
+        listenListUpdate()
     }
 }
 
@@ -51,15 +52,17 @@ private extension MainListViewController {
     }
 
     func wireListBehavior() {
-        dataSource.render { [weak listView] retrievedCharacters in
+        listListener.listView = listView
+        listListener.delegate = self
+    }
+
+    func listenListUpdate() {
+        viewModel.fetchCharacters()
+        dataSource.render { [weak listView] in
             performUIUpdate {
                 listView?.reloadData()
             }
         }
-
-        listListener.listView = listView
-        listListener.delegate = self
-        viewModel.fetchCharacters()
     }
 }
 

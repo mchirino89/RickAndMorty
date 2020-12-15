@@ -8,9 +8,9 @@
 import UIKit
 
 final class CharacterDataSource: DataSource<CharacterDTO> {
-    func render(completion: @escaping (([CharacterDTO]) -> Void)) {
-        data.update {
-            completion($0)
+    func render(completion: @escaping (() -> Void)) {
+        data.update { _ in
+            completion()
         }
     }
 

@@ -66,7 +66,7 @@ private extension DetailsViewController {
     }
 
     func renderCoincidences() {
-        dataSource.render { [weak detailView] retrievedCharacters in
+        dataSource.render { [weak detailView] in
             performUIUpdate {
                 detailView?.reloadData()
             }
