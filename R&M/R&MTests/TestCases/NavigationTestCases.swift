@@ -9,38 +9,42 @@ import XCTest
 @testable import R_M
 
 final class NavigationTestCases: XCTestCase {
-    var mainCoordinator: MainCoordinator!
     var mockController: MainListViewController!
     var dummyNavigation: UINavigationController!
     var navigationSpy: CoordinatorSpy!
+    var fakeInteractor: ListInteractorFake!
 
     override func setUp() {
         super.setUp()
         navigationSpy = CoordinatorSpy()
+        fakeInteractor = ListInteractorFake()
     }
 
     override func tearDown() {
         super.tearDown()
-        mainCoordinator = nil
+        navigationSpy = nil
         mockController = nil
         dummyNavigation = nil
+        fakeInteractor = nil
     }
 
-//    func testSelectedCharacterNavigation() {
-//        givenCoordinatorInitialSetup()
-//        whenCharacterIsSelected()
-//        thenVerifyNavigationOccurs()
-//    }
+    func testSelectedCharacterNavigation() {
+        givenCoordinatorInitialSetup()
+        whenCharacterIsSelected()
+        thenVerifyNavigationOccurs()
+    }
 }
 
 private extension NavigationTestCases {
     func givenCoordinatorInitialSetup() {
         mockController = MainListViewController(charactersRepo: CharacterRepoMockSuccess(),
-                                                navigationListener: navigationSpy)
+                                                navigationListener: navigationSpy,
+                                                listListener: fakeInteractor)
+        _ = mockController.view
     }
 
     func whenCharacterIsSelected() {
-        mockController.collectionView(UICollectionView(), didSelectItemAt: IndexPath(item: 0, section: 0))
+        mockController.didSelected(at: 0)
     }
 
     func thenVerifyNavigationOccurs() {

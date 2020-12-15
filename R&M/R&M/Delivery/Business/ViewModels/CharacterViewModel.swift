@@ -35,5 +35,6 @@ struct CharacterViewModel {
     }
 
     func checkDetails(for character: CharacterDTO) {
+        navigationListener.checkDetails(for: character)
     }
 }

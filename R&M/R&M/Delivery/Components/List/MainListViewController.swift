@@ -18,10 +18,16 @@ final class MainListViewController: UIViewController {
 
     private let dataSource: CharacterDataSource
     private let viewModel: CharacterViewModel
+    private var listListener: ListInteractable
 
-    init(charactersRepo: CharacterStorable) {
+    init(charactersRepo: CharacterStorable,
+         navigationListener: Coordinator,
+         listListener: ListInteractable = ListInteractor()) {
+        self.listListener = listListener
         dataSource = CharacterDataSource()
-        viewModel = CharacterViewModel(dataSource: dataSource, charactersRepo: charactersRepo)
+        viewModel = CharacterViewModel(dataSource: dataSource,
+                                       charactersRepo: charactersRepo,
+                                       navigationListener: navigationListener)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -49,6 +55,16 @@ private extension MainListViewController {
             listView?.reloadData()
         }
 
+        listListener.delegate = self
+        listListener.listView = listView
         viewModel.fetchCharacters()
+    }
+}
+
+extension MainListViewController: ListDelegate {
+    func didSelected(at index: Int) {
+        let selectedCharacter = dataSource.selectedCharacter(at: index)
+
+        viewModel.checkDetails(for: selectedCharacter)
     }
 }
