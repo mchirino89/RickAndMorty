@@ -15,6 +15,8 @@ final class CharacterCell: UICollectionViewCell {
                                                   alignment: .leading))
     }()
 
+    private lazy var activityLoader: UIActivityIndicatorView = LoaderBuilder.assemble(style: .medium)
+
     private lazy var thumbnailPlaceholderView: UIView = {
         let placeholderView = UIView()
         placeholderView.backgroundColor = .systemBlue
@@ -27,6 +29,10 @@ final class CharacterCell: UICollectionViewCell {
             .widthAnchor
             .constraint(equalTo: placeholderView.heightAnchor)
             .isActive = true
+
+        placeholderView.addSubview(activityLoader, constraints: [
+            pinToCenter()
+        ])
 
         return placeholderView
     }()

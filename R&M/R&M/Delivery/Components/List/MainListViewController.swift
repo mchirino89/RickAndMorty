@@ -16,6 +16,8 @@ final class MainListViewController: UIViewController {
         return listing
     }()
 
+    private lazy var activityLoader: UIActivityIndicatorView = LoaderBuilder.assemble()
+
     private let dataSource: CharacterDataSource
     private let viewModel: ListViewModel
     private var listListener: ListInteractable
@@ -49,6 +51,9 @@ private extension MainListViewController {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubview(listView)
+        view.addSubview(activityLoader, constraints: [
+            pinToCenter()
+        ])
     }
 
     func wireListBehavior() {
@@ -58,9 +63,10 @@ private extension MainListViewController {
 
     func listenListUpdate() {
         viewModel.fetchCharacters()
-        dataSource.render { [weak listView] in
+        dataSource.render { [weak listView, weak activityLoader] in
             performUIUpdate {
                 listView?.reloadData()
+                activityLoader?.stopAnimating()
             }
         }
     }
