@@ -10,11 +10,14 @@ import Foundation
 struct CharacterViewModel {
     private weak var dataSource: DataSource<CharacterDTO>?
     private let charactersRepo: CharacterStorable
+    private var navigationListener: Coordinator
 
     init(dataSource: DataSource<CharacterDTO>?,
-         charactersRepo: CharacterStorable) {
+         charactersRepo: CharacterStorable,
+         navigationListener: Coordinator) {
         self.dataSource = dataSource
         self.charactersRepo = charactersRepo
+        self.navigationListener = navigationListener
     }
 
     func fetchCharacters() {
@@ -29,5 +32,9 @@ struct CharacterViewModel {
                 }
             }
         }
+    }
+
+    func checkDetails(for character: CharacterDTO) {
+        navigationListener.checkDetails(for: character)
     }
 }

@@ -10,26 +10,29 @@ import UIKit
 
 protocol Coordinator {
     func start()
-    func checkDetails(for characterId: Int)
+    func checkDetails(for selectedCharacter: CharacterDTO)
 }
 
 final class MainCoordinator {
-    var mainNavigator: UINavigationController?
-    var rootViewController: UIViewController?
+    var rootViewController: UINavigationController
+    let characterRepo: CharacterStorable
+
+    init(characterRepo: CharacterStorable) {
+        self.characterRepo = characterRepo
+        rootViewController = UINavigationController()
+    }
 }
 
 extension MainCoordinator: Coordinator {
     func start() {
-//        let mockCharacter: CharacterDTO = try! FileReader().decodeJSON(from: "Rick")
-//        let mainListController = MainListViewController(viewModel: CharacterViewModel(character: mockCharacter))
-//        mainNavigator = UINavigationController(rootViewController: mainListController)
-
-//        let detailsController = DetailsViewController(viewModel: CharacterViewModel(character: mockCharacter))
-//        mainNavigator = UINavigationController(rootViewController: detailsController)
-
-        rootViewController = mainNavigator
+        let mainListController = MainListViewController(charactersRepo: characterRepo, navigationListener: self)
+        rootViewController.setViewControllers([mainListController], animated: false)
     }
 
-    func checkDetails(for characterId: Int) {
+    func checkDetails(for selectedCharacter: CharacterDTO) {
+        let detailsController = DetailsViewController(charactersRepo: characterRepo,
+                                                      currentCharacter: selectedCharacter)
+
+        rootViewController.present(detailsController, animated: true)
     }
 }
