@@ -32,6 +32,17 @@ final class CharacterDataSource: DataSource<CharacterDTO> {
 
         return cache.object(forKey: cacheKey) ?? AssetCatalog.placeholder.image
     }
+
+    deinit {
+        imageLoadOperations.forEach {
+            $1.cancel()
+        }
+        imageLoadOperations.removeAll()
+
+        if imageLoadOperations.isEmpty {
+            print("properly clean operation queue on dealloc")
+        }
+    }
 }
 
 private extension CharacterDataSource {
@@ -87,7 +98,7 @@ extension CharacterDataSource: UICollectionViewDataSource {
 
 extension CharacterDataSource: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths {
+        indexPaths.forEach { indexPath in
             if let _ = imageLoadOperations[indexPath] {
                 return
             }
@@ -99,7 +110,7 @@ extension CharacterDataSource: UICollectionViewDataSourcePrefetching {
     }
 
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths {
+        indexPaths.forEach { indexPath in
             guard let imageLoadOperation = imageLoadOperations[indexPath] else {
                 return
             }
