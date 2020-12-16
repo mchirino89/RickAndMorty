@@ -19,7 +19,6 @@ final class CharacterCell: UICollectionViewCell {
 
     private lazy var thumbnailView: UIImageView = {
         let smallImageView = UIImageView(image: AssetCatalog.placeholder.image)
-        smallImageView.backgroundColor = .systemBlue
 
         smallImageView
             .heightAnchor

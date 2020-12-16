@@ -33,16 +33,9 @@ final class ImageLoadOperation: Operation {
                 self?.image = decodedImage
                 self?.completionHandler??(decodedImage)
             case .failure(let error):
+                #warning("Add proper UI error handling")
                 print(error.localizedDescription)
             }
-        }
-    }
-}
-
-extension UIImageView {
-    func setImage(_ image: UIImage?) {
-        performUIUpdate { [weak self] in
-            self?.image = image
         }
     }
 }
