@@ -9,6 +9,7 @@ import UIKit
 
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
+    let globalCache = CacheStore()
 
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,
@@ -17,7 +18,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
 
-        let rootCoordinator = MainCoordinator(characterRepo: CharacterRepoMockSuccess())
+        let rootCoordinator = MainCoordinator(characterRepo: CharacterStoredRepo(), cache: globalCache)
         rootCoordinator.start()
 
         buildMainWindow(for: windowScene, with: rootCoordinator.rootViewController)

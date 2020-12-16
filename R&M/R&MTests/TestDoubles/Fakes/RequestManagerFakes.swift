@@ -26,6 +26,6 @@ final class FakeRequestManagerSuccessResponse: RequestableManager {
             let parsedJSON = try! JSONEncoder().encode(characters)
 
             completion(.success(parsedJSON))
-        }
+        } 
     }
 }

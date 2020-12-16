@@ -1,5 +1,5 @@
 //
-//  CharacterViewModel.swift
+//  ListViewModel.swift
 //  R&M
 //
 //  Created by Mauricio Chirino on 08/12/20.
@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct CharacterViewModel {
+struct ListViewModel {
     private weak var dataSource: DataSource<CharacterDTO>?
     private let charactersRepo: CharacterStorable
+    // This reference needs to be strong since view model isn't being retained on the coordinator
     private var navigationListener: Coordinator
 
     init(dataSource: DataSource<CharacterDTO>?,
@@ -22,14 +23,13 @@ struct CharacterViewModel {
 
     func fetchCharacters() {
         charactersRepo.allCharacters { result in
-            performUIUpdate {
-                switch result {
-                case .success(let retrievedCharacters):
-                    dataSource?.data.value = retrievedCharacters
-                case .failure(let error):
-                    #warning("Add proper UI error handling")
-                    print(error)
-                }
+            switch result {
+            case .success(let retrievedCharacters):
+                dataSource?.data.value = retrievedCharacters
+            case .failure(let error):
+                dataSource?.data.value = []
+                #warning("Add proper UI error handling")
+                print(error)
             }
         }
     }

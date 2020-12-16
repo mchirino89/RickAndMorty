@@ -13,6 +13,7 @@ final class DetailsViewController: UIViewController {
     private lazy var detailView: DetailContentView = {
         let details = DetailContentView(frame: view.frame)
         details.dataSource = dataSource
+        details.prefetchDataSource = dataSource
 
         return details
     }()
@@ -26,8 +27,8 @@ final class DetailsViewController: UIViewController {
     private let viewModel: DetailsViewModel
     private let dataSource: CharacterDataSource
 
-    init(charactersRepo: CharacterStorable, currentCharacter: CharacterDTO) {
-        dataSource = CharacterDataSource()
+    init(charactersRepo: CharacterStorable, currentCharacter: CharacterDTO, cache: Cacheable) {
+        dataSource = CharacterDataSource(cache: cache)
         viewModel = DetailsViewModel(dataSource: dataSource,
                                      charactersRepo: charactersRepo,
                                      currentCharacter: currentCharacter)
@@ -42,6 +43,11 @@ final class DetailsViewController: UIViewController {
         super.viewDidLoad()
         setup()
         renderView()
+        renderCoincidences()
+    }
+
+    deinit {
+        print("Properly dealloc. No retain cycles")
     }
 }
 
@@ -56,14 +62,24 @@ private extension DetailsViewController {
 
         detailView.translatesAutoresizingMaskIntoConstraints = false
         detailView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/3).isActive = true
-        dataSource.render { [weak detailView] retrievedCharacters in
-            detailView?.reloadData()
-        }
     }
 
     func renderView() {
-        informationView.render(basedOn: viewModel.currentCharacter)
+        informationView.render(basedOn: viewModel.currentCharacter,
+                               with: dataSource.cachedImage(for: viewModel.currentCharacter.avatar))
         viewModel.fetchRelatedSpecies()
         containerStackView.layoutIfNeeded()
+    }
+
+    func renderCoincidences() {
+        let uiUpdateCompletion: () -> Void = { [weak detailView] in
+            detailView?.reloadData()
+        }
+
+        let renderCompletion: () -> Void = {
+            performUIUpdate(using: uiUpdateCompletion)
+        }
+
+        dataSource.render(completion: renderCompletion)
     }
 }

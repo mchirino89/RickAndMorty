@@ -29,3 +29,14 @@ enum ColorCatalogue: String {
         UIColor(named: rawValue)
     }
 }
+
+enum AssetCatalog {
+    case placeholder
+
+    var image: UIImage {
+        switch self {
+        case .placeholder:
+            return UIImage(named: "placeholder")!
+        }
+    }
+}

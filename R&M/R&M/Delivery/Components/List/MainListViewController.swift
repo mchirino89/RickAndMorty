@@ -12,20 +12,24 @@ final class MainListViewController: UIViewController {
     private lazy var listView: ListContentView = {
         let listing = ListContentView(frame: view.frame)
         listing.dataSource = dataSource
+        listing.prefetchDataSource = dataSource
 
         return listing
     }()
 
+    private lazy var activityLoader: UIActivityIndicatorView = LoaderBuilder.assemble()
+
     private let dataSource: CharacterDataSource
-    private let viewModel: CharacterViewModel
+    private let viewModel: ListViewModel
     private var listListener: ListInteractable
 
     init(charactersRepo: CharacterStorable,
          navigationListener: Coordinator,
+         cache: Cacheable,
          listListener: ListInteractable = ListInteractor()) {
         self.listListener = listListener
-        dataSource = CharacterDataSource()
-        viewModel = CharacterViewModel(dataSource: dataSource,
+        dataSource = CharacterDataSource(cache: cache)
+        viewModel = ListViewModel(dataSource: dataSource,
                                        charactersRepo: charactersRepo,
                                        navigationListener: navigationListener)
         super.init(nibName: nil, bundle: nil)
@@ -39,6 +43,8 @@ final class MainListViewController: UIViewController {
         super.viewDidLoad()
         initialSetup()
         wireListBehavior()
+        listenListUpdate()
+        viewModel.fetchCharacters()
     }
 }
 
@@ -48,16 +54,27 @@ private extension MainListViewController {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubview(listView)
+        view.addSubview(activityLoader, constraints: [
+            pinToCenter()
+        ])
     }
 
     func wireListBehavior() {
-        dataSource.render { [weak listView] retrievedCharacters in
-            listView?.reloadData()
-        }
-
         listListener.listView = listView
         listListener.delegate = self
-        viewModel.fetchCharacters()
+    }
+
+    func listenListUpdate() {
+        let uiUpdateCompletion: () -> Void = { [weak listView, weak activityLoader] in
+            listView?.reloadData()
+            activityLoader?.stopAnimating()
+        }
+
+        let renderCompletion: () -> Void = {
+            performUIUpdate(using: uiUpdateCompletion)
+        }
+
+        dataSource.render(completion: renderCompletion)
     }
 }
 

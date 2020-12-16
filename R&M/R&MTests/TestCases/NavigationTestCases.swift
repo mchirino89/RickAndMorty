@@ -39,6 +39,7 @@ private extension NavigationTestCases {
     func givenCoordinatorInitialSetup() {
         mockController = MainListViewController(charactersRepo: CharacterRepoMockSuccess(),
                                                 navigationListener: navigationSpy,
+                                                cache: CacheableMock(),
                                                 listListener: fakeInteractor)
         _ = mockController.view
     }
