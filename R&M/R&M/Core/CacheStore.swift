@@ -5,7 +5,6 @@
 //  Created by Mauricio Chirino on 16/12/20.
 //
 
-import Foundation
 import UIKit
 
 protocol Cacheable {

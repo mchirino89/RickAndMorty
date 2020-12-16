@@ -44,6 +44,8 @@
 		57B4C52E258A3654007D757A /* AvatarsRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B4C52D258A3654007D757A /* AvatarsRepo.swift */; };
 		57B4C535258A3749007D757A /* CacheableMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B4C534258A3749007D757A /* CacheableMock.swift */; };
 		57CB9F13258A382000060774 /* CacheStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB9F12258A382000060774 /* CacheStore.swift */; };
+		57CB9F19258A3FCB00060774 /* AvatarRepoTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB9F18258A3FCB00060774 /* AvatarRepoTestCases.swift */; };
+		57CB9F1F258A409B00060774 /* AvatarMockRepos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB9F1E258A409B00060774 /* AvatarMockRepos.swift */; };
 		57CEE8C32588375200F1EAF7 /* CoordinatorSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEE8C22588375200F1EAF7 /* CoordinatorSpy.swift */; };
 		57CEE8C92588388F00F1EAF7 /* NavigationTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEE8C82588388F00F1EAF7 /* NavigationTestCases.swift */; };
 		57CEE8E12588515000F1EAF7 /* ListInteractable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEE8E02588515000F1EAF7 /* ListInteractable.swift */; };
@@ -108,6 +110,8 @@
 		57B4C52D258A3654007D757A /* AvatarsRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarsRepo.swift; sourceTree = "<group>"; };
 		57B4C534258A3749007D757A /* CacheableMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheableMock.swift; sourceTree = "<group>"; };
 		57CB9F12258A382000060774 /* CacheStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheStore.swift; sourceTree = "<group>"; };
+		57CB9F18258A3FCB00060774 /* AvatarRepoTestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarRepoTestCases.swift; sourceTree = "<group>"; };
+		57CB9F1E258A409B00060774 /* AvatarMockRepos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarMockRepos.swift; sourceTree = "<group>"; };
 		57CEE8C22588375200F1EAF7 /* CoordinatorSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorSpy.swift; sourceTree = "<group>"; };
 		57CEE8C82588388F00F1EAF7 /* NavigationTestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTestCases.swift; sourceTree = "<group>"; };
 		57CEE8E02588515000F1EAF7 /* ListInteractable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractable.swift; sourceTree = "<group>"; };
@@ -154,12 +158,13 @@
 			path = RequestManager;
 			sourceTree = "<group>";
 		};
-		5705E2A62587774100866645 /* CharacterRepo */ = {
+		5705E2A62587774100866645 /* Repos */ = {
 			isa = PBXGroup;
 			children = (
 				5705E2A72587775500866645 /* CharacterRepoMockSuccess.swift */,
+				57CB9F1E258A409B00060774 /* AvatarMockRepos.swift */,
 			);
-			path = CharacterRepo;
+			path = Repos;
 			sourceTree = "<group>";
 		};
 		572165102586AC5E00180C9C /* Builders */ = {
@@ -307,6 +312,7 @@
 				576C7548257E7D7600487859 /* CharactersRepoTestCases.swift */,
 				572164FE2586994F00180C9C /* SnapshotTestCases.swift */,
 				57CEE8C82588388F00F1EAF7 /* NavigationTestCases.swift */,
+				57CB9F18258A3FCB00060774 /* AvatarRepoTestCases.swift */,
 			);
 			path = TestCases;
 			sourceTree = "<group>";
@@ -326,7 +332,7 @@
 			children = (
 				57B4C533258A3730007D757A /* ImagesRepo */,
 				570C5A0C25896B7C00AB8FC8 /* MockCatalog.xcassets */,
-				5705E2A62587774100866645 /* CharacterRepo */,
+				5705E2A62587774100866645 /* Repos */,
 				57A9AF6D257EDCAB00C54808 /* JSON */,
 				5705E2A12587773900866645 /* RequestManager */,
 			);
@@ -610,7 +616,9 @@
 				57CEE8EB2588524A00F1EAF7 /* ListInteractorDummy.swift in Sources */,
 				57CEE8C32588375200F1EAF7 /* CoordinatorSpy.swift in Sources */,
 				57CEE8C92588388F00F1EAF7 /* NavigationTestCases.swift in Sources */,
+				57CB9F19258A3FCB00060774 /* AvatarRepoTestCases.swift in Sources */,
 				572164FF2586994F00180C9C /* SnapshotTestCases.swift in Sources */,
+				57CB9F1F258A409B00060774 /* AvatarMockRepos.swift in Sources */,
 				5705E2A82587775500866645 /* CharacterRepoMockSuccess.swift in Sources */,
 				5728C5F7257F928A003FC989 /* FailureRequestManagerMocks.swift in Sources */,
 				57A9AF68257EDBF000C54808 /* RequestManagerFakes.swift in Sources */,

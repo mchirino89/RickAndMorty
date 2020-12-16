@@ -26,10 +26,6 @@ final class FakeRequestManagerSuccessResponse: RequestableManager {
             let parsedJSON = try! JSONEncoder().encode(characters)
 
             completion(.success(parsedJSON))
-        } else if request.url?.absoluteString.contains("avatar") == true {
-            let dummyData = "avatarImageDummyBlog".data(using: .utf8)!
-
-            completion(.success(dummyData))
-        }
+        } 
     }
 }

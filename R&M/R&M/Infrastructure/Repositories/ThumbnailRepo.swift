@@ -14,9 +14,9 @@ final class ImageLoadOperation: Operation {
     var completionHandler: ImageLoadOperationCompletionHandlerType?
     var image: UIImage?
     let url: URL
-    let remoteRepo: CharacterStorable
+    let remoteRepo: ImagesStockable
 
-    init(url: URL, remoteRepo: CharacterStorable = CharacterStoredRepo()) {
+    init(url: URL, remoteRepo: ImagesStockable = AvatarsRepo()) {
         self.url = url
         self.remoteRepo = remoteRepo
     }
