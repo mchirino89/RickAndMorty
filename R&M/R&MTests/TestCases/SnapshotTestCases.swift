@@ -12,37 +12,49 @@ import XCTest
 
 final class SnapshotTestCases: XCTestCase {
     var mockController: UIViewController!
+    var mockCache: CacheableMock!
+    var charactersRepo: CharacterRepoMockSuccess!
     var dummyNavigation: UINavigationController!
+
+    override func setUp() {
+        super.setUp()
+        mockCache = CacheableMock()
+        charactersRepo = CharacterRepoMockSuccess()
+    }
 
     override func tearDown() {
         super.tearDown()
+        charactersRepo = nil
         mockController = nil
         dummyNavigation = nil
+        mockCache = nil
     }
 
     func testUILayoutForCharacterListing() {
         givenMockList()
         whenNavigationOccurs()
-//        thenAssertProperRendering(on: #function)
+        thenAssertProperRendering(on: #function)
     }
 
     func testUILayoutForDetailsRendering() {
         givenMockDetails()
         whenNavigationOccurs()
-//        thenAssertProperRendering(on: #function)
+        thenAssertProperRendering(on: #function)
     }
 }
 
 private extension SnapshotTestCases {
     func givenMockList() {
-        mockController = MainListViewController(charactersRepo: CharacterRepoMockSuccess(),
-                                                navigationListener: CoordinatorSpy())
+        mockController = MainListViewController(charactersRepo: charactersRepo,
+                                                navigationListener: CoordinatorSpy(),
+                                                cache: CacheableMock())
     }
 
     func givenMockDetails() {
         let mockCharacter: CharacterDTO = try! FileReader().decodeJSON(in: Bundle(for: Self.self), from: "Rick")
-        mockController = DetailsViewController(charactersRepo: CharacterRepoMockSuccess(),
-                                               currentCharacter: mockCharacter)
+        mockController = DetailsViewController(charactersRepo: charactersRepo,
+                                               currentCharacter: mockCharacter,
+                                               cache: CacheableMock())
     }
 
     func whenNavigationOccurs() {
