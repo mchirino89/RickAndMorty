@@ -66,10 +66,14 @@ private extension DetailsViewController {
     }
 
     func renderCoincidences() {
-        dataSource.render { [weak detailView] in
-            performUIUpdate {
-                detailView?.reloadData()
-            }
+        let uiUpdateCompletion: () -> Void = { [weak detailView] in
+            detailView?.reloadData()
         }
+
+        let renderCompletion: () -> Void = {
+            performUIUpdate(using: uiUpdateCompletion)
+        }
+
+        dataSource.render(completion: renderCompletion)
     }
 }

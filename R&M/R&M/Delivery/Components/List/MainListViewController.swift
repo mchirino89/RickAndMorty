@@ -42,6 +42,7 @@ final class MainListViewController: UIViewController {
         initialSetup()
         wireListBehavior()
         listenListUpdate()
+        viewModel.fetchCharacters()
     }
 }
 
@@ -62,13 +63,16 @@ private extension MainListViewController {
     }
 
     func listenListUpdate() {
-        viewModel.fetchCharacters()
-        dataSource.render { [weak listView, weak activityLoader] in
-            performUIUpdate {
-                listView?.reloadData()
-                activityLoader?.stopAnimating()
-            }
+        let uiUpdateCompletion: () -> Void = { [weak listView, weak activityLoader] in
+            listView?.reloadData()
+            activityLoader?.stopAnimating()
         }
+
+        let renderCompletion: () -> Void = {
+            performUIUpdate(using: uiUpdateCompletion)
+        }
+
+        dataSource.render(completion: renderCompletion)
     }
 }
 
