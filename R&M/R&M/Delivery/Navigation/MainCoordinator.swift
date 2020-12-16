@@ -16,11 +16,11 @@ protocol Coordinator {
 final class MainCoordinator {
     var rootViewController: UINavigationController
     let characterRepo: CharacterStorable
-    let cache: NSCache<NSString, UIImage>
+    let cache: Cacheable
 
-    init(characterRepo: CharacterStorable) {
+    init(characterRepo: CharacterStorable, cache: Cacheable) {
         self.characterRepo = characterRepo
-        cache = NSCache<NSString, UIImage>()
+        self.cache = cache
         rootViewController = UINavigationController()
     }
 }

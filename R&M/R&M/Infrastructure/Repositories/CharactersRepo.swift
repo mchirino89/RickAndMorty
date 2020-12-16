@@ -10,7 +10,6 @@ import MauriNet
 import MauriUtils
 
 typealias CharacterResult = (Result<[CharacterDTO], NetworkError>) -> Void
-typealias AvatarResult = (Result<Data, NetworkError>) -> Void
 
 protocol CharacterStorable {
     func allCharacters(onCompletion: @escaping CharacterResult)
