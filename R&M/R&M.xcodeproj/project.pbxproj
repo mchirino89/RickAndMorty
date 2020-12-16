@@ -40,6 +40,7 @@
 		57A9AF79257EDF7500C54808 /* Species.json in Resources */ = {isa = PBXBuildFile; fileRef = 57A9AF78257EDF7500C54808 /* Species.json */; };
 		57A9AF7D257EE27D00C54808 /* ResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A9AF7C257EE27D00C54808 /* ResponseDTO.swift */; };
 		57B4C52325898147007D757A /* LoaderBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B4C52225898147007D757A /* LoaderBuilder.swift */; };
+		57B4C5272589AD7D007D757A /* ThumbnailRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B4C5262589AD7D007D757A /* ThumbnailRepo.swift */; };
 		57CEE8C32588375200F1EAF7 /* CoordinatorSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEE8C22588375200F1EAF7 /* CoordinatorSpy.swift */; };
 		57CEE8C92588388F00F1EAF7 /* NavigationTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEE8C82588388F00F1EAF7 /* NavigationTestCases.swift */; };
 		57CEE8E12588515000F1EAF7 /* ListInteractable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEE8E02588515000F1EAF7 /* ListInteractable.swift */; };
@@ -100,6 +101,7 @@
 		57A9AF78257EDF7500C54808 /* Species.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Species.json; sourceTree = "<group>"; };
 		57A9AF7C257EE27D00C54808 /* ResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDTO.swift; sourceTree = "<group>"; };
 		57B4C52225898147007D757A /* LoaderBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderBuilder.swift; sourceTree = "<group>"; };
+		57B4C5262589AD7D007D757A /* ThumbnailRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailRepo.swift; sourceTree = "<group>"; };
 		57CEE8C22588375200F1EAF7 /* CoordinatorSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorSpy.swift; sourceTree = "<group>"; };
 		57CEE8C82588388F00F1EAF7 /* NavigationTestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTestCases.swift; sourceTree = "<group>"; };
 		57CEE8E02588515000F1EAF7 /* ListInteractable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractable.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				576C751E257E4A5000487859 /* CharactersRepo.swift */,
+				57B4C5262589AD7D007D757A /* ThumbnailRepo.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				572F61E225802B8B00B3952F /* Layout.swift in Sources */,
 				576C74E2257E468300487859 /* CharacterDTO.swift in Sources */,
 				57CEE8E72588517700F1EAF7 /* ListInteractor.swift in Sources */,
+				57B4C5272589AD7D007D757A /* ThumbnailRepo.swift in Sources */,
 				572F61E92580357C00B3952F /* CharacterCell.swift in Sources */,
 				572164F125867A9400180C9C /* LayoutBuilder.swift in Sources */,
 				5725C3252587800A003BAF93 /* DetailsViewModel.swift in Sources */,

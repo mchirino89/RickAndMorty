@@ -17,28 +17,28 @@ final class CharacterCell: UICollectionViewCell {
 
     private lazy var activityLoader: UIActivityIndicatorView = LoaderBuilder.assemble(style: .medium)
 
-    private lazy var thumbnailPlaceholderView: UIView = {
-        let placeholderView = UIView()
-        placeholderView.backgroundColor = .systemBlue
+    private lazy var thumbnailView: UIImageView = {
+        let smallImageView = UIImageView(image: AssetCatalog.placeholder.image)
+        smallImageView.backgroundColor = .systemBlue
 
-        placeholderView
+        smallImageView
             .heightAnchor
             .constraint(equalToConstant: contentView.bounds.height * 0.5)
             .isActive = true
-        placeholderView
+        smallImageView
             .widthAnchor
-            .constraint(equalTo: placeholderView.heightAnchor)
+            .constraint(equalTo: smallImageView.heightAnchor)
             .isActive = true
 
-        placeholderView.addSubview(activityLoader, constraints: [
+        smallImageView.addSubview(activityLoader, constraints: [
             pinToCenter()
         ])
 
-        return placeholderView
+        return smallImageView
     }()
 
     private lazy var containerStackView: UIStackView = {
-        StackBuilder.assemble(basedOn: StackSetup(arrangedSubviews: [thumbnailPlaceholderView, descriptionStackView],
+        StackBuilder.assemble(basedOn: StackSetup(arrangedSubviews: [thumbnailView, descriptionStackView],
                                                   axis: .horizontal,
                                                   alignment: .center))
     }()
@@ -50,7 +50,7 @@ final class CharacterCell: UICollectionViewCell {
         contentView.addSubview(containerStackView, constraints: [
             pinAllEdges(margin: 16)
         ])
-        thumbnailPlaceholderView.rounded()
+        thumbnailView.rounded()
     }
 
     func setInformation(_ information: CharacterDTO) {
@@ -58,8 +58,10 @@ final class CharacterCell: UICollectionViewCell {
         subtitleLabel.text = information.status
     }
 
-    func setRelatedInformation(_ information: CharacterDTO) {
-        titleLabel.text = information.name
-        subtitleLabel.text = information.species
+    func setThumbnail(basedOn data: Data) {
+        activityLoader.stopAnimating()
+        if let validImage = UIImage(data: data) {
+            thumbnailView.image = validImage
+        }
     }
 }

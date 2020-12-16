@@ -33,10 +33,10 @@ enum ColorCatalogue: String {
 enum AssetCatalog {
     case placeholder
 
-    var image: UIImage? {
+    var image: UIImage {
         switch self {
         case .placeholder:
-            return UIImage(named: "placeholder")
+            return UIImage(named: "placeholder")!
         }
     }
 }

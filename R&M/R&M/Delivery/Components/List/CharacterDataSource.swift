@@ -7,6 +7,16 @@
 
 import UIKit
 
+final class ThumbnailDataSource: DataSource<(Data, Int)> {
+    func render(completion: @escaping ((Data, Int) -> Void)) {
+        data.update { result in
+            result.forEach { data, index in
+                completion(data, index)
+            }
+        }
+    }
+}
+
 final class CharacterDataSource: DataSource<CharacterDTO> {
     func render(completion: @escaping (() -> Void)) {
         data.update { _ in
