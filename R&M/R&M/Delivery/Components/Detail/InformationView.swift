@@ -19,12 +19,7 @@ private enum Card: String {
 }
 
 final class InformationView: UIView {
-    private lazy var avatarImageView: UIView = {
-        let placeholderView = UIView()
-        placeholderView.backgroundColor = .systemBlue
-
-        return placeholderView
-    }()
+    private let avatarImageView: UIImageView = UIImageView(image: AssetCatalog.placeholder.image)
 
     private lazy var containerStackView: UIStackView = {
         StackBuilder.assemble(basedOn: StackSetup(arrangedSubviews: [avatarImageView],
@@ -38,7 +33,7 @@ final class InformationView: UIView {
         viewLayoutSetup()
     }
 
-    func render(basedOn character: CharacterDTO) {
+    func render(basedOn character: CharacterDTO, with avatarImage: UIImage) {
         containerStackView.addArrangedSubview(buildCard(tag: Card.name.value,
                                                         content: character.name,
                                                         textStyle: .title3))
@@ -49,6 +44,7 @@ final class InformationView: UIView {
         let speciesTitle = LabelBuilder.assemble(textStyle: .title3, text: "Other similar species")
         speciesTitle.textAlignment = .left
         containerStackView.addArrangedSubview(speciesTitle)
+        avatarImageView.image = avatarImage
     }
 }
 

@@ -9,8 +9,13 @@ import UIKit
 
 final class CharacterDataSource: DataSource<CharacterDTO> {
     let imageLoadQueue = OperationQueue()
-    let cache = NSCache<NSString, UIImage>()
     var imageLoadOperations = [IndexPath: ImageLoadOperation]()
+    let cache: NSCache<NSString, UIImage>
+
+    init(cache: NSCache<NSString, UIImage>) {
+        self.cache = cache
+        super.init()
+    }
 
     func render(completion: @escaping (() -> Void)) {
         data.update { _ in
@@ -20,6 +25,12 @@ final class CharacterDataSource: DataSource<CharacterDTO> {
 
     func selectedCharacter(at index: Int) -> CharacterDTO {
         data.value[index]
+    }
+
+    func cacheAvatar(for url: URL) -> UIImage {
+        let cacheKey = url.absoluteString as NSString
+
+        return cache.object(forKey: cacheKey) ?? AssetCatalog.placeholder.image
     }
 }
 

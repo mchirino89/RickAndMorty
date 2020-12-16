@@ -25,9 +25,10 @@ final class MainListViewController: UIViewController {
 
     init(charactersRepo: CharacterStorable,
          navigationListener: Coordinator,
+         cache: NSCache<NSString, UIImage>,
          listListener: ListInteractable = ListInteractor()) {
         self.listListener = listListener
-        dataSource = CharacterDataSource()
+        dataSource = CharacterDataSource(cache: cache)
         viewModel = ListViewModel(dataSource: dataSource,
                                        charactersRepo: charactersRepo,
                                        navigationListener: navigationListener)

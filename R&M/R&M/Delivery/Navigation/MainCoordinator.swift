@@ -16,22 +16,27 @@ protocol Coordinator {
 final class MainCoordinator {
     var rootViewController: UINavigationController
     let characterRepo: CharacterStorable
+    let cache: NSCache<NSString, UIImage>
 
     init(characterRepo: CharacterStorable) {
         self.characterRepo = characterRepo
+        cache = NSCache<NSString, UIImage>()
         rootViewController = UINavigationController()
     }
 }
 
 extension MainCoordinator: Coordinator {
     func start() {
-        let mainListController = MainListViewController(charactersRepo: characterRepo, navigationListener: self)
+        let mainListController = MainListViewController(charactersRepo: characterRepo,
+                                                        navigationListener: self,
+                                                        cache: cache)
         rootViewController.setViewControllers([mainListController], animated: false)
     }
 
     func checkDetails(for selectedCharacter: CharacterDTO) {
         let detailsController = DetailsViewController(charactersRepo: characterRepo,
-                                                      currentCharacter: selectedCharacter)
+                                                      currentCharacter: selectedCharacter,
+                                                      cache: cache)
 
         rootViewController.present(detailsController, animated: true)
     }
