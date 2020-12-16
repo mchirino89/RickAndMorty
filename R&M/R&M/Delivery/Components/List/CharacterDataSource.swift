@@ -7,17 +7,11 @@
 
 import UIKit
 
-final class ThumbnailDataSource: DataSource<(Data, Int)> {
-    func render(completion: @escaping ((Data, Int) -> Void)) {
-        data.update { result in
-            result.forEach { data, index in
-                completion(data, index)
-            }
-        }
-    }
-}
-
 final class CharacterDataSource: DataSource<CharacterDTO> {
+    let imageLoadQueue = OperationQueue()
+    let cache = NSCache<NSString, UIImage>()
+    var imageLoadOperations = [IndexPath: ImageLoadOperation]()
+
     func render(completion: @escaping (() -> Void)) {
         data.update { _ in
             completion()
@@ -29,6 +23,40 @@ final class CharacterDataSource: DataSource<CharacterDTO> {
     }
 }
 
+private extension CharacterDataSource {
+    func queueThumbnail(from currentURL: URL, for cell: CharacterCell, at index: IndexPath) {
+        let cacheKey = currentURL.absoluteString as NSString
+
+        guard let cachedImage = cache.object(forKey: cacheKey) else {
+            if let imageLoadOperation = imageLoadOperations[index],
+                let image = imageLoadOperation.image {
+                setThumbnail(cell, image, currentURL.absoluteString, at: index.row)
+                cache.setObject(image, forKey: cacheKey)
+            } else {
+                let imageLoadOperation = ImageLoadOperation(url: currentURL)
+                imageLoadOperation.completionHandler = { [unowned self] image in
+                    self.setThumbnail(cell, image, currentURL.absoluteString, at: index.row)
+                    self.cache.setObject(image, forKey: cacheKey)
+                    self.imageLoadOperations.removeValue(forKey: index)
+                }
+                imageLoadQueue.addOperation(imageLoadOperation)
+                imageLoadOperations[index] = imageLoadOperation
+            }
+            return
+        }
+
+        setThumbnail(cell, cachedImage, currentURL.absoluteString, at: index.row)
+    }
+
+    func setThumbnail(_ cell: CharacterCell, _ image: UIImage, _ url: String, at index: Int) {
+        performUIUpdate { [weak self] in
+            if self?.data.value[index].avatar.absoluteString == url {
+                cell.setThumbnail(image: image)
+            }
+        }
+    }
+}
+
 extension CharacterDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         data.value.count
@@ -36,10 +64,37 @@ extension CharacterDataSource: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let currentCharacter = data.value[indexPath.row]
         let characterCell = collectionView.dequeueReusableCell(withReuseIdentifier: ListContentView.cellIdentifier,
                                                                for: indexPath) as! CharacterCell
-        characterCell.setInformation(data.value[indexPath.row])
+        characterCell.setInformation(currentCharacter)
+        queueThumbnail(from: currentCharacter.avatar, for: characterCell, at: indexPath)
 
         return characterCell
     }
 }
+
+extension CharacterDataSource: UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            if let _ = imageLoadOperations[indexPath] {
+                return
+            }
+
+            let imageLoadOperation = ImageLoadOperation(url: data.value[indexPath.row].avatar)
+            imageLoadQueue.addOperation(imageLoadOperation)
+            imageLoadOperations[indexPath] = imageLoadOperation
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            guard let imageLoadOperation = imageLoadOperations[indexPath] else {
+                return
+            }
+            imageLoadOperation.cancel()
+            imageLoadOperations.removeValue(forKey: indexPath)
+        }
+    }
+}
+

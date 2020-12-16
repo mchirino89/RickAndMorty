@@ -9,7 +9,6 @@ import Foundation
 
 struct ListViewModel {
     private weak var dataSource: DataSource<CharacterDTO>?
-    private weak var imageSource: DataSource<(Data, Int)>?
     private let charactersRepo: CharacterStorable
     // This reference needs to be strong since view model isn't being retained on the coordinator
     private var navigationListener: Coordinator
@@ -31,22 +30,6 @@ struct ListViewModel {
                 dataSource?.data.value = []
                 #warning("Add proper UI error handling")
                 print(error)
-            }
-        }
-    }
-
-    // TODO: remove redundant method
-    func fetchAvatars() {
-        dataSource?.data.value.enumerated().forEach { index, element in
-            charactersRepo.avatar(from: element.avatar) { result in
-                switch result {
-                case .success(let avatarData):
-                    imageSource?.data.value = [(avatarData, index)]
-                case .failure(let error):
-                    imageSource?.data.value = [(Data(), index)]
-                    #warning("Add proper UI error handling")
-                    print(error)
-                }
             }
         }
     }

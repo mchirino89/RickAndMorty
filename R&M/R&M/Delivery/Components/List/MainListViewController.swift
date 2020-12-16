@@ -12,6 +12,7 @@ final class MainListViewController: UIViewController {
     private lazy var listView: ListContentView = {
         let listing = ListContentView(frame: view.frame)
         listing.dataSource = dataSource
+        listing.prefetchDataSource = dataSource
 
         return listing
     }()
@@ -19,7 +20,6 @@ final class MainListViewController: UIViewController {
     private lazy var activityLoader: UIActivityIndicatorView = LoaderBuilder.assemble()
 
     private let dataSource: CharacterDataSource
-    private let thumbnailDataSource: ThumbnailDataSource
     private let viewModel: ListViewModel
     private var listListener: ListInteractable
 
@@ -28,7 +28,6 @@ final class MainListViewController: UIViewController {
          listListener: ListInteractable = ListInteractor()) {
         self.listListener = listListener
         dataSource = CharacterDataSource()
-        thumbnailDataSource = ThumbnailDataSource()
         viewModel = ListViewModel(dataSource: dataSource,
                                        charactersRepo: charactersRepo,
                                        navigationListener: navigationListener)

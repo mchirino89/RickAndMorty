@@ -58,10 +58,10 @@ final class CharacterCell: UICollectionViewCell {
         subtitleLabel.text = information.status
     }
 
-    func setThumbnail(basedOn data: Data) {
-        activityLoader.stopAnimating()
-        if let validImage = UIImage(data: data) {
-            thumbnailView.image = validImage
+    func setThumbnail(image: UIImage) {
+        performUIUpdate { [weak activityLoader, weak thumbnailView] in
+            activityLoader?.stopAnimating()
+            thumbnailView?.image = image
         }
     }
 }
