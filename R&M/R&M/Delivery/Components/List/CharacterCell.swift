@@ -5,6 +5,7 @@
 //  Created by Mauricio Chirino on 08/12/20.
 //
 
+import MauriKit
 import UIKit
 
 final class CharacterCell: UICollectionViewCell {

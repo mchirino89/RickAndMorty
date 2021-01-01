@@ -20,13 +20,12 @@
 		5721650D2586ABD000180C9C /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5721650C2586ABD000180C9C /* InformationView.swift */; };
 		572165122586AC6D00180C9C /* LabelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572165112586AC6D00180C9C /* LabelBuilder.swift */; };
 		572165162586ACF700180C9C /* StackBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572165152586ACF700180C9C /* StackBuilder.swift */; };
-		5721651A2586AF4200180C9C /* UIImageView+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572165192586AF4200180C9C /* UIImageView+Round.swift */; };
 		5725C3252587800A003BAF93 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C3242587800A003BAF93 /* DetailsViewModel.swift */; };
 		5728C5F7257F928A003FC989 /* FailureRequestManagerMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728C5F6257F928A003FC989 /* FailureRequestManagerMocks.swift */; };
 		5728C602257FA41E003FC989 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728C601257FA41E003FC989 /* MainCoordinator.swift */; };
 		5728C606257FA4F8003FC989 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728C605257FA4F8003FC989 /* ListViewModel.swift */; };
-		572F61E225802B8B00B3952F /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572F61E125802B8B00B3952F /* Layout.swift */; };
 		572F61E92580357C00B3952F /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572F61E82580357C00B3952F /* CharacterCell.swift */; };
+		5747ACA8259ED9D900DBF18F /* MauriKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5747ACA7259ED9D900DBF18F /* MauriKit */; };
 		576331DB25824D2700F87CC4 /* ListContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576331DA25824D2700F87CC4 /* ListContentView.swift */; };
 		576331E125825DAF00F87CC4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576331E025825DAF00F87CC4 /* Constants.swift */; };
 		576C74E2257E468300487859 /* CharacterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C74E1257E468300487859 /* CharacterDTO.swift */; };
@@ -86,12 +85,10 @@
 		5721650C2586ABD000180C9C /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		572165112586AC6D00180C9C /* LabelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelBuilder.swift; sourceTree = "<group>"; };
 		572165152586ACF700180C9C /* StackBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackBuilder.swift; sourceTree = "<group>"; };
-		572165192586AF4200180C9C /* UIImageView+Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Round.swift"; sourceTree = "<group>"; };
 		5725C3242587800A003BAF93 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		5728C5F6257F928A003FC989 /* FailureRequestManagerMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureRequestManagerMocks.swift; sourceTree = "<group>"; };
 		5728C601257FA41E003FC989 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		5728C605257FA4F8003FC989 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
-		572F61E125802B8B00B3952F /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		572F61E82580357C00B3952F /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		576331DA25824D2700F87CC4 /* ListContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListContentView.swift; sourceTree = "<group>"; };
 		576331E025825DAF00F87CC4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -136,6 +133,7 @@
 			files = (
 				57F19553257D9E10002C0B3B /* SnapshotTesting in Frameworks */,
 				57F19547257D94B4002C0B3B /* MauriNet in Frameworks */,
+				5747ACA8259ED9D900DBF18F /* MauriKit in Frameworks */,
 				57F1954C257D94EE002C0B3B /* MauriUtils in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,10 +168,10 @@
 		572165102586AC5E00180C9C /* Builders */ = {
 			isa = PBXGroup;
 			children = (
-				572164F025867A9400180C9C /* LayoutBuilder.swift */,
 				572165112586AC6D00180C9C /* LabelBuilder.swift */,
-				572165152586ACF700180C9C /* StackBuilder.swift */,
+				572164F025867A9400180C9C /* LayoutBuilder.swift */,
 				57B4C52225898147007D757A /* LoaderBuilder.swift */,
+				572165152586ACF700180C9C /* StackBuilder.swift */,
 			);
 			path = Builders;
 			sourceTree = "<group>";
@@ -210,9 +208,9 @@
 			isa = PBXGroup;
 			children = (
 				572F61E82580357C00B3952F /* CharacterCell.swift */,
+				5705E2992587637A00866645 /* CharacterDataSource.swift */,
 				576331DA25824D2700F87CC4 /* ListContentView.swift */,
 				57F194EF257D90D2002C0B3B /* MainListViewController.swift */,
-				5705E2992587637A00866645 /* CharacterDataSource.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -231,8 +229,6 @@
 			isa = PBXGroup;
 			children = (
 				576331E025825DAF00F87CC4 /* Constants.swift */,
-				572F61E125802B8B00B3952F /* Layout.swift */,
-				572165192586AF4200180C9C /* UIImageView+Round.swift */,
 			);
 			path = Cross;
 			sourceTree = "<group>";
@@ -240,10 +236,10 @@
 		576331DE25825D8E00F87CC4 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				5705E29125875E5500866645 /* DynamicValue.swift */,
-				5705E295258760CE00866645 /* DataSource.swift */,
-				5705E29D25876DB500866645 /* SyntacticSugar.swift */,
 				57CB9F12258A382000060774 /* CacheStore.swift */,
+				5705E295258760CE00866645 /* DataSource.swift */,
+				5705E29125875E5500866645 /* DynamicValue.swift */,
+				5705E29D25876DB500866645 /* SyntacticSugar.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -366,8 +362,8 @@
 		57CEE8DA2588513300F1EAF7 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				5728C605257FA4F8003FC989 /* ListViewModel.swift */,
 				5725C3242587800A003BAF93 /* DetailsViewModel.swift */,
+				5728C605257FA4F8003FC989 /* ListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -478,6 +474,7 @@
 				57F19546257D94B4002C0B3B /* MauriNet */,
 				57F1954B257D94EE002C0B3B /* MauriUtils */,
 				57F19552257D9E10002C0B3B /* SnapshotTesting */,
+				5747ACA7259ED9D900DBF18F /* MauriKit */,
 			);
 			productName = "R&M";
 			productReference = 57F194E8257D90D2002C0B3B /* R&M.app */;
@@ -533,6 +530,7 @@
 				57F19545257D94B4002C0B3B /* XCRemoteSwiftPackageReference "MauriNet" */,
 				57F1954A257D94EE002C0B3B /* XCRemoteSwiftPackageReference "MauriUtils" */,
 				57F19551257D9E10002C0B3B /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				5747ACA6259ED9D900DBF18F /* XCRemoteSwiftPackageReference "MauriKit" */,
 			);
 			productRefGroup = 57F194E9257D90D2002C0B3B /* Products */;
 			projectDirPath = "";
@@ -573,7 +571,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5721651A2586AF4200180C9C /* UIImageView+Round.swift in Sources */,
 				5705E29225875E5500866645 /* DynamicValue.swift in Sources */,
 				57F194F0257D90D2002C0B3B /* MainListViewController.swift in Sources */,
 				576331DB25824D2700F87CC4 /* ListContentView.swift in Sources */,
@@ -588,7 +585,6 @@
 				57CB9F13258A382000060774 /* CacheStore.swift in Sources */,
 				576C751F257E4A5000487859 /* CharactersRepo.swift in Sources */,
 				5705E296258760CE00866645 /* DataSource.swift in Sources */,
-				572F61E225802B8B00B3952F /* Layout.swift in Sources */,
 				576C74E2257E468300487859 /* CharacterDTO.swift in Sources */,
 				57CEE8E72588517700F1EAF7 /* ListInteractor.swift in Sources */,
 				57B4C52E258A3654007D757A /* AvatarsRepo.swift in Sources */,
@@ -793,6 +789,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F7CXK2PKWD;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Build/",
+				);
 				INFOPLIST_FILE = "R&M/Setup/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -886,6 +886,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5747ACA6259ED9D900DBF18F /* XCRemoteSwiftPackageReference "MauriKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:mchirino89/MauriKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 		57F19545257D94B4002C0B3B /* XCRemoteSwiftPackageReference "MauriNet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:mchirino89/MauriNet.git";
@@ -913,6 +921,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5747ACA7259ED9D900DBF18F /* MauriKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5747ACA6259ED9D900DBF18F /* XCRemoteSwiftPackageReference "MauriKit" */;
+			productName = MauriKit;
+		};
 		57F19546257D94B4002C0B3B /* MauriNet */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 57F19545257D94B4002C0B3B /* XCRemoteSwiftPackageReference "MauriNet" */;
