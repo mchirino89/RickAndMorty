@@ -7,6 +7,7 @@ SPM dependencies used are my own
 
 * [MauriUtils](https://github.com/mchirino89/MauriUtils)
 * [MauriNet](https://github.com/mchirino89/MauriNet)
+* [MauriKit](https://github.com/mchirino89/MauriKit)
 
 This project was built and compile on [XCode 12.1](https://download.developer.apple.com/Developer_Tools/Xcode_12.1/Xcode_12.1.xip).
 

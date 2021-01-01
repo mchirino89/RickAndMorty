@@ -5,6 +5,7 @@
 //  Created by Mauricio Chirino on 12/12/20.
 //
 
+import MauriKit
 import UIKit
 
 final class DetailsViewController: UIViewController {

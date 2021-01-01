@@ -5,7 +5,7 @@
 //  Created by Mauricio Chirino on 06/12/20.
 //
 
-import MauriUtils
+import MauriKit
 import UIKit
 
 final class MainListViewController: UIViewController {
