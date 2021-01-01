@@ -1,18 +1,17 @@
 disabled_rules: # rule identifiers to exclude from running
-  - type_body_length
-  - file_length
   - valid_ibinspectable
   - notification_center_detachment
   - protocol_property_accessors_order
-  - discouraged_optional_collection
+  - force_try
+  - trailing_whitespace
+  - force_cast
+  - force_unwrapping
 opt_in_rules: # some rules are only opt-in
   - empty_count
   - attributes
   - closure_body_length
   - closure_spacing
-  - discouraged_optional_collection  
   - empty_string
-  - force_unwrapping
   - let_var_whitespace
   - modifier_order
   - multiline_parameters
@@ -22,9 +21,7 @@ opt_in_rules: # some rules are only opt-in
   - unused_import
   - vertical_whitespace_opening_braces
 excluded:
-  - Pods
-  - PedidosYaTests
-  - PedidosYARichNotification
+  - R&MTests
   - Frameworks
   - vendor
 
@@ -43,7 +40,6 @@ line_length:
   error: 300
   warning: 300
   ignores_comments: true
-force_cast: warning # modify in the code
 shorthand_operator: warning
 type_name:
   min_length: 

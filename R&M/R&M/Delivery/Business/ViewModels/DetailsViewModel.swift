@@ -24,7 +24,7 @@ struct DetailsViewModel {
             case .success(let retrievedCharacters):
                 dataSource?.data.value = retrievedCharacters
             case .failure(let error):
-                #warning("Add proper UI error handling")
+                // TODO: Add proper UI error handling
                 print(error)
             }
         }

@@ -16,7 +16,7 @@ final class CharacterRepoMockSuccess: CharacterStorable {
 
         return response.results
     }
-
+    
     func allCharacters(onCompletion: @escaping CharacterResult) {
         let characters = decodeCharacters(from: "MultipleCharacters")
 

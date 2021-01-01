@@ -118,7 +118,7 @@ extension CharacterDataSource: UICollectionViewDataSourcePrefetching {
     ///   - indexPaths: resulting array with indexes to be added
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { indexPath in
-            if let _ = imageLoadOperations[indexPath] {
+            if imageLoadOperations[indexPath] != nil {
                 return
             }
 

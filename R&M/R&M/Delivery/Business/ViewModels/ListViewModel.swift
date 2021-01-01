@@ -28,7 +28,7 @@ struct ListViewModel {
                 dataSource?.data.value = retrievedCharacters
             case .failure(let error):
                 dataSource?.data.value = []
-                #warning("Add proper UI error handling")
+                // TODO: Add proper UI error handling
                 print(error)
             }
         }
