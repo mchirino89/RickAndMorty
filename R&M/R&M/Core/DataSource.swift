@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DataSource<T>: NSObject {
+public class DataSource<T>: NSObject {
     var data: Dynamic<[T]>
 
     override init() {

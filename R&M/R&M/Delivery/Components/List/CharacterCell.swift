@@ -43,7 +43,6 @@ final class CharacterCell: UICollectionViewCell {
                                                   alignment: .center))
     }()
 
-
     override func layoutSubviews() {
         super.layoutSubviews()
 

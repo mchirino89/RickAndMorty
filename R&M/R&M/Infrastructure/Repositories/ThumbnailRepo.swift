@@ -7,7 +7,7 @@
 
 import UIKit
 
-typealias ImageLoadOperationCompletionHandlerType = ((UIImage) -> ())?
+typealias ImageLoadOperationCompletionHandlerType = ((UIImage) -> Void)?
 
 /// Queue for handling retrieval of images from `CharacterStorable`
 final class ImageLoadOperation: Operation {

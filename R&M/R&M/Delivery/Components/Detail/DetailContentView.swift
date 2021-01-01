@@ -15,7 +15,7 @@ final class DetailContentView: UICollectionView {
     }
 
     init(frame: CGRect) {
-        super.init(frame: frame, collectionViewLayout: LayoutBuilder.assembleGridLayout(for: .horizontal))
+        super.init(frame: frame, collectionViewLayout: LayoutBuilder.assembleGridLayout(direction: .horizontal))
         register(CharacterCell.self, forCellWithReuseIdentifier: DetailContentView.cellIdentifier)
         backgroundColor = .clear
         bounces = false

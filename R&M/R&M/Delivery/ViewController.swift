@@ -13,4 +13,3 @@ final class MainListViewController: UIViewController {
         view.backgroundColor = .blue
     }
 }
-

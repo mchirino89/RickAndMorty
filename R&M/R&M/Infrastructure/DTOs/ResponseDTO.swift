@@ -25,4 +25,3 @@ struct ResponseDTO: Codable {
     let info: PageInfoDTO
     let results: [CharacterDTO]
 }
-

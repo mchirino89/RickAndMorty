@@ -7,8 +7,9 @@
 
 import Foundation
 
-final class Dynamic<T> {
-    typealias Listener = (T) -> ()
+public final class Dynamic<T> {
+    typealias Listener = (T) -> Void
+
     var listener: Listener?
 
     var value: T {

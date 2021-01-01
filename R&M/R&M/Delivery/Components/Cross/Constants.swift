@@ -23,7 +23,7 @@ enum DetailsDictionary: String {
 }
 
 enum ColorCatalogue: String {
-    case text = "text"
+    case text
 
     var color: UIColor? {
         UIColor(named: rawValue)

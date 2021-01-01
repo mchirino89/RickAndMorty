@@ -62,7 +62,7 @@ private extension DetailsViewController {
         ])
 
         detailView.translatesAutoresizingMaskIntoConstraints = false
-        detailView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/3).isActive = true
+        detailView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1 / 3).isActive = true
     }
 
     func renderView() {
