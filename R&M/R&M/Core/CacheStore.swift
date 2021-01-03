@@ -7,23 +7,27 @@
 
 import UIKit
 
-protocol Cacheable {
+public protocol Cacheable {
     func object(at key: String) -> UIImage?
     func store(image: UIImage, at key: String)
 }
 
-final class CacheStore: Cacheable {
-    let cache = NSCache<NSString, UIImage>()
+public final class CacheStore: Cacheable {
+    let cache: NSCache<NSString, UIImage>
 
     private func generated(_ key: String) -> NSString {
         key as NSString
     }
 
-    func object(at key: String) -> UIImage? {
+    public init() {
+        cache = NSCache<NSString, UIImage>()
+    }
+
+    public func object(at key: String) -> UIImage? {
         return cache.object(forKey: generated(key))
     }
 
-    func store(image: UIImage, at key: String) {
+    public func store(image: UIImage, at key: String) {
         cache.setObject(image, forKey: generated(key))
     }
 }

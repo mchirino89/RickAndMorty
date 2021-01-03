@@ -8,19 +8,20 @@
 import MauriKit
 import UIKit
 
-final class CharacterDataSource: DataSource<ImageSourceable> {
+public final class CharacterDataSource: DataSource<CacheSourceable> {
     /// Queue that handles all avatar download operations
     let imageLoadQueue = OperationQueue()
     /// Dictionary that matches image download with corresponding cell's index path.
     var imageLoadOperations = [IndexPath: ImageLoadOperation]()
-    let cache: Cacheable
+    public let cache: Cacheable
 
-    init(cache: Cacheable) {
+    public init(cache: Cacheable = CacheStore()) {
         self.cache = cache
+
         super.init()
     }
 
-    func render(completion: @escaping (() -> Void)) {
+    public func render(completion: @escaping (() -> Void)) {
         data.update { _ in
             completion()
         }
@@ -47,7 +48,7 @@ final class CharacterDataSource: DataSource<ImageSourceable> {
 }
 
 extension CharacterDataSource {
-    func selectedCharacter(at index: Int) -> ImageSourceable {
+    func selectedCharacter(at index: Int) -> CacheSourceable {
         return data.value[index]
     }
 }
@@ -98,12 +99,12 @@ private extension CharacterDataSource {
 }
 
 extension CharacterDataSource: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         data.value.count
     }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView,
+                               cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let currentCharacter = data.value[indexPath.row]
         let characterCell: CharacterCell = collectionView.dequeue(at: indexPath)
         characterCell.setInformation(currentCharacter)
@@ -118,7 +119,7 @@ extension CharacterDataSource: UICollectionViewDataSourcePrefetching {
     /// - Parameters:
     ///   - collectionView: collection view attached to this event
     ///   - indexPaths: resulting array with indexes to be added
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+    public func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { indexPath in
             if imageLoadOperations[indexPath] != nil {
                 return
@@ -134,11 +135,13 @@ extension CharacterDataSource: UICollectionViewDataSourcePrefetching {
     /// - Parameters:
     ///   - collectionView: collection view attached to this event
     ///   - indexPaths: resulting array with indexes to be dismissed
-    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+    public func collectionView(_ collectionView: UICollectionView,
+                               cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { indexPath in
             guard let imageLoadOperation = imageLoadOperations[indexPath] else {
                 return
             }
+
             imageLoadOperation.cancel()
             imageLoadOperations.removeValue(forKey: indexPath)
         }
