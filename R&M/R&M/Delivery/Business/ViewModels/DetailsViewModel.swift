@@ -6,13 +6,13 @@
 //
 
 struct DetailsViewModel {
-    private weak var dataSource: DataSource<CharacterDTO>?
+    private weak var dataSource: DataSource<ImageSourceable>?
     private let charactersRepo: CharacterStorable
-    let currentCharacter: CharacterDTO
+    let currentCharacter: ImageSourceable
 
-    init(dataSource: DataSource<CharacterDTO>?,
+    init(dataSource: DataSource<ImageSourceable>?,
          charactersRepo: CharacterStorable,
-         currentCharacter: CharacterDTO) {
+         currentCharacter: ImageSourceable) {
         self.dataSource = dataSource
         self.charactersRepo = charactersRepo
         self.currentCharacter = currentCharacter

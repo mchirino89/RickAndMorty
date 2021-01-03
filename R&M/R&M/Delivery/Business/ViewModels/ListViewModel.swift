@@ -8,12 +8,12 @@
 import Foundation
 
 struct ListViewModel {
-    private weak var dataSource: DataSource<CharacterDTO>?
+    private weak var dataSource: DataSource<ImageSourceable>?
     private let charactersRepo: CharacterStorable
     // This reference needs to be strong since view model isn't being retained on the coordinator
     private var navigationListener: Coordinator
 
-    init(dataSource: DataSource<CharacterDTO>?,
+    init(dataSource: DataSource<ImageSourceable>?,
          charactersRepo: CharacterStorable,
          navigationListener: Coordinator) {
         self.dataSource = dataSource
@@ -34,7 +34,7 @@ struct ListViewModel {
         }
     }
 
-    func checkDetails(for character: CharacterDTO) {
+    func checkDetails(for character: ImageSourceable) {
         navigationListener.checkDetails(for: character)
     }
 }

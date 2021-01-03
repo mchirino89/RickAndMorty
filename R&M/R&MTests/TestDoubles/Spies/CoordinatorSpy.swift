@@ -19,9 +19,9 @@ final class CoordinatorSpy: Coordinator {
 
     var invokedCheckDetails = false
     var invokedCheckDetailsCount = 0
-    var invokedCheckDetailsParameters: CharacterDTO?
+    var invokedCheckDetailsParameters: ImageSourceable?
 
-    func checkDetails(for selectedCharacter: CharacterDTO) {
+    func checkDetails(for selectedCharacter: ImageSourceable) {
         invokedCheckDetails = true
         invokedCheckDetailsCount += 1
         invokedCheckDetailsParameters = selectedCharacter

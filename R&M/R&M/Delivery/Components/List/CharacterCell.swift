@@ -56,9 +56,9 @@ final class CharacterCell: UICollectionViewCell {
         thumbnailView.rounded()
     }
 
-    func setInformation(_ information: CharacterDTO) {
-        titleLabel.text = information.name
-        subtitleLabel.text = information.status
+    func setInformation(_ information: ImageSourceable) {
+        titleLabel.text = information.title
+        subtitleLabel.text = information.subtitle
     }
 }
 

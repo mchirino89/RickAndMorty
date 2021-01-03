@@ -9,6 +9,10 @@ import Foundation
 
 protocol ImageSourceable {
     var avatar: URL { get }
+    var title: String { get }
+    var subtitle: String { get }
+    var species: String { get }
+    var origin: String { get }
 }
 
 struct CharacterLocationDTO: Codable {
@@ -17,8 +21,8 @@ struct CharacterLocationDTO: Codable {
 
 struct CharacterDTO: Codable, ImageSourceable {
     let identifier: Int
-    let name: String
-    let status: String
+    let title: String
+    let subtitle: String
     let species: String
     let avatar: URL
     let endpoint: URL
@@ -30,8 +34,8 @@ struct CharacterDTO: Codable, ImageSourceable {
 
     private enum CodingKeys: String, CodingKey {
         case identifier = "id"
-        case name
-        case status
+        case title = "name"
+        case subtitle = "status"
         case species
         case avatar = "image"
         case endpoint = "url"
