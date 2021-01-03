@@ -50,6 +50,7 @@
 		57CEE8E12588515000F1EAF7 /* ListInteractable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEE8E02588515000F1EAF7 /* ListInteractable.swift */; };
 		57CEE8E72588517700F1EAF7 /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEE8E62588517700F1EAF7 /* ListInteractor.swift */; };
 		57CEE8EB2588524A00F1EAF7 /* ListInteractorDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEE8EA2588524900F1EAF7 /* ListInteractorDummy.swift */; };
+		57DDC9F025A1F4E400EB22D6 /* CachedListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DDC9EF25A1F4E400EB22D6 /* CachedListing.swift */; };
 		57EED3F1258566D100A46A6B /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EED3F0258566D100A46A6B /* DetailsViewController.swift */; };
 		57F194EC257D90D2002C0B3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F194EB257D90D2002C0B3B /* AppDelegate.swift */; };
 		57F194F0257D90D2002C0B3B /* MainListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F194EF257D90D2002C0B3B /* MainListViewController.swift */; };
@@ -114,6 +115,7 @@
 		57CEE8E02588515000F1EAF7 /* ListInteractable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractable.swift; sourceTree = "<group>"; };
 		57CEE8E62588517700F1EAF7 /* ListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
 		57CEE8EA2588524900F1EAF7 /* ListInteractorDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractorDummy.swift; sourceTree = "<group>"; };
+		57DDC9EF25A1F4E400EB22D6 /* CachedListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedListing.swift; sourceTree = "<group>"; };
 		57EED3F0258566D100A46A6B /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		57F194E8257D90D2002C0B3B /* R&M.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "R&M.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F194EB257D90D2002C0B3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				5705E2992587637A00866645 /* CharacterDataSource.swift */,
 				576331DA25824D2700F87CC4 /* ListContentView.swift */,
 				57F194EF257D90D2002C0B3B /* MainListViewController.swift */,
+				57DDC9EF25A1F4E400EB22D6 /* CachedListing.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 				57F194EC257D90D2002C0B3B /* AppDelegate.swift in Sources */,
 				5728C602257FA41E003FC989 /* MainCoordinator.swift in Sources */,
 				5721650D2586ABD000180C9C /* InformationView.swift in Sources */,
+				57DDC9F025A1F4E400EB22D6 /* CachedListing.swift in Sources */,
 				57F19538257D92AA002C0B3B /* SceneDelegate.swift in Sources */,
 				572165122586AC6D00180C9C /* LabelBuilder.swift in Sources */,
 				5705E29A2587637A00866645 /* CharacterDataSource.swift in Sources */,
