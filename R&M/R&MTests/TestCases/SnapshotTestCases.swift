@@ -30,15 +30,15 @@ final class SnapshotTestCases: XCTestCase {
         mockCache = nil
     }
 
-    func testUILayoutForCharacterListing() {
+    func testUILayoutForCharacterListingOnLightMode() {
         givenMockList()
-        whenNavigationOccurs()
+        whenNavigationOccurs(on: .light)
         thenAssertProperRendering(on: #function)
     }
 
-    func testUILayoutForDetailsRendering() {
+    func testUILayoutForDetailsRenderingOnLightMode() {
         givenMockDetails()
-        whenNavigationOccurs()
+        whenNavigationOccurs(on: .light)
         thenAssertProperRendering(on: #function)
     }
 }
@@ -57,8 +57,9 @@ private extension SnapshotTestCases {
                                                cache: CacheableMock())
     }
 
-    func whenNavigationOccurs() {
+    func whenNavigationOccurs(on userInterfaceStyle: UIUserInterfaceStyle) {
         dummyNavigation = UINavigationController(rootViewController: mockController)
+        dummyNavigation.overrideUserInterfaceStyle = userInterfaceStyle
     }
 
     func thenAssertProperRendering(on scenario: String) {
