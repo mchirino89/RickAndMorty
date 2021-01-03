@@ -5,6 +5,7 @@
 //  Created by Mauricio Chirino on 14/12/20.
 //
 
+import MauriKit
 import UIKit
 
 final class CharacterDataSource: DataSource<CharacterDTO> {
@@ -104,8 +105,7 @@ extension CharacterDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let currentCharacter = data.value[indexPath.row]
-        let characterCell = collectionView.dequeueReusableCell(withReuseIdentifier: ListContentView.cellIdentifier,
-                                                               for: indexPath) as! CharacterCell
+        let characterCell: CharacterCell = collectionView.dequeue(at: indexPath)
         characterCell.setInformation(currentCharacter)
         queueThumbnail(from: currentCharacter.avatar, for: characterCell, at: indexPath)
 

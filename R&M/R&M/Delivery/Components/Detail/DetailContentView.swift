@@ -8,15 +8,13 @@
 import UIKit
 
 final class DetailContentView: UICollectionView {
-    static let cellIdentifier: String = "characterCell"
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     init(frame: CGRect) {
         super.init(frame: frame, collectionViewLayout: LayoutBuilder.assembleGridLayout(direction: .horizontal))
-        register(CharacterCell.self, forCellWithReuseIdentifier: DetailContentView.cellIdentifier)
+        register(cellType: CharacterCell.self)
         backgroundColor = .clear
         bounces = false
     }
