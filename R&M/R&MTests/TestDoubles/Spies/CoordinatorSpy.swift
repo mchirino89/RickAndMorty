@@ -19,9 +19,9 @@ final class CoordinatorSpy: Coordinator {
 
     var invokedCheckDetails = false
     var invokedCheckDetailsCount = 0
-    var invokedCheckDetailsParameters: CacheSourceable?
+    var invokedCheckDetailsParameters: CardSourceable?
 
-    func checkDetails(for selectedCharacter: CacheSourceable) {
+    func checkDetails(for selectedCharacter: CardSourceable) {
         invokedCheckDetails = true
         invokedCheckDetailsCount += 1
         invokedCheckDetailsParameters = selectedCharacter

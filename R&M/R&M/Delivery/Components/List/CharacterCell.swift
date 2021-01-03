@@ -10,7 +10,7 @@ import UIKit
 
 protocol ListableCell where Self: UICollectionViewCell {
     func setThumbnail(image: UIImage)
-    func setInformation(_ information: CacheSourceable)
+    func setInformation(_ information: CardSourceable)
 }
 
 final class CharacterCell: UICollectionViewCell {
@@ -59,7 +59,7 @@ final class CharacterCell: UICollectionViewCell {
 }
 
 extension CharacterCell: ListableCell {
-    func setInformation(_ information: CacheSourceable) {
+    func setInformation(_ information: CardSourceable) {
         titleLabel.text = information.title
         subtitleLabel.text = information.subtitle
     }

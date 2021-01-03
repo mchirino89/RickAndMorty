@@ -8,7 +8,7 @@
 import MauriKit
 import UIKit
 
-public final class CharacterDataSource: DataSource<CacheSourceable> {
+public final class CharacterDataSource: DataSource<CardSourceable> {
     /// Queue that handles all avatar download operations
     let imageLoadQueue = OperationQueue()
     /// Dictionary that matches image download with corresponding cell's index path.
@@ -48,7 +48,7 @@ public final class CharacterDataSource: DataSource<CacheSourceable> {
 }
 
 extension CharacterDataSource {
-    func selectedCharacter(at index: Int) -> CacheSourceable {
+    func selectedCharacter(at index: Int) -> CardSourceable {
         return data.value[index]
     }
 }
