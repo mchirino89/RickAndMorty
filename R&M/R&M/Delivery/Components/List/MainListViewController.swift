@@ -9,8 +9,10 @@ import MauriKit
 import UIKit
 
 final class MainListViewController: UIViewController {
-    private lazy var listView: ListContentView = {
-        let listing = ListContentView(frame: view.frame)
+    private lazy var listView: UICollectionView = {
+        let listing = UICollectionView(frame: view.frame, collectionViewLayout: LayoutBuilder.assembleGridLayout())
+        listing.register(cellType: CharacterCell.self)
+        listing.backgroundColor = .clear
         listing.dataSource = dataSource
         listing.prefetchDataSource = dataSource
 

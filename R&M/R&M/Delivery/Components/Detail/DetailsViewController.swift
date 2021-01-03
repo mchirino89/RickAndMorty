@@ -11,8 +11,12 @@ import UIKit
 final class DetailsViewController: UIViewController {
     private let informationView: InformationView = InformationView()
 
-    private lazy var detailView: DetailContentView = {
-        let details = DetailContentView(frame: view.frame)
+    private lazy var detailView: UICollectionView = {
+        let details = UICollectionView(frame: view.frame,
+                                       collectionViewLayout: LayoutBuilder.assembleGridLayout(direction: .horizontal))
+        details.register(cellType: CharacterCell.self)
+        details.backgroundColor = .clear
+        details.bounces = false
         details.dataSource = dataSource
         details.prefetchDataSource = dataSource
 
