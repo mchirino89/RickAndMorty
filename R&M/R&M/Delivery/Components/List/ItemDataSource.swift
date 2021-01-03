@@ -1,5 +1,5 @@
 //
-//  CharacterDataSource.swift
+//  ItemDataSource.swift
 //  R&M
 //
 //  Created by Mauricio Chirino on 14/12/20.
@@ -8,14 +8,14 @@
 import MauriKit
 import UIKit
 
-public final class CharacterDataSource: DataSource<CardSourceable> {
+public final class ItemDataSource: DataSource<CardSourceable> {
     /// Queue that handles all avatar download operations
     let imageLoadQueue = OperationQueue()
     /// Dictionary that matches image download with corresponding cell's index path.
     var imageLoadOperations = [IndexPath: ImageLoadOperation]()
     public let cache: Cacheable
 
-    public init(cache: Cacheable = CacheStore()) {
+    public init(cache: Cacheable) {
         self.cache = cache
 
         super.init()
@@ -27,11 +27,11 @@ public final class CharacterDataSource: DataSource<CardSourceable> {
         }
     }
 
-    /// Returns the image associated to an URL (should it find it) or a placeholder one in case it doesn't exist
+    /// Returns the image associated to an URL (should it find it)
     /// - Parameter url: URL to search for image on cache storage
     /// - Returns: safe `UIImage` object
-    func cachedImage(for url: URL) -> UIImage {
-        return cache.object(at: url.absoluteString) ?? AssetCatalog.placeholder.image
+    func cachedImage(for url: URL) -> UIImage? {
+        return cache.object(at: url.absoluteString)
     }
 
     /// Properly cancelling all pending operations before being deallocated in order to reduce network footprint and avoid retain cycles.
@@ -47,13 +47,13 @@ public final class CharacterDataSource: DataSource<CardSourceable> {
     }
 }
 
-extension CharacterDataSource {
+extension ItemDataSource {
     func selectedCharacter(at index: Int) -> CardSourceable {
         return data.value[index]
     }
 }
 
-private extension CharacterDataSource {
+private extension ItemDataSource {
     /// Adds a request for avatar's image to the download queue, checking first if it exists on cache in order to avoid doing so in case it does.
     /// If it doesn't, checks on `imageLoadOperations` key for the provided index to get it. In case said index hasn't been added to the download queue, it proceeds to do so and react when it finishes -updating also cache state with it- and syncs the cell matching said indexPath
     /// - Parameters:
@@ -98,7 +98,7 @@ private extension CharacterDataSource {
     }
 }
 
-extension CharacterDataSource: UICollectionViewDataSource {
+extension ItemDataSource: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         data.value.count
     }
@@ -114,7 +114,7 @@ extension CharacterDataSource: UICollectionViewDataSource {
     }
 }
 
-extension CharacterDataSource: UICollectionViewDataSourcePrefetching {
+extension ItemDataSource: UICollectionViewDataSourcePrefetching {
     /// Indexes to be added into operation queue whenever the user starts scrolling
     /// - Parameters:
     ///   - collectionView: collection view attached to this event

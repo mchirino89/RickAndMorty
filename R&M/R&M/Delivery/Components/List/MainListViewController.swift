@@ -19,7 +19,7 @@ final class MainListViewController: UIViewController {
 
     private lazy var activityLoader: UIActivityIndicatorView = LoaderBuilder.assemble()
 
-    private let dataSource: CharacterDataSource
+    private let dataSource: ItemDataSource
     private let viewModel: ListViewModel
     private var listListener: ListInteractable
 
@@ -28,7 +28,7 @@ final class MainListViewController: UIViewController {
          cache: Cacheable,
          listListener: ListInteractable = ListInteractor()) {
         self.listListener = listListener
-        dataSource = CharacterDataSource(cache: cache)
+        dataSource = ItemDataSource(cache: cache)
         viewModel = ListViewModel(dataSource: dataSource,
                                        charactersRepo: charactersRepo,
                                        navigationListener: navigationListener)

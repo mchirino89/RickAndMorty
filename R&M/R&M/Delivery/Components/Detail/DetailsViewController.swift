@@ -26,10 +26,10 @@ final class DetailsViewController: UIViewController {
     }()
 
     private let viewModel: DetailsViewModel
-    private let dataSource: CharacterDataSource
+    private let dataSource: ItemDataSource
 
     init(charactersRepo: CharacterStorable, currentCharacter: CardSourceable, cache: Cacheable) {
-        dataSource = CharacterDataSource(cache: cache)
+        dataSource = ItemDataSource(cache: cache)
         viewModel = DetailsViewModel(dataSource: dataSource,
                                      charactersRepo: charactersRepo,
                                      currentCharacter: currentCharacter)
