@@ -10,6 +10,7 @@ import UIKit
 
 protocol ListableCell where Self: UICollectionViewCell {
     func setThumbnail(image: UIImage)
+    func setInformation(_ information: CacheSourceable)
 }
 
 final class CharacterCell: UICollectionViewCell {
@@ -55,14 +56,14 @@ final class CharacterCell: UICollectionViewCell {
         ])
         thumbnailView.rounded()
     }
-
-    func setInformation(_ information: ImageSourceable) {
-        titleLabel.text = information.title
-        subtitleLabel.text = information.subtitle
-    }
 }
 
 extension CharacterCell: ListableCell {
+    func setInformation(_ information: CacheSourceable) {
+        titleLabel.text = information.title
+        subtitleLabel.text = information.subtitle
+    }
+
     func setThumbnail(image: UIImage) {
         performUIUpdate { [weak activityLoader, weak thumbnailView] in
             activityLoader?.stopAnimating()

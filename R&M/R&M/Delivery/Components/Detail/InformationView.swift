@@ -34,7 +34,7 @@ final class InformationView: UIView {
         viewLayoutSetup()
     }
 
-    func render(basedOn character: ImageSourceable, with avatarImage: UIImage) {
+    func render(basedOn character: CacheSourceable, with avatarImage: UIImage) {
         containerStackView.addArrangedSubview(buildCard(tag: Card.name.value,
                                                         content: character.title,
                                                         textStyle: .title3))

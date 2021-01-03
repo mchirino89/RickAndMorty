@@ -7,10 +7,11 @@
 
 import Foundation
 
-protocol ImageSourceable {
+public protocol CacheSourceable {
     var avatar: URL { get }
     var title: String { get }
     var subtitle: String { get }
+    // TODO: these attributes below shouldn't be part of generic data
     var species: String { get }
     var origin: String { get }
 }
@@ -19,7 +20,7 @@ struct CharacterLocationDTO: Codable {
     let name: String
 }
 
-struct CharacterDTO: Codable, ImageSourceable {
+struct CharacterDTO: Codable, CacheSourceable {
     let identifier: Int
     let title: String
     let subtitle: String

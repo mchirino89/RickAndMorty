@@ -9,7 +9,7 @@ import UIKit
 
 protocol Coordinator {
     func start()
-    func checkDetails(for selectedCharacter: ImageSourceable)
+    func checkDetails(for selectedCharacter: CacheSourceable)
 }
 
 final class MainCoordinator {
@@ -32,7 +32,7 @@ extension MainCoordinator: Coordinator {
         rootViewController.setViewControllers([mainListController], animated: false)
     }
 
-    func checkDetails(for selectedCharacter: ImageSourceable) {
+    func checkDetails(for selectedCharacter: CacheSourceable) {
         let detailsController = DetailsViewController(charactersRepo: characterRepo,
                                                       currentCharacter: selectedCharacter,
                                                       cache: cache)
