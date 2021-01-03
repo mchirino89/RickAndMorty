@@ -25,10 +25,6 @@ final class CharacterDataSource: DataSource<CharacterDTO> {
         }
     }
 
-    func selectedCharacter(at index: Int) -> CharacterDTO {
-        data.value[index]
-    }
-
     /// Returns the image associated to an URL (should it find it) or a placeholder one in case it doesn't exist
     /// - Parameter url: URL to search for image on cache storage
     /// - Returns: safe `UIImage` object
@@ -49,6 +45,12 @@ final class CharacterDataSource: DataSource<CharacterDTO> {
     }
 }
 
+extension CharacterDataSource {
+    func selectedCharacter(at index: Int) -> CharacterDTO {
+        return data.value[index]
+    }
+}
+
 private extension CharacterDataSource {
     /// Adds a request for avatar's image to the download queue, checking first if it exists on cache in order to avoid doing so in case it does.
     /// If it doesn't, checks on `imageLoadOperations` key for the provided index to get it. In case said index hasn't been added to the download queue, it proceeds to do so and react when it finishes -updating also cache state with it- and syncs the cell matching said indexPath
@@ -56,7 +58,7 @@ private extension CharacterDataSource {
     ///   - currentURL: avatar's URL origin
     ///   - cell: cell on screen corresponding to avatar's image
     ///   - index: index path corresponding to cell requesting the image
-    func queueThumbnail(from currentURL: URL, for cell: CharacterCell, at index: IndexPath) {
+    func queueThumbnail(from currentURL: URL, for cell: ListableCell, at index: IndexPath) {
         guard let cachedImage = cache.object(at: currentURL.absoluteString) else {
             if let imageLoadOperation = imageLoadOperations[index],
                 let image = imageLoadOperation.image {
@@ -84,7 +86,7 @@ private extension CharacterDataSource {
     ///   - image: image to add on cell
     ///   - url: URL corresponding to said image
     ///   - index: index corresponding to said cell
-    func setThumbnail(_ cell: CharacterCell, _ image: UIImage, _ url: String, at index: Int) {
+    func setThumbnail(_ cell: ListableCell, _ image: UIImage, _ url: String, at index: Int) {
         performUIUpdate { [weak self] in
             /// This prevents classic mismatch in images due to recycling on collection view's cells
             if self?.data.value[index].avatar.absoluteString == url {

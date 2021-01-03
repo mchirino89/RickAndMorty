@@ -8,6 +8,10 @@
 import MauriKit
 import UIKit
 
+protocol ListableCell where Self: UICollectionViewCell {
+    func setThumbnail(image: UIImage)
+}
+
 final class CharacterCell: UICollectionViewCell {
     private lazy var titleLabel: UILabel = LabelBuilder.assemble(textStyle: .callout)
     private lazy var subtitleLabel: UILabel = LabelBuilder.assemble(textStyle: .footnote)
@@ -56,7 +60,9 @@ final class CharacterCell: UICollectionViewCell {
         titleLabel.text = information.name
         subtitleLabel.text = information.status
     }
+}
 
+extension CharacterCell: ListableCell {
     func setThumbnail(image: UIImage) {
         performUIUpdate { [weak activityLoader, weak thumbnailView] in
             activityLoader?.stopAnimating()

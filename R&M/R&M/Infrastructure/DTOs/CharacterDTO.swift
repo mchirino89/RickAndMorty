@@ -7,11 +7,15 @@
 
 import Foundation
 
+protocol ImageSourceable {
+    var avatar: URL { get }
+}
+
 struct CharacterLocationDTO: Codable {
     let name: String
 }
 
-struct CharacterDTO: Codable {
+struct CharacterDTO: Codable, ImageSourceable {
     let identifier: Int
     let name: String
     let status: String
