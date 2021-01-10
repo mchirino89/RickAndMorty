@@ -6,6 +6,7 @@
 //
 
 import MauriKit
+import MauriUtils
 import UIKit
 
 final class DetailsViewController: UIViewController {
@@ -82,7 +83,7 @@ private extension DetailsViewController {
         }
 
         let renderCompletion: () -> Void = {
-            performUIUpdate(using: uiUpdateCompletion)
+            executeMainThreadUpdate(using: uiUpdateCompletion)
         }
 
         dataSource.render(completion: renderCompletion)

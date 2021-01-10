@@ -6,6 +6,7 @@
 //
 
 import MauriKit
+import MauriUtils
 import UIKit
 
 protocol ListableCell where Self: UICollectionViewCell {
@@ -65,7 +66,7 @@ extension CharacterCell: ListableCell {
     }
 
     func setThumbnail(image: UIImage) {
-        performUIUpdate { [weak activityLoader, weak thumbnailView] in
+        executeMainThreadUpdate { [weak activityLoader, weak thumbnailView] in
             activityLoader?.stopAnimating()
             thumbnailView?.image = image
         }

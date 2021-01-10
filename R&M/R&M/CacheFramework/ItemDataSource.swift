@@ -6,6 +6,7 @@
 //
 
 import MauriKit
+import MauriUtils
 import UIKit
 
 public final class ItemDataSource: DataSource<CardSourceable> {
@@ -89,7 +90,7 @@ private extension ItemDataSource {
     ///   - url: URL corresponding to said image
     ///   - index: index corresponding to said cell
     func setThumbnail(_ cell: ListableCell, _ image: UIImage, _ url: String, at index: Int) {
-        performUIUpdate { [weak self] in
+        executeMainThreadUpdate { [weak self] in
             /// This prevents classic mismatch in images due to recycling on collection view's cells
             if self?.data.value[index].avatar.absoluteString == url {
                 cell.setThumbnail(image: image)
