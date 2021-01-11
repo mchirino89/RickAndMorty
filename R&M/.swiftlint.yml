@@ -1,0 +1,54 @@
+disabled_rules: # rule identifiers to exclude from running
+  - valid_ibinspectable
+  - notification_center_detachment
+  - protocol_property_accessors_order
+  - force_try
+  - trailing_whitespace
+  - force_cast
+  - force_unwrapping
+  - modifier_order
+opt_in_rules: # some rules are only opt-in
+  - empty_count
+  - attributes
+  - closure_body_length
+  - closure_spacing
+  - empty_string
+  - let_var_whitespace
+  - modifier_order
+  - multiline_parameters
+  - operator_usage_whitespace
+  - switch_case_on_newline
+  - unneeded_parentheses_in_closure_argument
+  - unused_import
+  - vertical_whitespace_opening_braces
+excluded:
+  - R&MTests
+  - Frameworks
+  - vendor
+
+identifier_name:
+    severity: warning
+    allowed_symbols: "_"
+    min_length: 2
+    max_length:
+        warning: 90
+        error: 1000
+    excluded:
+    - id
+    - URL
+    validates_start_with_lowercase: false
+line_length: 
+  error: 300
+  warning: 300
+  ignores_comments: true
+shorthand_operator: warning
+type_name:
+  min_length: 
+    warning: 2
+  max_length:
+    warning: 90
+function_body_length: 
+  error: 70
+empty_count: warning
+cyclomatic_complexity:
+  ignores_case_statements: true

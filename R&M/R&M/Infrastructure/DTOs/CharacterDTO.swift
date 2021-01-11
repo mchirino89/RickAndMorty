@@ -11,10 +11,10 @@ struct CharacterLocationDTO: Codable {
     let name: String
 }
 
-struct CharacterDTO: Codable {
+struct CharacterDTO: Codable, CardSourceable {
     let identifier: Int
-    let name: String
-    let status: String
+    let title: String
+    let subtitle: String
     let species: String
     let avatar: URL
     let endpoint: URL
@@ -26,8 +26,8 @@ struct CharacterDTO: Codable {
 
     private enum CodingKeys: String, CodingKey {
         case identifier = "id"
-        case name
-        case status
+        case title = "name"
+        case subtitle = "status"
         case species
         case avatar = "image"
         case endpoint = "url"

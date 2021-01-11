@@ -6,7 +6,13 @@
 //
 
 import MauriKit
+import MauriUtils
 import UIKit
+
+protocol ListableCell where Self: UICollectionViewCell {
+    func setThumbnail(image: UIImage)
+    func setInformation(_ information: CardSourceable)
+}
 
 final class CharacterCell: UICollectionViewCell {
     private lazy var titleLabel: UILabel = LabelBuilder.assemble(textStyle: .callout)
@@ -43,7 +49,6 @@ final class CharacterCell: UICollectionViewCell {
                                                   alignment: .center))
     }()
 
-
     override func layoutSubviews() {
         super.layoutSubviews()
 
@@ -52,14 +57,16 @@ final class CharacterCell: UICollectionViewCell {
         ])
         thumbnailView.rounded()
     }
+}
 
-    func setInformation(_ information: CharacterDTO) {
-        titleLabel.text = information.name
-        subtitleLabel.text = information.status
+extension CharacterCell: ListableCell {
+    func setInformation(_ information: CardSourceable) {
+        titleLabel.text = information.title
+        subtitleLabel.text = information.subtitle
     }
 
     func setThumbnail(image: UIImage) {
-        performUIUpdate { [weak activityLoader, weak thumbnailView] in
+        executeMainThreadUpdate { [weak activityLoader, weak thumbnailView] in
             activityLoader?.stopAnimating()
             thumbnailView?.image = image
         }

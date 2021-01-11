@@ -6,13 +6,13 @@
 //
 
 struct DetailsViewModel {
-    private weak var dataSource: DataSource<CharacterDTO>?
+    private weak var dataSource: DataSource<CardSourceable>?
     private let charactersRepo: CharacterStorable
-    let currentCharacter: CharacterDTO
+    let currentCharacter: CardSourceable
 
-    init(dataSource: DataSource<CharacterDTO>?,
+    init(dataSource: DataSource<CardSourceable>?,
          charactersRepo: CharacterStorable,
-         currentCharacter: CharacterDTO) {
+         currentCharacter: CardSourceable) {
         self.dataSource = dataSource
         self.charactersRepo = charactersRepo
         self.currentCharacter = currentCharacter
@@ -24,7 +24,7 @@ struct DetailsViewModel {
             case .success(let retrievedCharacters):
                 dataSource?.data.value = retrievedCharacters
             case .failure(let error):
-                #warning("Add proper UI error handling")
+                // TODO: Add proper UI error handling
                 print(error)
             }
         }

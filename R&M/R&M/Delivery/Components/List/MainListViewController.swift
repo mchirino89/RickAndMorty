@@ -6,11 +6,14 @@
 //
 
 import MauriKit
+import MauriUtils
 import UIKit
 
 final class MainListViewController: UIViewController {
-    private lazy var listView: ListContentView = {
-        let listing = ListContentView(frame: view.frame)
+    private lazy var listView: UICollectionView = {
+        let listing = UICollectionView(frame: view.frame, collectionViewLayout: LayoutBuilder.assembleGridLayout())
+        listing.register(cellType: CharacterCell.self)
+        listing.backgroundColor = .clear
         listing.dataSource = dataSource
         listing.prefetchDataSource = dataSource
 
@@ -19,7 +22,7 @@ final class MainListViewController: UIViewController {
 
     private lazy var activityLoader: UIActivityIndicatorView = LoaderBuilder.assemble()
 
-    private let dataSource: CharacterDataSource
+    private let dataSource: ItemDataSource
     private let viewModel: ListViewModel
     private var listListener: ListInteractable
 
@@ -28,7 +31,7 @@ final class MainListViewController: UIViewController {
          cache: Cacheable,
          listListener: ListInteractable = ListInteractor()) {
         self.listListener = listListener
-        dataSource = CharacterDataSource(cache: cache)
+        dataSource = ItemDataSource(cache: cache)
         viewModel = ListViewModel(dataSource: dataSource,
                                        charactersRepo: charactersRepo,
                                        navigationListener: navigationListener)
@@ -71,7 +74,7 @@ private extension MainListViewController {
         }
 
         let renderCompletion: () -> Void = {
-            performUIUpdate(using: uiUpdateCompletion)
+            executeMainThreadUpdate(using: uiUpdateCompletion)
         }
 
         dataSource.render(completion: renderCompletion)

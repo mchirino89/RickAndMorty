@@ -24,7 +24,7 @@ final class InformationView: UIView {
 
     private lazy var containerStackView: UIStackView = {
         StackBuilder.assemble(basedOn: StackSetup(arrangedSubviews: [avatarImageView],
-                                                  spacing: UIConstants.fullPadding,
+                                                  spacing: UIConstants.standardPadding,
                                                   alignment: .center))
     }()
 
@@ -34,18 +34,18 @@ final class InformationView: UIView {
         viewLayoutSetup()
     }
 
-    func render(basedOn character: CharacterDTO, with avatarImage: UIImage) {
+    func render(basedOn character: CardSourceable, with avatarImage: UIImage?) {
         containerStackView.addArrangedSubview(buildCard(tag: Card.name.value,
-                                                        content: character.name,
+                                                        content: character.title,
                                                         textStyle: .title3))
         containerStackView.addArrangedSubview(buildCard(tag: Card.species.value, content: character.species))
         containerStackView.addArrangedSubview(buildCard(tag: Card.origin.value, content: character.origin))
-        containerStackView.addArrangedSubview(buildCard(tag: Card.status.value, content: character.status))
+        containerStackView.addArrangedSubview(buildCard(tag: Card.status.value, content: character.subtitle))
 
         let speciesTitle = LabelBuilder.assemble(textStyle: .title3, text: "Other similar species")
         speciesTitle.textAlignment = .left
         containerStackView.addArrangedSubview(speciesTitle)
-        avatarImageView.image = avatarImage
+        avatarImageView.image = avatarImage ?? AssetCatalog.placeholder.image
     }
 }
 

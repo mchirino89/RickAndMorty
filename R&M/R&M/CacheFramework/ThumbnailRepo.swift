@@ -7,7 +7,7 @@
 
 import UIKit
 
-typealias ImageLoadOperationCompletionHandlerType = ((UIImage) -> ())?
+typealias ImageLoadOperationCompletionHandlerType = ((UIImage) -> Void)?
 
 /// Queue for handling retrieval of images from `CharacterStorable`
 final class ImageLoadOperation: Operation {
@@ -32,9 +32,11 @@ final class ImageLoadOperation: Operation {
             case .success(let imageData):
                 let decodedImage = UIImage(data: imageData) ?? AssetCatalog.placeholder.image
                 self?.image = decodedImage
+                // swiftlint:disable operator_usage_whitespace
                 self?.completionHandler??(decodedImage)
+                // swiftlint:enable operator_usage_whitespace
             case .failure(let error):
-                #warning("Add proper UI error handling")
+                // TODO: Add proper UI error handling
                 print(error.localizedDescription)
             }
         }

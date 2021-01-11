@@ -6,13 +6,18 @@
 //
 
 import MauriKit
+import MauriUtils
 import UIKit
 
 final class DetailsViewController: UIViewController {
     private let informationView: InformationView = InformationView()
 
-    private lazy var detailView: DetailContentView = {
-        let details = DetailContentView(frame: view.frame)
+    private lazy var detailView: UICollectionView = {
+        let details = UICollectionView(frame: view.frame,
+                                       collectionViewLayout: LayoutBuilder.assembleGridLayout(direction: .horizontal))
+        details.register(cellType: CharacterCell.self)
+        details.backgroundColor = .clear
+        details.bounces = false
         details.dataSource = dataSource
         details.prefetchDataSource = dataSource
 
@@ -26,10 +31,10 @@ final class DetailsViewController: UIViewController {
     }()
 
     private let viewModel: DetailsViewModel
-    private let dataSource: CharacterDataSource
+    private let dataSource: ItemDataSource
 
-    init(charactersRepo: CharacterStorable, currentCharacter: CharacterDTO, cache: Cacheable) {
-        dataSource = CharacterDataSource(cache: cache)
+    init(charactersRepo: CharacterStorable, currentCharacter: CardSourceable, cache: Cacheable) {
+        dataSource = ItemDataSource(cache: cache)
         viewModel = DetailsViewModel(dataSource: dataSource,
                                      charactersRepo: charactersRepo,
                                      currentCharacter: currentCharacter)
@@ -62,7 +67,7 @@ private extension DetailsViewController {
         ])
 
         detailView.translatesAutoresizingMaskIntoConstraints = false
-        detailView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/3).isActive = true
+        detailView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1 / 3).isActive = true
     }
 
     func renderView() {
@@ -78,7 +83,7 @@ private extension DetailsViewController {
         }
 
         let renderCompletion: () -> Void = {
-            performUIUpdate(using: uiUpdateCompletion)
+            executeMainThreadUpdate(using: uiUpdateCompletion)
         }
 
         dataSource.render(completion: renderCompletion)

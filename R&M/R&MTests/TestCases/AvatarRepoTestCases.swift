@@ -5,8 +5,6 @@
 //  Created by Mauricio Chirino on 16/12/20.
 //
 
-import XCTest
-
 import MauriNet
 import XCTest
 @testable import R_M
@@ -19,7 +17,7 @@ final class AvatarRepoTestCases: XCTestCase {
         super.setUp()
         testExpectation = expectation(description: "API consumption expectation")
     }
-    
+
     override func tearDown() {
         super.tearDown()
         avatarRepo = nil

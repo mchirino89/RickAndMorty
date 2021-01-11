@@ -1,39 +1,38 @@
 //
-//  CharacterDataSource.swift
+//  ItemDataSource.swift
 //  R&M
 //
 //  Created by Mauricio Chirino on 14/12/20.
 //
 
+import MauriKit
+import MauriUtils
 import UIKit
 
-final class CharacterDataSource: DataSource<CharacterDTO> {
+public final class ItemDataSource: DataSource<CardSourceable> {
     /// Queue that handles all avatar download operations
     let imageLoadQueue = OperationQueue()
     /// Dictionary that matches image download with corresponding cell's index path.
     var imageLoadOperations = [IndexPath: ImageLoadOperation]()
-    let cache: Cacheable
+    public let cache: Cacheable
 
-    init(cache: Cacheable) {
+    public init(cache: Cacheable) {
         self.cache = cache
+
         super.init()
     }
 
-    func render(completion: @escaping (() -> Void)) {
+    public func render(completion: @escaping (() -> Void)) {
         data.update { _ in
             completion()
         }
     }
 
-    func selectedCharacter(at index: Int) -> CharacterDTO {
-        data.value[index]
-    }
-
-    /// Returns the image associated to an URL (should it find it) or a placeholder one in case it doesn't exist
+    /// Returns the image associated to an URL (should it find it)
     /// - Parameter url: URL to search for image on cache storage
     /// - Returns: safe `UIImage` object
-    func cachedImage(for url: URL) -> UIImage {
-        return cache.object(at: url.absoluteString) ?? AssetCatalog.placeholder.image
+    func cachedImage(for url: URL) -> UIImage? {
+        return cache.object(at: url.absoluteString)
     }
 
     /// Properly cancelling all pending operations before being deallocated in order to reduce network footprint and avoid retain cycles.
@@ -49,14 +48,20 @@ final class CharacterDataSource: DataSource<CharacterDTO> {
     }
 }
 
-private extension CharacterDataSource {
+extension ItemDataSource {
+    func selectedCharacter(at index: Int) -> CardSourceable {
+        return data.value[index]
+    }
+}
+
+private extension ItemDataSource {
     /// Adds a request for avatar's image to the download queue, checking first if it exists on cache in order to avoid doing so in case it does.
     /// If it doesn't, checks on `imageLoadOperations` key for the provided index to get it. In case said index hasn't been added to the download queue, it proceeds to do so and react when it finishes -updating also cache state with it- and syncs the cell matching said indexPath
     /// - Parameters:
     ///   - currentURL: avatar's URL origin
     ///   - cell: cell on screen corresponding to avatar's image
     ///   - index: index path corresponding to cell requesting the image
-    func queueThumbnail(from currentURL: URL, for cell: CharacterCell, at index: IndexPath) {
+    func queueThumbnail(from currentURL: URL, for cell: ListableCell, at index: IndexPath) {
         guard let cachedImage = cache.object(at: currentURL.absoluteString) else {
             if let imageLoadOperation = imageLoadOperations[index],
                 let image = imageLoadOperation.image {
@@ -84,8 +89,8 @@ private extension CharacterDataSource {
     ///   - image: image to add on cell
     ///   - url: URL corresponding to said image
     ///   - index: index corresponding to said cell
-    func setThumbnail(_ cell: CharacterCell, _ image: UIImage, _ url: String, at index: Int) {
-        performUIUpdate { [weak self] in
+    func setThumbnail(_ cell: ListableCell, _ image: UIImage, _ url: String, at index: Int) {
+        executeMainThreadUpdate { [weak self] in
             /// This prevents classic mismatch in images due to recycling on collection view's cells
             if self?.data.value[index].avatar.absoluteString == url {
                 cell.setThumbnail(image: image)
@@ -94,16 +99,15 @@ private extension CharacterDataSource {
     }
 }
 
-extension CharacterDataSource: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension ItemDataSource: UICollectionViewDataSource {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         data.value.count
     }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView,
+                               cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let currentCharacter = data.value[indexPath.row]
-        let characterCell = collectionView.dequeueReusableCell(withReuseIdentifier: ListContentView.cellIdentifier,
-                                                               for: indexPath) as! CharacterCell
+        let characterCell: CharacterCell = collectionView.dequeue(at: indexPath)
         characterCell.setInformation(currentCharacter)
         queueThumbnail(from: currentCharacter.avatar, for: characterCell, at: indexPath)
 
@@ -111,14 +115,14 @@ extension CharacterDataSource: UICollectionViewDataSource {
     }
 }
 
-extension CharacterDataSource: UICollectionViewDataSourcePrefetching {
+extension ItemDataSource: UICollectionViewDataSourcePrefetching {
     /// Indexes to be added into operation queue whenever the user starts scrolling
     /// - Parameters:
     ///   - collectionView: collection view attached to this event
     ///   - indexPaths: resulting array with indexes to be added
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+    public func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { indexPath in
-            if let _ = imageLoadOperations[indexPath] {
+            if imageLoadOperations[indexPath] != nil {
                 return
             }
 
@@ -132,14 +136,15 @@ extension CharacterDataSource: UICollectionViewDataSourcePrefetching {
     /// - Parameters:
     ///   - collectionView: collection view attached to this event
     ///   - indexPaths: resulting array with indexes to be dismissed
-    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+    public func collectionView(_ collectionView: UICollectionView,
+                               cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { indexPath in
             guard let imageLoadOperation = imageLoadOperations[indexPath] else {
                 return
             }
+
             imageLoadOperation.cancel()
             imageLoadOperations.removeValue(forKey: indexPath)
         }
     }
 }
-
