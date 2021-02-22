@@ -54,7 +54,8 @@
 		57F19538257D92AA002C0B3B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F19537257D92AA002C0B3B /* SceneDelegate.swift */; };
 		57F19547257D94B4002C0B3B /* MauriNet in Frameworks */ = {isa = PBXBuildFile; productRef = 57F19546257D94B4002C0B3B /* MauriNet */; };
 		57F1954C257D94EE002C0B3B /* MauriUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 57F1954B257D94EE002C0B3B /* MauriUtils */; };
-		57F19553257D9E10002C0B3B /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 57F19552257D9E10002C0B3B /* SnapshotTesting */; };
+		57F19553257D9E10002C0B3B /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 57F19552257D9E10002C0B3B /* SnapshotTesting */; settings = {ATTRIBUTES = (Weak, ); }; };
+		711C64CE25E4376800471220 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71E7E9BE25E4311500BB8D22 /* XCTest.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,7 @@
 		57F194FE257D90D7002C0B3B /* R&MTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "R&MTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F19504257D90D7002C0B3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57F19537257D92AA002C0B3B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		71E7E9BE25E4311500BB8D22 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				711C64CE25E4376800471220 /* XCTest.framework in Frameworks */,
 				57F19553257D9E10002C0B3B /* SnapshotTesting in Frameworks */,
 				57F19547257D94B4002C0B3B /* MauriNet in Frameworks */,
 				5747ACA8259ED9D900DBF18F /* MauriKit in Frameworks */,
@@ -371,6 +374,7 @@
 				57F194EA257D90D2002C0B3B /* R&M */,
 				57F19501257D90D7002C0B3B /* R&MTests */,
 				57F194E9257D90D2002C0B3B /* Products */,
+				71E7E9BD25E4311500BB8D22 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -432,6 +436,14 @@
 				5728C5FC257FA3FB003FC989 /* Navigation */,
 			);
 			path = Delivery;
+			sourceTree = "<group>";
+		};
+		71E7E9BD25E4311500BB8D22 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				71E7E9BE25E4311500BB8D22 /* XCTest.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -765,6 +777,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = F7CXK2PKWD;
 				INFOPLIST_FILE = "R&M/Setup/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -785,6 +798,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = F7CXK2PKWD;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
