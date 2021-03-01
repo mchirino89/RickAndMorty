@@ -1,6 +1,9 @@
 # RickAndMorty
 POC for entire programatic UIKit app + SPM
 
+![RickAndMorty](https://user-images.githubusercontent.com/1657723/109507856-ee278480-7a7d-11eb-9f55-ac27703b29ce.jpg)
+
+
 # Technologies
 
 SPM dependencies used are my own 
