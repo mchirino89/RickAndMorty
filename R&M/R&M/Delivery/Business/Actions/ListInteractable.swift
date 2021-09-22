@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ListDelegate: class {
+protocol ListDelegate: AnyObject {
     func didSelected(at index: Int)
 }
 
