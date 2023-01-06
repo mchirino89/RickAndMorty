@@ -22,7 +22,7 @@ struct CharacterStoredRepo: CharacterStorable {
 
     init(networkService: RequestableManager = RequestManager()) {
         self.networkService = networkService
-        // This is a force unwrap since failing here would invalidate the entire app setup. It's best to crash early
+        // This force unwrap is acceptable since failing here would invalidate the entire app setup. It's best to crash early
         endpointSetup = try! FileReader().decodePlist(from: "RepoSetup")
     }
 
@@ -50,7 +50,7 @@ struct CharacterStoredRepo: CharacterStorable {
                     let successfulResponse: ResponseDTO = try JSONDecodable.map(input: retrievedData)
                     onCompletion(.success(successfulResponse.results))
                 } catch {
-                    onCompletion(.failure(.conflictOnResource))
+                    onCompletion(.failure(NetworkError.conflictOnResource))
                 }
             case .failure(let producedError):
                 onCompletion(.failure(producedError))
