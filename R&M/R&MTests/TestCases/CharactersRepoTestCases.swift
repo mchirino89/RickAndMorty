@@ -41,7 +41,7 @@ final class CharactersRepoTestCases: XCTestCase {
     func testProperErrorHandlingWhenTheAPIReturnsCorruptedData() {
         givenRepoWiringSetupWithBadData()
         whenAllCharactersQueryIsExecuted { [unowned self] result in
-            self.thenVerifyProperErrorIsCaught(from: result, errorType: .conflictOnReSource)
+            self.thenVerifyProperErrorIsCaught(from: result, errorType: .conflictOnResource)
         }
     }
 

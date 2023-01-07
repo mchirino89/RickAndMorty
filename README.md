@@ -8,9 +8,9 @@ POC for entire programatic UIKit app + SPM
 
 SPM dependencies used are my own 
 
-* [MauriUtils](https://github.com/mchirino89/MauriUtils)
-* [MauriNet](https://github.com/mchirino89/MauriNet)
-* [MauriKit](https://github.com/mchirino89/MauriKit)
+* [MauriUtils](https://github.com/GeekingwithMauri/MauriUtils)
+* [MauriNet](https://github.com/GeekingwithMauri/MauriNet)
+* [MauriKit](https://github.com/GeekingwithMauri/MauriKit)
 
 This project was built and compile on [XCode 12.1](https://download.developer.apple.com/Developer_Tools/Xcode_12.1/Xcode_12.1.xip).
 
@@ -37,4 +37,3 @@ You might find odd for me to include this section since it looks like I'm sabota
 - Maybe give a second though on the responsibility of `CharacterDataSource`, for scalability reasons it might be broken down in smaller components with single responsibilities.
 - Add infinite scrolling 
 - Randomize requests in order to check different characters on every fresh start
-- While `xcodebuild build -sdk iphonesimulator -scheme 'R&M'` works as expected, I haven't yet figured out why [jazzy](https://github.com/realm/jazzy) doesn't want to generate the proper documentation

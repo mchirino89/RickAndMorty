@@ -54,6 +54,7 @@
 		6673F48229689FEB0073984A /* MauriKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6673F48129689FEB0073984A /* MauriKit */; };
 		6673F48429689FF90073984A /* MauriUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 6673F48329689FF90073984A /* MauriUtils */; };
 		6673F4862968A0080073984A /* MauriNet in Frameworks */ = {isa = PBXBuildFile; productRef = 6673F4852968A0080073984A /* MauriNet */; };
+		6673F4DD29698BD00073984A /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 6673F4DC29698BD00073984A /* SnapshotTesting */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6673F4DD29698BD00073984A /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +484,9 @@
 				57F19500257D90D7002C0B3B /* PBXTargetDependency */,
 			);
 			name = "R&MTests";
+			packageProductDependencies = (
+				6673F4DC29698BD00073984A /* SnapshotTesting */,
+			);
 			productName = "R&MTests";
 			productReference = 57F194FE257D90D7002C0B3B /* R&MTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -518,6 +523,7 @@
 				6673F47829689E5D0073984A /* XCRemoteSwiftPackageReference "MauriUtils" */,
 				6673F47B29689E720073984A /* XCRemoteSwiftPackageReference "MauriNet" */,
 				6673F47E29689E990073984A /* XCRemoteSwiftPackageReference "MauriKit" */,
+				6673F4DB29698BD00073984A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 57F194E9257D90D2002C0B3B /* Products */;
 			projectDirPath = "";
@@ -915,6 +921,14 @@
 				minimumVersion = 0.1.0;
 			};
 		};
+		6673F4DB29698BD00073984A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -932,6 +946,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6673F47B29689E720073984A /* XCRemoteSwiftPackageReference "MauriNet" */;
 			productName = MauriNet;
+		};
+		6673F4DC29698BD00073984A /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6673F4DB29698BD00073984A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
