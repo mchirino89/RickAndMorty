@@ -59,11 +59,11 @@ private extension CharactersRepoTestCases {
     }
 
     func givenRepoWiringSetupWithBadData() {
-        characterRepo = CharacterStoredRepo(networkService: ParserFailureRequestManagerMocks())
+        characterRepo = CharacterStoredRepo(networkService: ParserRequestManagerStubbedFailure())
     }
 
     func givenRepoWiringSetupWithUnreliableServer() {
-        characterRepo = CharacterStoredRepo(networkService: NetworkConnectionFailureRequestManagerMocks())
+        characterRepo = CharacterStoredRepo(networkService: NetworkConnectionRequestManagerStubbedFailure())
     }
 
     func whenAllCharactersQueryIsExecuted(onCompletion: @escaping CharacterResult) {

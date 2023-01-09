@@ -13,14 +13,14 @@ import XCTest
 final class SnapshotTestCases: XCTestCase {
     let isRecording: Bool = false
     var mockController: UIViewController!
-    var mockCache: CacheableMock!
-    var charactersRepo: CharacterRepoMockSuccess!
+    var mockCache: DummyCacheable!
+    var charactersRepo: CharacterRepoStubbedSuccess!
     var dummyNavigation: UINavigationController!
 
     override func setUp() {
         super.setUp()
-        mockCache = CacheableMock()
-        charactersRepo = CharacterRepoMockSuccess()
+        mockCache = DummyCacheable()
+        charactersRepo = CharacterRepoStubbedSuccess()
     }
 
     override func tearDown() {
@@ -48,14 +48,14 @@ private extension SnapshotTestCases {
     func givenMockList() {
         mockController = MainListViewController(charactersRepo: charactersRepo,
                                                 navigationListener: CoordinatorSpy(),
-                                                cache: CacheableMock())
+                                                cache: DummyCacheable())
     }
 
     func givenMockDetails() {
         let mockCharacter: CharacterDTO = try! FileReader().decodeJSON(in: Bundle(for: Self.self), from: "Rick")
         mockController = DetailsViewController(charactersRepo: charactersRepo,
                                                currentCharacter: mockCharacter,
-                                               cache: CacheableMock())
+                                               cache: DummyCacheable())
     }
 
     func whenNavigationOccurs(on userInterfaceStyle: UIUserInterfaceStyle) {

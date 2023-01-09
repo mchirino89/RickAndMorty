@@ -41,11 +41,11 @@ final class AvatarRepoTestCases: XCTestCase {
 
 private extension AvatarRepoTestCases {
     func givenAvatarSetupForSuccess() {
-        avatarRepo = AvatarSuccessMockRepo()
+        avatarRepo = AvatarRepoStubbedSuccess()
     }
 
     func givenAvatarSetupForFailure() {
-        avatarRepo = AvatarFailureMockRepo()
+        avatarRepo = AvatarRepoStubbedFailure()
     }
 
     func whenAvatarIsRequested(onCompletion: @escaping AvatarResult) {

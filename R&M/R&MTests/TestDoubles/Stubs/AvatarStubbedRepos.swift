@@ -9,7 +9,7 @@ import Foundation
 import MauriUtils
 @testable import R_M
 
-struct AvatarSuccessMockRepo: ImagesStockable {
+struct AvatarRepoStubbedSuccess: ImagesStockable {
     func avatar(from URL: URL, onCompletion: @escaping AvatarResult) {
         let dummyData = "avatarImageDummyBlog".data(using: .utf8)!
 
@@ -17,7 +17,7 @@ struct AvatarSuccessMockRepo: ImagesStockable {
     }
 }
 
-struct AvatarFailureMockRepo: ImagesStockable {
+struct AvatarRepoStubbedFailure: ImagesStockable {
     func avatar(from URL: URL, onCompletion: @escaping AvatarResult) {
         onCompletion(.failure(.notFound))
     }

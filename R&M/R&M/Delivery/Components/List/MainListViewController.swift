@@ -9,6 +9,7 @@ import MauriKit
 import MauriUtils
 import UIKit
 
+// TODO: move to MauriKit
 public struct RefreshFactory {
     static func assemble(text: String = "",
                          color: UIColor = .label) -> UIRefreshControl {
