@@ -20,11 +20,13 @@ protocol CharacterStorable {
 struct CharacterStoredRepo {
     private let networkService: RequestableManager
     private let endpointSetup: RepoSetup
+    private let endpointBuilder: EndpointBuilder
 
     init(networkService: RequestableManager = RequestManager()) {
         self.networkService = networkService
         // This force unwrap is acceptable since failing here would invalidate the entire app setup. It's best to crash early
         endpointSetup = try! FileReader().decodePlist(from: "RepoSetup")
+        endpointBuilder = EndpointBuilder(endpointSetup: APIEndpoint(host: endpointSetup.host))
     }
 
     private func fetchOnAPI(using assembledRequest: URLRequest, onCompletion: @escaping CharacterResult) {
@@ -46,26 +48,23 @@ struct CharacterStoredRepo {
 
 extension CharacterStoredRepo: CharacterStorable {
     func allCharacters(onCompletion: @escaping CharacterResult) {
-        let assembledRequest = EndpointBuilder(host: endpointSetup.host,
-                                               path: endpointSetup.charactersEndpoint).assembleRequest()
+        let assembledRequest = endpointBuilder.assembleRequest(path: endpointSetup.charactersEndpoint)
 
         fetchOnAPI(using: assembledRequest, onCompletion: onCompletion)
     }
 
     func filteredCharacters(by species: String, onCompletion: @escaping CharacterResult) {
         let queryParameters: [String: String] = [endpointSetup.filterTypeEndpoint: species]
-        let assembledRequest = EndpointBuilder(host: endpointSetup.host,
-                                               path: endpointSetup.charactersEndpoint,
-                                               queryParameters: queryParameters).assembleRequest()
+        let assembledRequest = endpointBuilder.assembleRequest(path: endpointSetup.charactersEndpoint,
+                                                               queryParameters: queryParameters)
 
         fetchOnAPI(using: assembledRequest, onCompletion: onCompletion)
     }
 
     func randomCharacters(onCompletion: @escaping CharacterResult) {
         let queryParameters: [String: String] = [endpointSetup.pagesParameter: "3"]
-        let assembledRequest = EndpointBuilder(host: endpointSetup.host,
-                                               path: endpointSetup.charactersEndpoint,
-                                               queryParameters: queryParameters).assembleRequest()
+        let assembledRequest = endpointBuilder.assembleRequest(path: endpointSetup.charactersEndpoint,
+                                                               queryParameters: queryParameters)
 
         fetchOnAPI(using: assembledRequest, onCompletion: onCompletion)
     }

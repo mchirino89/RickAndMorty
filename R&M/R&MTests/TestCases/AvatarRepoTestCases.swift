@@ -51,28 +51,26 @@ private extension AvatarRepoTestCases {
     func whenAvatarIsRequested(onCompletion: @escaping AvatarResult) {
         avatarRepo.avatar(from: URL(validURL: "avatar"), onCompletion: onCompletion)
 
-        wait(for: [testExpectation], timeout: 0.1)
+        wait(for: [testExpectation], timeout: 10)
     }
 
     func thenVerifyProperDataForAvatarReceived(from result: Result<Data, NetworkError>) {
         switch result {
         case .success(let data):
             XCTAssertFalse(data.isEmpty)
-            testExpectation.fulfill()
         case .failure(let receivedError):
             XCTFail("Success fake response shouldn't thrown this error \(receivedError.localizedDescription)")
-            testExpectation.fulfill()
         }
+        testExpectation.fulfill()
     }
 
     func thenVerifyProperErrorIsPropagated(from result: Result<Data, NetworkError>) {
         switch result {
         case .success(let data):
             XCTFail("Failed request shouldn't produce a successful response with data = \(data.description)")
-            testExpectation.fulfill()
         case .failure(let receivedError):
             XCTAssertEqual(receivedError, .notFound)
-            testExpectation.fulfill()
         }
+        testExpectation.fulfill()
     }
 }

@@ -24,7 +24,6 @@
 		576C751F257E4A5000487859 /* CharacterStoredRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C751E257E4A5000487859 /* CharacterStoredRepo.swift */; };
 		576C7523257E537200487859 /* RepoSetup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 576C7522257E537200487859 /* RepoSetup.plist */; };
 		576C752B257E675900487859 /* RepoSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C752A257E675900487859 /* RepoSetup.swift */; };
-		576C752F257E71D100487859 /* EndpointBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C752E257E71D100487859 /* EndpointBuilder.swift */; };
 		576C7549257E7D7600487859 /* CharactersRepoTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C7548257E7D7600487859 /* CharactersRepoTestCases.swift */; };
 		5784711025A2486E00476B89 /* CachedThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784710F25A2486E00476B89 /* CachedThumbnail.swift */; };
 		5784711425A2488500476B89 /* CardSourceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784711325A2488500476B89 /* CardSourceable.swift */; };
@@ -85,7 +84,6 @@
 		576C751E257E4A5000487859 /* CharacterStoredRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStoredRepo.swift; sourceTree = "<group>"; };
 		576C7522257E537200487859 /* RepoSetup.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RepoSetup.plist; sourceTree = "<group>"; };
 		576C752A257E675900487859 /* RepoSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoSetup.swift; sourceTree = "<group>"; };
-		576C752E257E71D100487859 /* EndpointBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointBuilder.swift; sourceTree = "<group>"; };
 		576C7548257E7D7600487859 /* CharactersRepoTestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepoTestCases.swift; sourceTree = "<group>"; };
 		5784710F25A2486E00476B89 /* CachedThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedThumbnail.swift; sourceTree = "<group>"; };
 		5784711325A2488500476B89 /* CardSourceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSourceable.swift; sourceTree = "<group>"; };
@@ -229,7 +227,6 @@
 			isa = PBXGroup;
 			children = (
 				576C7522257E537200487859 /* RepoSetup.plist */,
-				576C752E257E71D100487859 /* EndpointBuilder.swift */,
 				576C752A257E675900487859 /* RepoSetup.swift */,
 			);
 			path = Services;
@@ -560,7 +557,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				57F194F0257D90D2002C0B3B /* MainListViewController.swift in Sources */,
-				576C752F257E71D100487859 /* EndpointBuilder.swift in Sources */,
 				57A9AF7D257EE27D00C54808 /* ResponseDTO.swift in Sources */,
 				5717FB1225A20DB000F29149 /* ThumbnailSource.swift in Sources */,
 				576C752B257E675900487859 /* RepoSetup.swift in Sources */,
