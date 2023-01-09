@@ -17,28 +17,14 @@ protocol CharacterStorable {
     func filteredCharacters(by type: String, onCompletion: @escaping CharacterResult)
 }
 
-protocol Randomable {
-    var totalPages: Int { get set }
-
-    func produceRandomPage() -> String
-}
-
-struct RandomGenerator: Randomable {
-    var totalPages: Int
-
-    func produceRandomPage() -> String {
-        return String(Int.random(in: 1...totalPages))
-    }
-}
-
-final class CharacterStoredRepo {
+struct CharacterStoredRepo {
     private let networkService: RequestableManager
     private let endpointSetup: RepoSetup
     private let endpointBuilder: EndpointBuilder
     private var randomGenerator: Randomable
 
     init(networkService: RequestableManager = RequestManager(),
-         randomGenerator: Randomable = RandomGenerator(totalPages: 20)) {
+         randomGenerator: Randomable = RandomGenerator(totalPages: 42)) {
         self.networkService = networkService
         self.randomGenerator = randomGenerator
         // This force unwrap is acceptable since failing here would invalidate the entire app setup.
@@ -48,12 +34,11 @@ final class CharacterStoredRepo {
     }
 
     private func fetchOnAPI(using assembledRequest: URLRequest, onCompletion: @escaping CharacterResult) {
-        networkService.request(assembledRequest) { [weak self] result in
+        networkService.request(assembledRequest) { result in
             switch result {
             case .success(let retrievedData):
                 do {
                     let successfulResponse: ResponseDTO = try JSONDecodable.map(input: retrievedData)
-                    self?.randomGenerator.totalPages = successfulResponse.info.totalPages
                     onCompletion(.success(successfulResponse.results))
                 } catch {
                     onCompletion(.failure(NetworkError.conflictOnResource))

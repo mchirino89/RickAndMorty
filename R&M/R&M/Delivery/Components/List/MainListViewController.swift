@@ -106,6 +106,7 @@ private extension MainListViewController {
 
     @objc
     func refreshList() {
+        dataSource.resetStorage()
         viewModel.requestRandomCharacters()
     }
 }

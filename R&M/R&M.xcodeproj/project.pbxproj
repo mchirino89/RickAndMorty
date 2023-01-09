@@ -55,6 +55,7 @@
 		6673F4E2296C6D240073984A /* EndpointBuilderTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F4E1296C6D240073984A /* EndpointBuilderTestCases.swift */; };
 		6673F4E4296C6DFD0073984A /* RequestManagerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F4E3296C6DFD0073984A /* RequestManagerSpy.swift */; };
 		66DE03DE296C938E007B7CB0 /* StubbedRandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE03DD296C938E007B7CB0 /* StubbedRandomGenerator.swift */; };
+		66DE03E0296C9BCD007B7CB0 /* RandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE03DF296C9BCD007B7CB0 /* RandomGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,7 @@
 		6673F4E1296C6D240073984A /* EndpointBuilderTestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointBuilderTestCases.swift; sourceTree = "<group>"; };
 		6673F4E3296C6DFD0073984A /* RequestManagerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManagerSpy.swift; sourceTree = "<group>"; };
 		66DE03DD296C938E007B7CB0 /* StubbedRandomGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubbedRandomGenerator.swift; sourceTree = "<group>"; };
+		66DE03DF296C9BCD007B7CB0 /* RandomGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				576C7522257E537200487859 /* RepoSetup.plist */,
+				66DE03DF296C9BCD007B7CB0 /* RandomGenerator.swift */,
 				576C752A257E675900487859 /* RepoSetup.swift */,
 			);
 			path = Services;
@@ -574,6 +577,7 @@
 				57B4C5272589AD7D007D757A /* ThumbnailRepo.swift in Sources */,
 				572F61E92580357C00B3952F /* CharacterCell.swift in Sources */,
 				5725C3252587800A003BAF93 /* DetailsViewModel.swift in Sources */,
+				66DE03E0296C9BCD007B7CB0 /* RandomGenerator.swift in Sources */,
 				57EED3F1258566D100A46A6B /* DetailsViewController.swift in Sources */,
 				57CEE8E12588515000F1EAF7 /* ListInteractable.swift in Sources */,
 				57F194EC257D90D2002C0B3B /* AppDelegate.swift in Sources */,

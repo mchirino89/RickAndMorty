@@ -15,4 +15,7 @@ final class DummyCacheable: Cacheable {
 
     func store(image: UIImage, at key: String) {
     }
+    
+    func reset() {
+    }
 }

@@ -78,7 +78,7 @@ private extension CharactersRepoTestCases {
         wait(for: [testExpectation], timeout: 10)
     }
 
-    func thenVerifyProperCharacterRetrieval(from result: Result<[CharacterDTO], NetworkError>, totalCharacters: Int) {
+    func thenVerifyProperCharacterRetrieval(from result: Result<[CharacterDTO], Error>, totalCharacters: Int) {
         switch result {
         case .success(let characters):
             XCTAssertEqual(characters.count, totalCharacters)
@@ -88,7 +88,7 @@ private extension CharactersRepoTestCases {
         testExpectation.fulfill()
     }
 
-    func thenVerifyProperFilteredCharacterRetrieval(from result: Result<[CharacterDTO], NetworkError>,
+    func thenVerifyProperFilteredCharacterRetrieval(from result: Result<[CharacterDTO], Error>,
                                                     totalCharacters: Int) {
         switch result {
         case .success(let characters):
@@ -100,12 +100,12 @@ private extension CharactersRepoTestCases {
         testExpectation.fulfill()
     }
 
-    func thenVerifyProperErrorIsCaught(from result: Result<[CharacterDTO], NetworkError>, errorType: NetworkError) {
+    func thenVerifyProperErrorIsCaught(from result: Result<[CharacterDTO], Error>, errorType: NetworkError) {
         switch result {
         case .success:
             XCTFail("Failure in parsing data shouldn't provide a successful response")
         case .failure(let receivedError):
-            XCTAssertEqual(receivedError, errorType)
+            XCTAssertEqual(receivedError as? NetworkError, errorType)
         }
         testExpectation.fulfill()
     }

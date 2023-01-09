@@ -35,6 +35,11 @@ public final class ItemDataSource: DataSource<CardSourceable> {
         return cache.object(at: url.absoluteString)
     }
 
+    /// Purges stored data in cache memory
+    func resetStorage() {
+        cache.reset()
+    }
+
     /// Properly cancelling all pending operations before being deallocated in order to reduce network footprint and avoid retain cycles.
     deinit {
         imageLoadOperations.forEach {
