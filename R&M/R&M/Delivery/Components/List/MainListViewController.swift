@@ -9,6 +9,21 @@ import MauriKit
 import MauriUtils
 import UIKit
 
+public struct RefreshFactory {
+    static func assemble(text: String = "",
+                         color: UIColor = .label) -> UIRefreshControl {
+        let refresher = UIRefreshControl()
+        refresher.translatesAutoresizingMaskIntoConstraints = false
+        refresher.tintColor = color
+        refresher.attributedTitle = NSAttributedString(
+            string: text,
+            attributes: [.foregroundColor: color, .font: UIFont.preferredFont(forTextStyle: .headline)]
+        )
+
+        return refresher
+    }
+}
+
 final class MainListViewController: UIViewController {
     private lazy var listView: UICollectionView = {
         let listing = UICollectionView(frame: view.frame, collectionViewLayout: LayoutBuilder.assembleGridLayout())
@@ -16,11 +31,18 @@ final class MainListViewController: UIViewController {
         listing.backgroundColor = .clear
         listing.dataSource = dataSource
         listing.prefetchDataSource = dataSource
+        listing.refreshControl = refresher
 
         return listing
     }()
 
     private lazy var activityLoader: UIActivityIndicatorView = LoaderBuilder.assemble()
+    private lazy var refresher: UIRefreshControl = {
+        let refresher = RefreshFactory.assemble(text: "Looking for more characters")
+        refresher.addTarget(self, action: #selector(refreshList), for: .valueChanged)
+
+        return refresher
+    }()
 
     private let dataSource: ItemDataSource
     private let viewModel: ListViewModel
@@ -78,6 +100,13 @@ private extension MainListViewController {
         }
 
         dataSource.render(completion: renderCompletion)
+    }
+
+    @objc
+    func refreshList() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [self] in
+            self.refresher.endRefreshing()
+        }
     }
 }
 
