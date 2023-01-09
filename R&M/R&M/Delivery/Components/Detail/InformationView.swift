@@ -42,8 +42,10 @@ final class InformationView: UIView {
         containerStackView.addArrangedSubview(buildCard(tag: Card.origin.value, content: character.origin))
         containerStackView.addArrangedSubview(buildCard(tag: Card.status.value, content: character.subtitle))
 
-        let speciesTitle = LabelBuilder.assemble(textStyle: .title3, text: "Other similar species")
+        let speciesTitle = LabelBuilder.assemble(textStyle: .title3, text: DetailsDictionary.otherSpecies.rawValue)
         speciesTitle.textAlignment = .left
+        speciesTitle.translatesAutoresizingMaskIntoConstraints = false
+        speciesTitle.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         containerStackView.addArrangedSubview(speciesTitle)
         avatarImageView.image = avatarImage ?? AssetCatalog.placeholder.image
     }
@@ -51,7 +53,7 @@ final class InformationView: UIView {
 
 private extension InformationView {
     func buildCard(tag: String, content: String, textStyle: UIFont.TextStyle = .callout) -> UIStackView {
-        let tagLabel = LabelBuilder.assemble(textStyle: .callout, text: tag)
+        let tagLabel = LabelBuilder.assemble(textStyle: textStyle, text: tag)
         tagLabel.textAlignment = .right
         let contentLabel = LabelBuilder.assemble(textStyle: textStyle, text: content)
         contentLabel.textAlignment = .left
@@ -63,13 +65,9 @@ private extension InformationView {
 
     func viewLayoutSetup() {
         self.addSubview(containerStackView, constraints: [
-            pinAllEdges(margin: UIConstants.standardPadding)
+            pinAllEdges(margin: UIConstants.standardPadding * 2)
         ])
 
-        avatarImageView
-            .heightAnchor
-            .constraint(equalToConstant: bounds.height * 0.33)
-            .isActive = true
         avatarImageView
             .widthAnchor
             .constraint(equalTo: avatarImageView.heightAnchor)

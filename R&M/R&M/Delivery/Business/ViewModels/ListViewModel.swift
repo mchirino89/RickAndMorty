@@ -40,7 +40,6 @@ struct ListViewModel {
     }
 
     func requestRandomCharacters() {
-
         charactersRepo.randomCharacters { result in
             handleResponse(basedOn: result)
         }

@@ -20,14 +20,14 @@ final class DetailsViewController: UIViewController {
         details.bounces = false
         details.dataSource = dataSource
         details.prefetchDataSource = dataSource
+        details.translatesAutoresizingMaskIntoConstraints = false
 
         return details
     }()
 
     private lazy var containerStackView: UIStackView = {
         StackBuilder.assemble(basedOn: StackSetup(arrangedSubviews: [informationView, detailView],
-                                                  spacing: 0,
-                                                  alignment: .fill))
+                                                  spacing: 0))
     }()
 
     private let viewModel: DetailsViewModel
