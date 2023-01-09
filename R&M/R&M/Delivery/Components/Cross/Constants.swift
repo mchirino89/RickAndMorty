@@ -10,6 +10,7 @@ import UIKit
 // This could very well match keys from a localized .string file
 enum ListDictionary: String {
     case title = "Rick and Morty"
+    case refreshHint = "Looking for more characters"
 }
 
 enum DetailsDictionary: String {

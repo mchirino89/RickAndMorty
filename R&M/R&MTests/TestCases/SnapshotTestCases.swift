@@ -11,6 +11,7 @@ import XCTest
 @testable import R_M
 
 final class SnapshotTestCases: XCTestCase {
+    let isRecording: Bool = false
     var mockController: UIViewController!
     var mockCache: CacheableMock!
     var charactersRepo: CharacterRepoMockSuccess!
@@ -63,6 +64,6 @@ private extension SnapshotTestCases {
     }
 
     func thenAssertProperRendering(on scenario: String) {
-        assertSnapshot(matching: dummyNavigation, as: .image(on: .iPhone8), testName: scenario)
+        assertSnapshot(matching: dummyNavigation, as: .image(on: .iPhone8), record: isRecording, testName: scenario)
     }
 }

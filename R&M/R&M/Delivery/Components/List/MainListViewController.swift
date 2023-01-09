@@ -38,7 +38,7 @@ final class MainListViewController: UIViewController {
 
     private lazy var activityLoader: UIActivityIndicatorView = LoaderBuilder.assemble()
     private lazy var refresher: UIRefreshControl = {
-        let refresher = RefreshFactory.assemble(text: "Looking for more characters")
+        let refresher = RefreshFactory.assemble(text: ListDictionary.refreshHint.rawValue)
         refresher.addTarget(self, action: #selector(refreshList), for: .valueChanged)
 
         return refresher
