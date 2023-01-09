@@ -9,7 +9,7 @@ import Foundation
 import MauriNet
 import MauriUtils
 
-typealias CharacterResult = (Result<[CharacterDTO], NetworkError>) -> Void
+typealias CharacterResult = (Result<[CharacterDTO], Error>) -> Void
 
 protocol CharacterStorable {
     func randomCharacters(onCompletion: @escaping CharacterResult)

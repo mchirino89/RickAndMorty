@@ -22,16 +22,26 @@ struct ListViewModel {
         self.navigationListener = navigationListener
     }
 
+    private func handleResponse(basedOn result: Result<[CharacterDTO], Error>) {
+        switch result {
+        case .success(let retrievedCharacters):
+            dataSource?.data.value = retrievedCharacters
+        case .failure(let error):
+            dataSource?.data.value = []
+            // TODO: Add proper UI error handling
+            print(error)
+        }
+    }
+
     func fetchCharacters() {
         charactersRepo.allCharacters { result in
-            switch result {
-            case .success(let retrievedCharacters):
-                dataSource?.data.value = retrievedCharacters
-            case .failure(let error):
-                dataSource?.data.value = []
-                // TODO: Add proper UI error handling
-                print(error)
-            }
+            handleResponse(basedOn: result)
+        }
+    }
+
+    func requestRandomCharacters() {
+        charactersRepo.randomCharacters { result in
+            handleResponse(basedOn: result)
         }
     }
 

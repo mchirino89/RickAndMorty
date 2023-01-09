@@ -56,8 +56,8 @@ final class MainListViewController: UIViewController {
         self.listListener = listListener
         dataSource = ItemDataSource(cache: cache)
         viewModel = ListViewModel(dataSource: dataSource,
-                                       charactersRepo: charactersRepo,
-                                       navigationListener: navigationListener)
+                                  charactersRepo: charactersRepo,
+                                  navigationListener: navigationListener)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -91,9 +91,10 @@ private extension MainListViewController {
     }
 
     func listenListUpdate() {
-        let uiUpdateCompletion: () -> Void = { [weak listView, weak activityLoader] in
+        let uiUpdateCompletion: () -> Void = { [weak listView, weak activityLoader, weak refresher] in
             listView?.reloadData()
             activityLoader?.stopAnimating()
+            refresher?.endRefreshing()
         }
 
         let renderCompletion: () -> Void = {
@@ -105,9 +106,7 @@ private extension MainListViewController {
 
     @objc
     func refreshList() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [self] in
-            self.refresher.endRefreshing()
-        }
+        viewModel.requestRandomCharacters()
     }
 }
 
