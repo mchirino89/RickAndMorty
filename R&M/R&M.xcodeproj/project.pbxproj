@@ -54,6 +54,7 @@
 		6673F4DF296C6B960073984A /* RandomCharacters.json in Resources */ = {isa = PBXBuildFile; fileRef = 6673F4DE296C6B960073984A /* RandomCharacters.json */; };
 		6673F4E2296C6D240073984A /* EndpointBuilderTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F4E1296C6D240073984A /* EndpointBuilderTestCases.swift */; };
 		6673F4E4296C6DFD0073984A /* RequestManagerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F4E3296C6DFD0073984A /* RequestManagerSpy.swift */; };
+		66DE03DE296C938E007B7CB0 /* StubbedRandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE03DD296C938E007B7CB0 /* StubbedRandomGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +115,7 @@
 		6673F4DE296C6B960073984A /* RandomCharacters.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RandomCharacters.json; sourceTree = "<group>"; };
 		6673F4E1296C6D240073984A /* EndpointBuilderTestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointBuilderTestCases.swift; sourceTree = "<group>"; };
 		6673F4E3296C6DFD0073984A /* RequestManagerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManagerSpy.swift; sourceTree = "<group>"; };
+		66DE03DD296C938E007B7CB0 /* StubbedRandomGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubbedRandomGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -411,6 +413,7 @@
 				57CB9F1E258A409B00060774 /* AvatarStubbedRepos.swift */,
 				5705E2A72587775500866645 /* CharacterRepoStubbedSuccess.swift */,
 				5728C5F6257F928A003FC989 /* FailureRequestManagerStubbedFailures.swift */,
+				66DE03DD296C938E007B7CB0 /* StubbedRandomGenerator.swift */,
 			);
 			path = Stubs;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66DE03DE296C938E007B7CB0 /* StubbedRandomGenerator.swift in Sources */,
 				576C7549257E7D7600487859 /* CharactersRepoTestCases.swift in Sources */,
 				57CEE8EB2588524A00F1EAF7 /* ListInteractorDummy.swift in Sources */,
 				57CEE8C32588375200F1EAF7 /* CoordinatorSpy.swift in Sources */,

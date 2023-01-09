@@ -17,24 +17,43 @@ protocol CharacterStorable {
     func filteredCharacters(by type: String, onCompletion: @escaping CharacterResult)
 }
 
-struct CharacterStoredRepo {
+protocol Randomable {
+    var totalPages: Int { get set }
+
+    func produceRandomPage() -> String
+}
+
+struct RandomGenerator: Randomable {
+    var totalPages: Int
+
+    func produceRandomPage() -> String {
+        return String(Int.random(in: 1...totalPages))
+    }
+}
+
+final class CharacterStoredRepo {
     private let networkService: RequestableManager
     private let endpointSetup: RepoSetup
     private let endpointBuilder: EndpointBuilder
+    private var randomGenerator: Randomable
 
-    init(networkService: RequestableManager = RequestManager()) {
+    init(networkService: RequestableManager = RequestManager(),
+         randomGenerator: Randomable = RandomGenerator(totalPages: 20)) {
         self.networkService = networkService
-        // This force unwrap is acceptable since failing here would invalidate the entire app setup. It's best to crash early
+        self.randomGenerator = randomGenerator
+        // This force unwrap is acceptable since failing here would invalidate the entire app setup.
+        // It's best to crash early
         endpointSetup = try! FileReader().decodePlist(from: "RepoSetup")
         endpointBuilder = EndpointBuilder(endpointSetup: APIEndpoint(host: endpointSetup.host))
     }
 
     private func fetchOnAPI(using assembledRequest: URLRequest, onCompletion: @escaping CharacterResult) {
-        networkService.request(assembledRequest) { result in
+        networkService.request(assembledRequest) { [weak self] result in
             switch result {
             case .success(let retrievedData):
                 do {
                     let successfulResponse: ResponseDTO = try JSONDecodable.map(input: retrievedData)
+                    self?.randomGenerator.totalPages = successfulResponse.info.totalPages
                     onCompletion(.success(successfulResponse.results))
                 } catch {
                     onCompletion(.failure(NetworkError.conflictOnResource))
@@ -62,7 +81,7 @@ extension CharacterStoredRepo: CharacterStorable {
     }
 
     func randomCharacters(onCompletion: @escaping CharacterResult) {
-        let queryParameters: [String: String] = [endpointSetup.pagesParameter: "3"]
+        let queryParameters: [String: String] = [endpointSetup.pagesParameter: randomGenerator.produceRandomPage()]
         let assembledRequest = endpointBuilder.assembleRequest(path: endpointSetup.charactersEndpoint,
                                                                queryParameters: queryParameters)
 
