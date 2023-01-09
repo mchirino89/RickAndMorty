@@ -5,6 +5,8 @@
 //  Created by Mauricio Chirino on 14/12/20.
 //
 
+import MauriUtils
+
 struct DetailsViewModel {
     private weak var dataSource: DataSource<CardSourceable>?
     private let charactersRepo: CharacterStorable

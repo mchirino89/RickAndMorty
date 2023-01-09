@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MauriUtils
 
 struct ListViewModel {
     private weak var dataSource: DataSource<CardSourceable>?
