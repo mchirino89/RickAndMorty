@@ -48,7 +48,6 @@
 		57F194F0257D90D2002C0B3B /* MainListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F194EF257D90D2002C0B3B /* MainListViewController.swift */; };
 		57F194F5257D90D7002C0B3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F194F4257D90D7002C0B3B /* Assets.xcassets */; };
 		57F194F8257D90D7002C0B3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57F194F6257D90D7002C0B3B /* LaunchScreen.storyboard */; };
-		57F19538257D92AA002C0B3B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F19537257D92AA002C0B3B /* SceneDelegate.swift */; };
 		6673F48229689FEB0073984A /* MauriKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6673F48129689FEB0073984A /* MauriKit */; };
 		6673F48429689FF90073984A /* MauriUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 6673F48329689FF90073984A /* MauriUtils */; };
 		6673F4862968A0080073984A /* MauriNet in Frameworks */ = {isa = PBXBuildFile; productRef = 6673F4852968A0080073984A /* MauriNet */; };
@@ -111,7 +110,6 @@
 		57F194F9257D90D7002C0B3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57F194FE257D90D7002C0B3B /* R&MTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "R&MTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F19504257D90D7002C0B3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		57F19537257D92AA002C0B3B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -413,7 +411,6 @@
 			children = (
 				57F194F9257D90D7002C0B3B /* Info.plist */,
 				57F194EB257D90D2002C0B3B /* AppDelegate.swift */,
-				57F19537257D92AA002C0B3B /* SceneDelegate.swift */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -589,7 +586,6 @@
 				57F194EC257D90D2002C0B3B /* AppDelegate.swift in Sources */,
 				5728C602257FA41E003FC989 /* MainCoordinator.swift in Sources */,
 				5721650D2586ABD000180C9C /* InformationView.swift in Sources */,
-				57F19538257D92AA002C0B3B /* SceneDelegate.swift in Sources */,
 				5705E29A2587637A00866645 /* ItemDataSource.swift in Sources */,
 				5728C606257FA4F8003FC989 /* ListViewModel.swift in Sources */,
 			);
