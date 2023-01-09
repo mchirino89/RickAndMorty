@@ -10,5 +10,7 @@
 	<string>character</string>
 	<key>filterTypeEndpoint</key>
 	<string>species</string>
+	<key>pagesParameter</key>
+	<string>page</string>
 </dict>
 </plist>

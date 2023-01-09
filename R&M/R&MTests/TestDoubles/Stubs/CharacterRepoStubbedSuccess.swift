@@ -29,7 +29,7 @@ final class CharacterRepoStubbedSuccess: CharacterStorable {
         onCompletion(.success(characters))
     }
 
-    func randomCharacters(page: Int, onCompletion: @escaping CharacterResult) {
+    func randomCharacters(onCompletion: @escaping CharacterResult) {
         let characters = decodeCharacters(from: "RandomCharacters")
 
         onCompletion(.success(characters))

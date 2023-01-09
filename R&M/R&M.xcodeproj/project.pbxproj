@@ -21,7 +21,7 @@
 		572F61E92580357C00B3952F /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572F61E82580357C00B3952F /* CharacterCell.swift */; };
 		576331E125825DAF00F87CC4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576331E025825DAF00F87CC4 /* Constants.swift */; };
 		576C74E2257E468300487859 /* CharacterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C74E1257E468300487859 /* CharacterDTO.swift */; };
-		576C751F257E4A5000487859 /* CharactersRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C751E257E4A5000487859 /* CharactersRepo.swift */; };
+		576C751F257E4A5000487859 /* CharacterStoredRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C751E257E4A5000487859 /* CharacterStoredRepo.swift */; };
 		576C7523257E537200487859 /* RepoSetup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 576C7522257E537200487859 /* RepoSetup.plist */; };
 		576C752B257E675900487859 /* RepoSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C752A257E675900487859 /* RepoSetup.swift */; };
 		576C752F257E71D100487859 /* EndpointBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C752E257E71D100487859 /* EndpointBuilder.swift */; };
@@ -53,6 +53,8 @@
 		6673F4862968A0080073984A /* MauriNet in Frameworks */ = {isa = PBXBuildFile; productRef = 6673F4852968A0080073984A /* MauriNet */; };
 		6673F4DD29698BD00073984A /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 6673F4DC29698BD00073984A /* SnapshotTesting */; };
 		6673F4DF296C6B960073984A /* RandomCharacters.json in Resources */ = {isa = PBXBuildFile; fileRef = 6673F4DE296C6B960073984A /* RandomCharacters.json */; };
+		6673F4E2296C6D240073984A /* EndpointBuilderTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F4E1296C6D240073984A /* EndpointBuilderTestCases.swift */; };
+		6673F4E4296C6DFD0073984A /* RequestManagerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F4E3296C6DFD0073984A /* RequestManagerSpy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +82,7 @@
 		572F61E82580357C00B3952F /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		576331E025825DAF00F87CC4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		576C74E1257E468300487859 /* CharacterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDTO.swift; sourceTree = "<group>"; };
-		576C751E257E4A5000487859 /* CharactersRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepo.swift; sourceTree = "<group>"; };
+		576C751E257E4A5000487859 /* CharacterStoredRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStoredRepo.swift; sourceTree = "<group>"; };
 		576C7522257E537200487859 /* RepoSetup.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RepoSetup.plist; sourceTree = "<group>"; };
 		576C752A257E675900487859 /* RepoSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoSetup.swift; sourceTree = "<group>"; };
 		576C752E257E71D100487859 /* EndpointBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointBuilder.swift; sourceTree = "<group>"; };
@@ -112,6 +114,8 @@
 		57F194FE257D90D7002C0B3B /* R&MTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "R&MTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F19504257D90D7002C0B3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6673F4DE296C6B960073984A /* RandomCharacters.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RandomCharacters.json; sourceTree = "<group>"; };
+		6673F4E1296C6D240073984A /* EndpointBuilderTestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointBuilderTestCases.swift; sourceTree = "<group>"; };
+		6673F4E3296C6DFD0073984A /* RequestManagerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManagerSpy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,12 +143,12 @@
 		5717FB1D25A242F000F29149 /* CacheFramework */ = {
 			isa = PBXGroup;
 			children = (
-				5705E2992587637A00866645 /* ItemDataSource.swift */,
-				5717FB1125A20DB000F29149 /* ThumbnailSource.swift */,
-				57B4C5262589AD7D007D757A /* ThumbnailRepo.swift */,
-				57CB9F12258A382000060774 /* CacheStore.swift */,
 				5784710F25A2486E00476B89 /* CachedThumbnail.swift */,
+				57CB9F12258A382000060774 /* CacheStore.swift */,
 				5784711325A2488500476B89 /* CardSourceable.swift */,
+				5705E2992587637A00866645 /* ItemDataSource.swift */,
+				57B4C5262589AD7D007D757A /* ThumbnailRepo.swift */,
+				5717FB1125A20DB000F29149 /* ThumbnailSource.swift */,
 			);
 			path = CacheFramework;
 			sourceTree = "<group>";
@@ -225,8 +229,8 @@
 			isa = PBXGroup;
 			children = (
 				576C7522257E537200487859 /* RepoSetup.plist */,
-				576C752A257E675900487859 /* RepoSetup.swift */,
 				576C752E257E71D100487859 /* EndpointBuilder.swift */,
+				576C752A257E675900487859 /* RepoSetup.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -234,8 +238,8 @@
 		576C74E0257E463C00487859 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				576C751E257E4A5000487859 /* CharactersRepo.swift */,
 				57B4C52D258A3654007D757A /* AvatarsRepo.swift */,
+				576C751E257E4A5000487859 /* CharacterStoredRepo.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -263,10 +267,11 @@
 		576C7552257E7DC600487859 /* TestCases */ = {
 			isa = PBXGroup;
 			children = (
-				576C7548257E7D7600487859 /* CharactersRepoTestCases.swift */,
-				572164FE2586994F00180C9C /* SnapshotTestCases.swift */,
-				57CEE8C82588388F00F1EAF7 /* NavigationTestCases.swift */,
 				57CB9F18258A3FCB00060774 /* AvatarRepoTestCases.swift */,
+				576C7548257E7D7600487859 /* CharactersRepoTestCases.swift */,
+				6673F4E1296C6D240073984A /* EndpointBuilderTestCases.swift */,
+				57CEE8C82588388F00F1EAF7 /* NavigationTestCases.swift */,
+				572164FE2586994F00180C9C /* SnapshotTestCases.swift */,
 			);
 			path = TestCases;
 			sourceTree = "<group>";
@@ -303,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				57CEE8C22588375200F1EAF7 /* CoordinatorSpy.swift */,
+				6673F4E3296C6DFD0073984A /* RequestManagerSpy.swift */,
 			);
 			path = Spies;
 			sourceTree = "<group>";
@@ -405,9 +411,9 @@
 		6673F4E0296C6C240073984A /* Stubs */ = {
 			isa = PBXGroup;
 			children = (
+				57CB9F1E258A409B00060774 /* AvatarStubbedRepos.swift */,
 				5705E2A72587775500866645 /* CharacterRepoStubbedSuccess.swift */,
 				5728C5F6257F928A003FC989 /* FailureRequestManagerStubbedFailures.swift */,
-				57CB9F1E258A409B00060774 /* AvatarStubbedRepos.swift */,
 			);
 			path = Stubs;
 			sourceTree = "<group>";
@@ -561,7 +567,7 @@
 				576331E125825DAF00F87CC4 /* Constants.swift in Sources */,
 				5784711025A2486E00476B89 /* CachedThumbnail.swift in Sources */,
 				57CB9F13258A382000060774 /* CacheStore.swift in Sources */,
-				576C751F257E4A5000487859 /* CharactersRepo.swift in Sources */,
+				576C751F257E4A5000487859 /* CharacterStoredRepo.swift in Sources */,
 				5784711425A2488500476B89 /* CardSourceable.swift in Sources */,
 				576C74E2257E468300487859 /* CharacterDTO.swift in Sources */,
 				57CEE8E72588517700F1EAF7 /* ListInteractor.swift in Sources */,
@@ -587,10 +593,12 @@
 				57CEE8EB2588524A00F1EAF7 /* ListInteractorDummy.swift in Sources */,
 				57CEE8C32588375200F1EAF7 /* CoordinatorSpy.swift in Sources */,
 				57CEE8C92588388F00F1EAF7 /* NavigationTestCases.swift in Sources */,
+				6673F4E2296C6D240073984A /* EndpointBuilderTestCases.swift in Sources */,
 				57CB9F19258A3FCB00060774 /* AvatarRepoTestCases.swift in Sources */,
 				572164FF2586994F00180C9C /* SnapshotTestCases.swift in Sources */,
 				57CB9F1F258A409B00060774 /* AvatarStubbedRepos.swift in Sources */,
 				5705E2A82587775500866645 /* CharacterRepoStubbedSuccess.swift in Sources */,
+				6673F4E4296C6DFD0073984A /* RequestManagerSpy.swift in Sources */,
 				5728C5F7257F928A003FC989 /* FailureRequestManagerStubbedFailures.swift in Sources */,
 				57A9AF68257EDBF000C54808 /* RequestManagerFakes.swift in Sources */,
 				57B4C535258A3749007D757A /* DummyCacheable.swift in Sources */,

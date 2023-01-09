@@ -11,4 +11,5 @@ struct RepoSetup: Decodable {
     let host: String
     let charactersEndpoint: String
     let filterTypeEndpoint: String
+    let pagesParameter: String
 }

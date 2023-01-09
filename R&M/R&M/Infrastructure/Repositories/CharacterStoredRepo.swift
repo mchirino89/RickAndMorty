@@ -12,7 +12,7 @@ import MauriUtils
 typealias CharacterResult = (Result<[CharacterDTO], NetworkError>) -> Void
 
 protocol CharacterStorable {
-    func randomCharacters(page: Int, onCompletion: @escaping CharacterResult)
+    func randomCharacters(onCompletion: @escaping CharacterResult)
     func allCharacters(onCompletion: @escaping CharacterResult)
     func filteredCharacters(by type: String, onCompletion: @escaping CharacterResult)
 }
@@ -61,6 +61,12 @@ extension CharacterStoredRepo: CharacterStorable {
         fetchOnAPI(using: assembledRequest, onCompletion: onCompletion)
     }
 
-    func randomCharacters(page: Int, onCompletion: @escaping CharacterResult) {
+    func randomCharacters(onCompletion: @escaping CharacterResult) {
+        let queryParameters: [String: String] = [endpointSetup.pagesParameter: "3"]
+        let assembledRequest = EndpointBuilder(host: endpointSetup.host,
+                                               path: endpointSetup.charactersEndpoint,
+                                               queryParameters: queryParameters).assembleRequest()
+
+        fetchOnAPI(using: assembledRequest, onCompletion: onCompletion)
     }
 }
