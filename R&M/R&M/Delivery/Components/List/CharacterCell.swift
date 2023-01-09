@@ -15,8 +15,8 @@ protocol ListableCell where Self: UICollectionViewCell {
 }
 
 final class CharacterCell: UICollectionViewCell {
-    private lazy var titleLabel: UILabel = LabelBuilder.assemble(textStyle: .callout)
-    private lazy var subtitleLabel: UILabel = LabelBuilder.assemble(textStyle: .footnote)
+    private lazy var titleLabel: UILabel = LabelBuilder.assemble(textStyle: .footnote)
+    private lazy var subtitleLabel: UILabel = LabelBuilder.assemble(textStyle: .caption1)
     private lazy var descriptionStackView: UIStackView = {
         StackBuilder.assemble(basedOn: StackSetup(arrangedSubviews: [titleLabel, subtitleLabel],
                                                   alignment: .leading))
