@@ -16,18 +16,11 @@ final class MainListViewController: UIViewController {
         listing.backgroundColor = .clear
         listing.dataSource = dataSource
         listing.prefetchDataSource = dataSource
-        listing.refreshControl = refresher
 
         return listing
     }()
 
     private lazy var activityLoader: UIActivityIndicatorView = LoaderFactory.assemble()
-    private lazy var refresher: UIRefreshControl = {
-        let refresher = RefreshFactory.assemble(text: ListDictionary.refreshHint.rawValue)
-        refresher.addTarget(self, action: #selector(refreshList), for: .valueChanged)
-
-        return refresher
-    }()
 
     private let dataSource: ItemDataSource
     private let viewModel: ListViewModel
@@ -54,7 +47,7 @@ final class MainListViewController: UIViewController {
         initialSetup()
         wireListBehavior()
         listenListUpdate()
-        viewModel.fetchCharacters()
+        viewModel.requestRandomCharacters()
     }
 }
 
@@ -75,10 +68,9 @@ private extension MainListViewController {
     }
 
     func listenListUpdate() {
-        let uiUpdateCompletion: () -> Void = { [weak listView, weak activityLoader, weak refresher] in
-            listView?.reloadData()
+        let uiUpdateCompletion: () -> Void = { [weak listView, weak activityLoader] in
+            listView?.reloadSections(IndexSet(integer: 0))
             activityLoader?.stopAnimating()
-            refresher?.endRefreshing()
         }
 
         let renderCompletion: () -> Void = {
@@ -86,12 +78,6 @@ private extension MainListViewController {
         }
 
         dataSource.render(completion: renderCompletion)
-    }
-
-    @objc
-    func refreshList() {
-        dataSource.resetStorage()
-        viewModel.requestRandomCharacters()
     }
 }
 

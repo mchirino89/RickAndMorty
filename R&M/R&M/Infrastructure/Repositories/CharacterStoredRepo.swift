@@ -24,7 +24,7 @@ struct CharacterStoredRepo {
     private var randomGenerator: Randomable
 
     init(networkService: RequestableManager = RequestManager(),
-         randomGenerator: Randomable = RandomGenerator(totalPages: 42)) {
+         randomGenerator: Randomable = RandomGenerator(totalPages: 41)) {
         self.networkService = networkService
         self.randomGenerator = randomGenerator
         // This force unwrap is acceptable since failing here would invalidate the entire app setup.

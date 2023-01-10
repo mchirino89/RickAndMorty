@@ -17,6 +17,6 @@ struct RandomGenerator: Randomable {
     var totalPages: Int
 
     func produceRandomPage() -> String {
-        return String(Int.random(in: 1...totalPages))
+        return String(Int.random(in: 0...totalPages))
     }
 }
