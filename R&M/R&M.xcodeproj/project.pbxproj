@@ -163,13 +163,14 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
-		5728C5FD257FA403003FC989 /* Business */ = {
+		5728C5FD257FA403003FC989 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				5728C5FC257FA3FB003FC989 /* Navigation */,
 				57CEE8DF2588514100F1EAF7 /* Actions */,
 				57CEE8DA2588513300F1EAF7 /* ViewModels */,
 			);
-			path = Business;
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 		5728C5FE257FA40F003FC989 /* Components */ = {
@@ -208,14 +209,13 @@
 			path = Cross;
 			sourceTree = "<group>";
 		};
-		576C74DD257E460600487859 /* Infrastructure */ = {
+		576C74DD257E460600487859 /* Drivers */ = {
 			isa = PBXGroup;
 			children = (
-				576C74DE257E462800487859 /* DTOs */,
+				5717FB1D25A242F000F29149 /* CacheFramework */,
 				576C74E0257E463C00487859 /* Repositories */,
-				576C74DF257E462E00487859 /* Services */,
 			);
-			path = Infrastructure;
+			path = Drivers;
 			sourceTree = "<group>";
 		};
 		576C74DE257E462800487859 /* DTOs */ = {
@@ -227,14 +227,14 @@
 			path = DTOs;
 			sourceTree = "<group>";
 		};
-		576C74DF257E462E00487859 /* Services */ = {
+		576C74DF257E462E00487859 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				576C7522257E537200487859 /* RepoSetup.plist */,
 				66DE03DF296C9BCD007B7CB0 /* RandomGenerator.swift */,
 				576C752A257E675900487859 /* RepoSetup.swift */,
 			);
-			path = Services;
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		576C74E0257E463C00487859 /* Repositories */ = {
@@ -363,11 +363,10 @@
 		57F194EA257D90D2002C0B3B /* R&M */ = {
 			isa = PBXGroup;
 			children = (
-				5717FB1D25A242F000F29149 /* CacheFramework */,
-				57F1952D257D915A002C0B3B /* Delivery */,
-				576C74DD257E460600487859 /* Infrastructure */,
-				57F1952A257D9153002C0B3B /* Setup */,
-				57F19529257D9148002C0B3B /* UI */,
+				576C74DF257E462E00487859 /* Entities */,
+				5728C5FD257FA403003FC989 /* UseCases */,
+				57F1952D257D915A002C0B3B /* InterfaceAdapters */,
+				576C74DD257E460600487859 /* Drivers */,
 			);
 			path = "R&M";
 			sourceTree = "<group>";
@@ -400,14 +399,15 @@
 			path = Setup;
 			sourceTree = "<group>";
 		};
-		57F1952D257D915A002C0B3B /* Delivery */ = {
+		57F1952D257D915A002C0B3B /* InterfaceAdapters */ = {
 			isa = PBXGroup;
 			children = (
-				5728C5FD257FA403003FC989 /* Business */,
 				5728C5FE257FA40F003FC989 /* Components */,
-				5728C5FC257FA3FB003FC989 /* Navigation */,
+				576C74DE257E462800487859 /* DTOs */,
+				57F1952A257D9153002C0B3B /* Setup */,
+				57F19529257D9148002C0B3B /* UI */,
 			);
-			path = Delivery;
+			path = InterfaceAdapters;
 			sourceTree = "<group>";
 		};
 		6673F4E0296C6C240073984A /* Stubs */ = {
@@ -758,7 +758,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = F7CXK2PKWD;
 				ENABLE_TESTING_SEARCH_PATHS = NO;
-				INFOPLIST_FILE = "R&M/Setup/Info.plist";
+				INFOPLIST_FILE = "R&M/InterfaceAdapters/Setup/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -784,7 +784,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Build/",
 				);
-				INFOPLIST_FILE = "R&M/Setup/Info.plist";
+				INFOPLIST_FILE = "R&M/InterfaceAdapters/Setup/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
