@@ -25,7 +25,37 @@ The test API used was [Rick and Morty](https://rickandmortyapi.com) public one. 
 
 # Architecture organization
 
-The inner project organization is based on Uncle's Bob [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+The inner project organization is based on Uncle's Bob [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) divided as follow:
+
+## 1. Entities
+
+Since the app is so simple, the only entities concerned are the endpoints descriptions. These are sort of the "core business objects" given than they are the less likely to change (in fact, they haven't in 2 years)
+
+[1](https://github.com/mchirino89/RickAndMorty/blob/main/DocResources/1_Entities.png)
+
+## 2. Use cases
+
+The only possible actions from the user (beyond scrolling vertically and horizontally where appropiate) are checking the random characters at the very beginning of a new app launch _AND_ checking the details for any selected character from the main list.
+
+[2](https://github.com/mchirino89/RickAndMorty/blob/main/DocResources/2_UseCases.png)
+
+## 3. Interface adapters
+
+The UI design pattern for this app is MVVM. Some of the helpers associated with it live in the previously mentioned "external library" [MauriUtils](https://github.com/GeekingwithMauri/MauriUtils/tree/main/Sources/MauriUtils/MVVM). 
+
+The rest lives inside this folder:
+
+- (View)Controllers 
+- UI code
+- Data transfer objects (DTOs)
+
+[3](https://github.com/mchirino89/RickAndMorty/blob/main/DocResources/3_Adapters.png)
+
+## 4. Frameworks and drivers
+
+All external connections and implementation details are located here. For this case we're talking about endpoint consumption, iOS app setup and an in-house cache framework developed to speed image showing whenever it was previously loaded.
+
+[4](https://github.com/mchirino89/RickAndMorty/blob/main/DocResources/4_Drivers.png)
 
 # Reasoning
 
