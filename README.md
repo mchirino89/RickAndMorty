@@ -45,7 +45,7 @@ The rest lives inside this folder:
 
 - (View)Controllers 
 - UI code
-- Data transfer objects (DTOs)
+- Data transfer objects ([DTOs](https://en.wikipedia.org/wiki/Data_transfer_object))
 
 ![3](https://github.com/mchirino89/RickAndMorty/blob/main/DocResources/3_Adapters.png)
 
@@ -58,30 +58,31 @@ All external connections and implementation details are located here. For this c
 # Reasoning
 
 - [SOLID](https://www.youtube.com/watch?v=TMuno5RZNeE&ab_channel=Peoplecareer) is at the heart of this development, always favoring composition over inherence (that's why you can see so many files for such a "small" project). It was _lego oriented_ design 😁
-- Use of StackViews wherever possible to laverage its flexibility and layout power.
-- Break down every delegate/data source across the project in order to avoid fat classes. `MainListViewController` is the _commander_ (sort of speak) of it all.
+- Use of UIStackViews wherever possible to laverage its flexibility and layout power.
+- Break down every delegate/data source across the project in order to avoid fat classes. [`MainListViewController`](https://github.com/mchirino89/RickAndMorty/blob/main/R&M/R&M/InterfaceAdapters/Components/List/MainListViewController.swift) is the _commander_ (sort of speak) of it all.
 - Cache handling to improve UX and diminish bandwidth footprint 
-- `CharacterDataSource` is where the magic happens: Cache and MVVM is shared between components here and communication never touches view model or view controller.
+- [`ItemDataSource`](https://github.com/mchirino89/RickAndMorty/blob/main/R&M/R&M/Drivers/CacheFramework/ItemDataSource.swift) is where the magic happens: Cache and MVVM is shared between components here and communication never touches view model or view controller.
 - Dark mode support
-- Github action integration: CI setup on every PR and push made against the **main** branch
+- Github action integration: [CI setup](https://github.com/mchirino89/RickAndMorty/blob/main/.github/workflows/swift.yml) for every PR and push made against the **main** branch
 
 # Testing
 
-Given the app simplicity, most tests are unit tests and refer to repository consumption (the flow of data is the expected one)
+Given the app simplicity, most tests are unit tests and refer to repository consumption (the flow of data is the expected one). The naming for all test doubles is based on [this great Martin Fowler post](https://martinfowler.com/articles/mocksArentStubs.html#TheDifferenceBetweenMocksAndStubs).
 
 There are however a couple of integration tests that are worth mentioning:
 
-- NavigationTestCases: verifies the navigation is being properly invoked. Given that things are so losely couple (navigation occurs via a delegate that notifies the coordinator), the compiler itself offers no guarantee in this case. The connection could be lost/erased by accident and the app would keep compiling, therefore this safeguard was implemented.
+- [NavigationTestCases](https://github.com/mchirino89/RickAndMorty/blob/main/R%26M/R%26MTests/TestCases/NavigationTestCases.swift): verifies the navigation is being properly invoked. Given that things are so losely couple (navigation occurs via a delegate that notifies the coordinator), the compiler itself offers no guarantee in this case. The connection could be lost/erased by accident and the app would keep compiling, therefore this safeguard was implemented.
 
-- SnapshotTestCases
+- [SnapshotTestCases](https://github.com/mchirino89/RickAndMorty/blob/main/R%26M/R%26MTests/TestCases/SnapshotTestCases.swift): even though snapshot tests tend to be flaky across different OS versions and environemnts, when dealing with only code UI they have more pros than cons. This one in particular checks both listing and details rendering layout looks as expected (in both light and dark mode)
 
 # Considerations 
 
 There were tradeoffs in every major design decision behind the development. While it is true that SOLID principles are at the core of every choice made here, no peace of software is ever complete so there might be minor duplicated here and there for speeding sake. Some notes can be found across the project explaining the shortcomings of those implementations. 
 
 # Things to improve
+
 You might find odd for me to include this section since it looks like I'm sabotaging myself. The intention here is to acknowledge the things that, most likely due to lack of time, remain pending. Just to mention a few:
 
 - Proper error handling for network requests
-- Maybe give a second though on the responsibility of `CharacterDataSource`, for scalability reasons it might be broken down in smaller components with single responsibilities.
+- Maybe give a second though on the responsibility of `ItemDataSource`, for scalability reasons it might be broken down in smaller components with single responsibilities.
 - Add infinite scrolling 
