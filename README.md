@@ -5,11 +5,9 @@ PoC for entire programatic UIKit app + SPM
 
 It's a simple list + detail app for random characters from the Rick and Morty series
 
-![navigation](https://github.com/mchirino89/RickAndMorty/blob/main/Preview/2023-01-10%205.33.15%20PM.gif)
-
-It also includes dark mode support
-
-![darkMode](https://github.com/mchirino89/RickAndMorty/blob/main/Preview/2023-01-10%205.33.21%20PM.gif)
+| Navigation | Dark mode support |
+| --- | --- |
+|  <img src="https://github.com/mchirino89/RickAndMorty/blob/main/Preview/2023-01-10%205.33.15%20PM.gif" width="300"/>  |  <img src="https://github.com/mchirino89/RickAndMorty/blob/main/Preview/2023-01-10%205.33.21%20PM.gif" width="300"/>  |
 
 # Technologies
 
@@ -31,13 +29,13 @@ The inner project organization is based on Uncle's Bob [Clean Architecture](http
 
 Since the app is so simple, the only entities concerned are the endpoints descriptions. These are sort of the "core business objects" given than they are the less likely to change (in fact, they haven't in 2 years)
 
-[1](https://github.com/mchirino89/RickAndMorty/blob/main/DocResources/1_Entities.png)
+![1](https://github.com/mchirino89/RickAndMorty/blob/main/DocResources/1_Entities.png)
 
 ## 2. Use cases
 
 The only possible actions from the user (beyond scrolling vertically and horizontally where appropiate) are checking the random characters at the very beginning of a new app launch _AND_ checking the details for any selected character from the main list.
 
-[2](https://github.com/mchirino89/RickAndMorty/blob/main/DocResources/2_UseCases.png)
+![2](https://github.com/mchirino89/RickAndMorty/blob/main/DocResources/2_UseCases.png)
 
 ## 3. Interface adapters
 
@@ -49,13 +47,13 @@ The rest lives inside this folder:
 - UI code
 - Data transfer objects (DTOs)
 
-[3](https://github.com/mchirino89/RickAndMorty/blob/main/DocResources/3_Adapters.png)
+![3](https://github.com/mchirino89/RickAndMorty/blob/main/DocResources/3_Adapters.png)
 
 ## 4. Frameworks and drivers
 
 All external connections and implementation details are located here. For this case we're talking about endpoint consumption, iOS app setup and an in-house cache framework developed to speed image showing whenever it was previously loaded.
 
-[4](https://github.com/mchirino89/RickAndMorty/blob/main/DocResources/4_Drivers.png)
+![4](https://github.com/mchirino89/RickAndMorty/blob/main/DocResources/4_Drivers.png)
 
 # Reasoning
 
