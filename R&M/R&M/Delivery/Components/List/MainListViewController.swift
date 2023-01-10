@@ -9,25 +9,9 @@ import MauriKit
 import MauriUtils
 import UIKit
 
-// TODO: move to MauriKit
-public struct RefreshFactory {
-    static func assemble(text: String = "",
-                         color: UIColor = .label) -> UIRefreshControl {
-        let refresher = UIRefreshControl()
-        refresher.translatesAutoresizingMaskIntoConstraints = false
-        refresher.tintColor = color
-        refresher.attributedTitle = NSAttributedString(
-            string: text,
-            attributes: [.foregroundColor: color, .font: UIFont.preferredFont(forTextStyle: .headline)]
-        )
-
-        return refresher
-    }
-}
-
 final class MainListViewController: UIViewController {
     private lazy var listView: UICollectionView = {
-        let listing = UICollectionView(frame: view.frame, collectionViewLayout: LayoutBuilder.assembleGridLayout())
+        let listing = UICollectionView(frame: view.frame, collectionViewLayout: LayoutFactory.assembleGridLayout())
         listing.register(cellType: CharacterCell.self)
         listing.backgroundColor = .clear
         listing.dataSource = dataSource
@@ -37,7 +21,7 @@ final class MainListViewController: UIViewController {
         return listing
     }()
 
-    private lazy var activityLoader: UIActivityIndicatorView = LoaderBuilder.assemble()
+    private lazy var activityLoader: UIActivityIndicatorView = LoaderFactory.assemble()
     private lazy var refresher: UIRefreshControl = {
         let refresher = RefreshFactory.assemble(text: ListDictionary.refreshHint.rawValue)
         refresher.addTarget(self, action: #selector(refreshList), for: .valueChanged)

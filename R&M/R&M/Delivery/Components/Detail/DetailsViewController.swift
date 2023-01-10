@@ -14,7 +14,7 @@ final class DetailsViewController: UIViewController {
 
     private lazy var detailView: UICollectionView = {
         let details = UICollectionView(frame: view.frame,
-                                       collectionViewLayout: LayoutBuilder.assembleGridLayout(direction: .horizontal))
+                                       collectionViewLayout: LayoutFactory.assembleGridLayout(direction: .horizontal))
         details.register(cellType: CharacterCell.self)
         details.backgroundColor = .clear
         details.bounces = false
@@ -26,7 +26,7 @@ final class DetailsViewController: UIViewController {
     }()
 
     private lazy var containerStackView: UIStackView = {
-        StackBuilder.assemble(basedOn: StackSetup(arrangedSubviews: [informationView, detailView],
+        StackFactory.assemble(basedOn: StackSetup(arrangedSubviews: [informationView, detailView],
                                                   spacing: 0))
     }()
 

@@ -47,13 +47,13 @@
 		57F194F0257D90D2002C0B3B /* MainListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F194EF257D90D2002C0B3B /* MainListViewController.swift */; };
 		57F194F5257D90D7002C0B3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F194F4257D90D7002C0B3B /* Assets.xcassets */; };
 		57F194F8257D90D7002C0B3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57F194F6257D90D7002C0B3B /* LaunchScreen.storyboard */; };
-		6673F48229689FEB0073984A /* MauriKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6673F48129689FEB0073984A /* MauriKit */; };
-		6673F48429689FF90073984A /* MauriUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 6673F48329689FF90073984A /* MauriUtils */; };
 		6673F4862968A0080073984A /* MauriNet in Frameworks */ = {isa = PBXBuildFile; productRef = 6673F4852968A0080073984A /* MauriNet */; };
 		6673F4DD29698BD00073984A /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 6673F4DC29698BD00073984A /* SnapshotTesting */; };
 		6673F4DF296C6B960073984A /* RandomCharacters.json in Resources */ = {isa = PBXBuildFile; fileRef = 6673F4DE296C6B960073984A /* RandomCharacters.json */; };
 		6673F4E2296C6D240073984A /* EndpointBuilderTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F4E1296C6D240073984A /* EndpointBuilderTestCases.swift */; };
 		6673F4E4296C6DFD0073984A /* RequestManagerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F4E3296C6DFD0073984A /* RequestManagerSpy.swift */; };
+		66C33929296D9D070068819E /* MauriKit in Frameworks */ = {isa = PBXBuildFile; productRef = 66C33928296D9D070068819E /* MauriKit */; };
+		66C3392C296D9D370068819E /* MauriUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 66C3392B296D9D370068819E /* MauriUtils */; };
 		66DE03DE296C938E007B7CB0 /* StubbedRandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE03DD296C938E007B7CB0 /* StubbedRandomGenerator.swift */; };
 		66DE03E0296C9BCD007B7CB0 /* RandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE03DF296C9BCD007B7CB0 /* RandomGenerator.swift */; };
 /* End PBXBuildFile section */
@@ -125,9 +125,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6673F48229689FEB0073984A /* MauriKit in Frameworks */,
-				6673F48429689FF90073984A /* MauriUtils in Frameworks */,
+				66C33929296D9D070068819E /* MauriKit in Frameworks */,
 				6673F4862968A0080073984A /* MauriNet in Frameworks */,
+				66C3392C296D9D370068819E /* MauriUtils in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,9 +439,9 @@
 			);
 			name = "R&M";
 			packageProductDependencies = (
-				6673F48129689FEB0073984A /* MauriKit */,
-				6673F48329689FF90073984A /* MauriUtils */,
 				6673F4852968A0080073984A /* MauriNet */,
+				66C33928296D9D070068819E /* MauriKit */,
+				66C3392B296D9D370068819E /* MauriUtils */,
 			);
 			productName = "R&M";
 			productReference = 57F194E8257D90D2002C0B3B /* R&M.app */;
@@ -497,10 +497,10 @@
 			);
 			mainGroup = 57F194DF257D90D2002C0B3B;
 			packageReferences = (
-				6673F47829689E5D0073984A /* XCRemoteSwiftPackageReference "MauriUtils" */,
 				6673F47B29689E720073984A /* XCRemoteSwiftPackageReference "MauriNet" */,
-				6673F47E29689E990073984A /* XCRemoteSwiftPackageReference "MauriKit" */,
 				6673F4DB29698BD00073984A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				66C33927296D9D070068819E /* XCRemoteSwiftPackageReference "MauriKit" */,
+				66C3392A296D9D370068819E /* XCRemoteSwiftPackageReference "MauriUtils" */,
 			);
 			productRefGroup = 57F194E9257D90D2002C0B3B /* Products */;
 			projectDirPath = "";
@@ -877,28 +877,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		6673F47829689E5D0073984A /* XCRemoteSwiftPackageReference "MauriUtils" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:GeekingwithMauri/MauriUtils.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		6673F47B29689E720073984A /* XCRemoteSwiftPackageReference "MauriNet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/geekingwithmauri/MauriNet";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.0.0;
-			};
-		};
-		6673F47E29689E990073984A /* XCRemoteSwiftPackageReference "MauriKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:GeekingwithMauri/MauriKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
 			};
 		};
 		6673F4DB29698BD00073984A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
@@ -909,19 +893,25 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		66C33927296D9D070068819E /* XCRemoteSwiftPackageReference "MauriKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/GeekingwithMauri/MauriKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.1;
+			};
+		};
+		66C3392A296D9D370068819E /* XCRemoteSwiftPackageReference "MauriUtils" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/GeekingwithMauri/MauriUtils";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6673F48129689FEB0073984A /* MauriKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6673F47E29689E990073984A /* XCRemoteSwiftPackageReference "MauriKit" */;
-			productName = MauriKit;
-		};
-		6673F48329689FF90073984A /* MauriUtils */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6673F47829689E5D0073984A /* XCRemoteSwiftPackageReference "MauriUtils" */;
-			productName = MauriUtils;
-		};
 		6673F4852968A0080073984A /* MauriNet */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6673F47B29689E720073984A /* XCRemoteSwiftPackageReference "MauriNet" */;
@@ -931,6 +921,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6673F4DB29698BD00073984A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
+		};
+		66C33928296D9D070068819E /* MauriKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66C33927296D9D070068819E /* XCRemoteSwiftPackageReference "MauriKit" */;
+			productName = MauriKit;
+		};
+		66C3392B296D9D370068819E /* MauriUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66C3392A296D9D370068819E /* XCRemoteSwiftPackageReference "MauriUtils" */;
+			productName = MauriUtils;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -15,14 +15,14 @@ protocol ListableCell where Self: UICollectionViewCell {
 }
 
 final class CharacterCell: UICollectionViewCell {
-    private lazy var titleLabel: UILabel = LabelBuilder.assemble(textStyle: .footnote)
-    private lazy var subtitleLabel: UILabel = LabelBuilder.assemble(textStyle: .caption1)
+    private lazy var titleLabel: UILabel = LabelFactory.assemble(textStyle: .footnote)
+    private lazy var subtitleLabel: UILabel = LabelFactory.assemble(textStyle: .caption1)
     private lazy var descriptionStackView: UIStackView = {
-        StackBuilder.assemble(basedOn: StackSetup(arrangedSubviews: [titleLabel, subtitleLabel],
+        StackFactory.assemble(basedOn: StackSetup(arrangedSubviews: [titleLabel, subtitleLabel],
                                                   alignment: .leading))
     }()
 
-    private lazy var activityLoader: UIActivityIndicatorView = LoaderBuilder.assemble(style: .medium)
+    private lazy var activityLoader: UIActivityIndicatorView = LoaderFactory.assemble(style: .medium)
 
     private lazy var thumbnailView: UIImageView = {
         let smallImageView = UIImageView(image: AssetCatalog.placeholder.image)
@@ -44,7 +44,7 @@ final class CharacterCell: UICollectionViewCell {
     }()
 
     private lazy var containerStackView: UIStackView = {
-        StackBuilder.assemble(basedOn: StackSetup(arrangedSubviews: [thumbnailView, descriptionStackView],
+        StackFactory.assemble(basedOn: StackSetup(arrangedSubviews: [thumbnailView, descriptionStackView],
                                                   axis: .horizontal,
                                                   alignment: .center))
     }()

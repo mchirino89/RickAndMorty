@@ -64,6 +64,9 @@ private extension SnapshotTestCases {
     }
 
     func thenAssertProperRendering(on scenario: String) {
-        assertSnapshot(matching: dummyNavigation, as: .image(on: .iPhone8), record: isRecording, testName: scenario)
+        assertSnapshot(matching: dummyNavigation,
+                       as: .image(on: .iPhone8),
+                       record: isRecording,
+                       testName: scenario)
     }
 }

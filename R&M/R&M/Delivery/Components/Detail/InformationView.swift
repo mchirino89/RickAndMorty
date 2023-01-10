@@ -23,7 +23,7 @@ final class InformationView: UIView {
     private let avatarImageView: UIImageView = UIImageView(image: AssetCatalog.placeholder.image)
 
     private lazy var containerStackView: UIStackView = {
-        StackBuilder.assemble(basedOn: StackSetup(arrangedSubviews: [avatarImageView],
+        StackFactory.assemble(basedOn: StackSetup(arrangedSubviews: [avatarImageView],
                                                   spacing: UIConstants.standardPadding,
                                                   alignment: .center))
     }()
@@ -42,7 +42,7 @@ final class InformationView: UIView {
         containerStackView.addArrangedSubview(buildCard(tag: Card.origin.value, content: character.origin))
         containerStackView.addArrangedSubview(buildCard(tag: Card.status.value, content: character.subtitle))
 
-        let speciesTitle = LabelBuilder.assemble(textStyle: .title3, text: DetailsDictionary.otherSpecies.rawValue)
+        let speciesTitle = LabelFactory.assemble(textStyle: .title3, text: DetailsDictionary.otherSpecies.rawValue)
         speciesTitle.textAlignment = .left
         speciesTitle.translatesAutoresizingMaskIntoConstraints = false
         speciesTitle.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
@@ -53,12 +53,12 @@ final class InformationView: UIView {
 
 private extension InformationView {
     func buildCard(tag: String, content: String, textStyle: UIFont.TextStyle = .callout) -> UIStackView {
-        let tagLabel = LabelBuilder.assemble(textStyle: textStyle, text: tag)
+        let tagLabel = LabelFactory.assemble(textStyle: textStyle, text: tag)
         tagLabel.textAlignment = .right
-        let contentLabel = LabelBuilder.assemble(textStyle: textStyle, text: content)
+        let contentLabel = LabelFactory.assemble(textStyle: textStyle, text: content)
         contentLabel.textAlignment = .left
 
-        return StackBuilder.assemble(basedOn: StackSetup(arrangedSubviews: [tagLabel, contentLabel],
+        return StackFactory.assemble(basedOn: StackSetup(arrangedSubviews: [tagLabel, contentLabel],
                                                          axis: .horizontal,
                                                          distribution: .fillEqually))
     }
