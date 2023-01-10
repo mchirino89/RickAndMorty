@@ -11,6 +11,7 @@ protocol ListDelegate: AnyObject {
     func didSelected(at index: Int)
 }
 
+/// This wrapper prevents UI layer coupling. Meaning, for the outside layers the inner implementations remain hidden. This could very well be a table view, a collection view or a List (SwiftUI) and it'd be transparent
 protocol ListInteractable {
     var listView: UIView? { get set }
     var delegate: ListDelegate? { get set }

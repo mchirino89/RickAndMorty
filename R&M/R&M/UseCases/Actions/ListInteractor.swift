@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Concrete `ListInteractable` implementation. This is where the UI component to be attached to it's taken.
 final class ListInteractor: NSObject, ListInteractable {
     var listView: UIView?
     weak var delegate: ListDelegate? {

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		5705E29A2587637A00866645 /* ItemDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705E2992587637A00866645 /* ItemDataSource.swift */; };
 		5705E2A82587775500866645 /* CharacterRepoStubbedSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705E2A72587775500866645 /* CharacterRepoStubbedSuccess.swift */; };
-		570C5A0D25896B7C00AB8FC8 /* MockCatalog.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 570C5A0C25896B7C00AB8FC8 /* MockCatalog.xcassets */; };
+		570C5A0D25896B7C00AB8FC8 /* TestCatalog.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 570C5A0C25896B7C00AB8FC8 /* TestCatalog.xcassets */; };
 		5717FB1225A20DB000F29149 /* ThumbnailSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5717FB1125A20DB000F29149 /* ThumbnailSource.swift */; };
 		571B05692586D8B5008B3590 /* Rick.json in Resources */ = {isa = PBXBuildFile; fileRef = 571B05682586D8B5008B3590 /* Rick.json */; };
 		572164FF2586994F00180C9C /* SnapshotTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572164FE2586994F00180C9C /* SnapshotTestCases.swift */; };
@@ -71,7 +71,7 @@
 /* Begin PBXFileReference section */
 		5705E2992587637A00866645 /* ItemDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataSource.swift; sourceTree = "<group>"; };
 		5705E2A72587775500866645 /* CharacterRepoStubbedSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRepoStubbedSuccess.swift; sourceTree = "<group>"; };
-		570C5A0C25896B7C00AB8FC8 /* MockCatalog.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MockCatalog.xcassets; sourceTree = "<group>"; };
+		570C5A0C25896B7C00AB8FC8 /* TestCatalog.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestCatalog.xcassets; sourceTree = "<group>"; };
 		5717FB1125A20DB000F29149 /* ThumbnailSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailSource.swift; sourceTree = "<group>"; };
 		571B05682586D8B5008B3590 /* Rick.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Rick.json; sourceTree = "<group>"; };
 		572164FE2586994F00180C9C /* SnapshotTestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTestCases.swift; sourceTree = "<group>"; };
@@ -252,7 +252,6 @@
 			children = (
 				57CEE8F32588604400F1EAF7 /* Dummies */,
 				57A9AF6F257EDCC000C54808 /* Fakes */,
-				57A9AF6E257EDCB500C54808 /* Mocks */,
 				57CEE8C12588374100F1EAF7 /* Spies */,
 				6673F4E0296C6C240073984A /* Stubs */,
 			);
@@ -288,15 +287,6 @@
 				57A9AF78257EDF7500C54808 /* Species.json */,
 			);
 			path = JSON;
-			sourceTree = "<group>";
-		};
-		57A9AF6E257EDCB500C54808 /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-				570C5A0C25896B7C00AB8FC8 /* MockCatalog.xcassets */,
-				57A9AF6D257EDCAB00C54808 /* JSON */,
-			);
-			path = Mocks;
 			sourceTree = "<group>";
 		};
 		57A9AF6F257EDCC000C54808 /* Fakes */ = {
@@ -417,6 +407,8 @@
 				5705E2A72587775500866645 /* CharacterRepoStubbedSuccess.swift */,
 				5728C5F6257F928A003FC989 /* FailureRequestManagerStubbedFailures.swift */,
 				66DE03DD296C938E007B7CB0 /* StubbedRandomGenerator.swift */,
+				570C5A0C25896B7C00AB8FC8 /* TestCatalog.xcassets */,
+				57A9AF6D257EDCAB00C54808 /* JSON */,
 			);
 			path = Stubs;
 			sourceTree = "<group>";
@@ -528,7 +520,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57A9AF79257EDF7500C54808 /* Species.json in Resources */,
-				570C5A0D25896B7C00AB8FC8 /* MockCatalog.xcassets in Resources */,
+				570C5A0D25896B7C00AB8FC8 /* TestCatalog.xcassets in Resources */,
 				57A9AF75257EDE7600C54808 /* MultipleCharacters.json in Resources */,
 				571B05692586D8B5008B3590 /* Rick.json in Resources */,
 				6673F4DF296C6B960073984A /* RandomCharacters.json in Resources */,

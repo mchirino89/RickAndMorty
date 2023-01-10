@@ -9,23 +9,18 @@ import XCTest
 @testable import R_M
 
 final class NavigationTestCases: XCTestCase {
-    var mockController: MainListViewController!
-    var dummyNavigation: UINavigationController!
+    var fakeController: MainListViewController!
     var navigationSpy: CoordinatorSpy!
-    var fakeInteractor: ListInteractorDummy!
 
     override func setUp() {
         super.setUp()
         navigationSpy = CoordinatorSpy()
-        fakeInteractor = ListInteractorDummy()
     }
 
     override func tearDown() {
         super.tearDown()
         navigationSpy = nil
-        mockController = nil
-        dummyNavigation = nil
-        fakeInteractor = nil
+        fakeController = nil
     }
 
     func testSelectedCharacterNavigation() {
@@ -37,15 +32,15 @@ final class NavigationTestCases: XCTestCase {
 
 private extension NavigationTestCases {
     func givenCoordinatorInitialSetup() {
-        mockController = MainListViewController(charactersRepo: CharacterRepoStubbedSuccess(),
+        fakeController = MainListViewController(charactersRepo: CharacterRepoStubbedSuccess(),
                                                 navigationListener: navigationSpy,
                                                 cache: DummyCacheable(),
-                                                listListener: fakeInteractor)
-        _ = mockController.view
+                                                listListener: ListInteractorDummy())
+        fakeController.loadViewIfNeeded()
     }
 
     func whenCharacterIsSelected() {
-        mockController.didSelected(at: 0)
+        fakeController.didSelected(at: 0)
     }
 
     func thenVerifyNavigationOccurs() {

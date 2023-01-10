@@ -65,6 +65,16 @@ All external connections and implementation details are located here. For this c
 - Dark mode support
 - Github action integration: CI setup on every PR and push made against the **main** branch
 
+# Testing
+
+Given the app simplicity, most tests are unit tests and refer to repository consumption (the flow of data is the expected one)
+
+There are however a couple of integration tests that are worth mentioning:
+
+- NavigationTestCases: verifies the navigation is being properly invoked. Given that things are so losely couple (navigation occurs via a delegate that notifies the coordinator), the compiler itself offers no guarantee in this case. The connection could be lost/erased by accident and the app would keep compiling, therefore this safeguard was implemented.
+
+- SnapshotTestCases
+
 # Considerations 
 
 There were tradeoffs in every major design decision behind the development. While it is true that SOLID principles are at the core of every choice made here, no peace of software is ever complete so there might be minor duplicated here and there for speeding sake. Some notes can be found across the project explaining the shortcomings of those implementations. 

@@ -12,23 +12,23 @@ import XCTest
 
 final class SnapshotTestCases: XCTestCase {
     let isRecording: Bool = false
-    var mockController: UIViewController!
-    var mockCache: DummyCacheable!
-    var charactersRepo: CharacterRepoStubbedSuccess!
+    var fakeController: UIViewController!
+    var dummyCache: DummyCacheable!
+    var stubbedCharactersRepo: CharacterRepoStubbedSuccess!
     var dummyNavigation: UINavigationController!
 
     override func setUp() {
         super.setUp()
-        mockCache = DummyCacheable()
-        charactersRepo = CharacterRepoStubbedSuccess()
+        dummyCache = DummyCacheable()
+        stubbedCharactersRepo = CharacterRepoStubbedSuccess()
     }
 
     override func tearDown() {
         super.tearDown()
-        charactersRepo = nil
-        mockController = nil
+        stubbedCharactersRepo = nil
+        fakeController = nil
         dummyNavigation = nil
-        mockCache = nil
+        dummyCache = nil
     }
 
     func testUILayoutForCharacterListingOnLightMode() {
@@ -42,24 +42,36 @@ final class SnapshotTestCases: XCTestCase {
         whenNavigationOccurs(on: .light)
         thenAssertProperRendering(on: #function)
     }
+
+    func testUILayoutForCharacterListingOnDarkMode() {
+        givenMockList()
+        whenNavigationOccurs(on: .dark)
+        thenAssertProperRendering(on: #function)
+    }
+
+    func testUILayoutForDetailsRenderingOnDarkMode() {
+        givenMockDetails()
+        whenNavigationOccurs(on: .dark)
+        thenAssertProperRendering(on: #function)
+    }
 }
 
 private extension SnapshotTestCases {
     func givenMockList() {
-        mockController = MainListViewController(charactersRepo: charactersRepo,
+        fakeController = MainListViewController(charactersRepo: stubbedCharactersRepo,
                                                 navigationListener: CoordinatorSpy(),
                                                 cache: DummyCacheable())
     }
 
     func givenMockDetails() {
         let mockCharacter: CharacterDTO = try! FileReader().decodeJSON(in: Bundle(for: Self.self), from: "Rick")
-        mockController = DetailsViewController(charactersRepo: charactersRepo,
+        fakeController = DetailsViewController(charactersRepo: stubbedCharactersRepo,
                                                currentCharacter: mockCharacter,
                                                cache: DummyCacheable())
     }
 
     func whenNavigationOccurs(on userInterfaceStyle: UIUserInterfaceStyle) {
-        dummyNavigation = UINavigationController(rootViewController: mockController)
+        dummyNavigation = UINavigationController(rootViewController: fakeController)
         dummyNavigation.overrideUserInterfaceStyle = userInterfaceStyle
     }
 
