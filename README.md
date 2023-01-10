@@ -25,6 +25,8 @@ The test API used was [Rick and Morty](https://rickandmortyapi.com) public one. 
 
 The inner project organization is based on Uncle's Bob [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) divided as follow:
 
+![architecture](https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg)
+
 ## 1. Entities
 
 Since the app is so simple, the only entities concerned are the endpoints descriptions. These are sort of the "core business objects" given than they are the less likely to change (in fact, they haven't in 2 years)
@@ -84,5 +86,5 @@ There were tradeoffs in every major design decision behind the development. Whil
 You might find odd for me to include this section since it looks like I'm sabotaging myself. The intention here is to acknowledge the things that, most likely due to lack of time, remain pending. Just to mention a few:
 
 - Proper error handling for network requests
-- Maybe give a second though on the responsibility of `ItemDataSource`, for scalability reasons it might be broken down in smaller components with single responsibilities.
+- Maybe give a second though on the responsibility of [`ItemDataSource`](https://github.com/mchirino89/RickAndMorty/blob/main/R&M/R&M/Drivers/CacheFramework/ItemDataSource.swift). For scalability reasons it might be broken down in smaller components with single responsibilities.
 - Add infinite scrolling 
