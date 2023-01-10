@@ -1,8 +1,15 @@
 # RickAndMorty
-POC for entire programatic UIKit app + SPM
+PoC for entire programatic UIKit app + SPM
 
 ![RickAndMorty](https://user-images.githubusercontent.com/1657723/109507856-ee278480-7a7d-11eb-9f55-ac27703b29ce.jpg)
 
+It's a simple list + detail app for random characters from the Rick and Morty series
+
+![navigation](https://github.com/mchirino89/RickAndMorty/blob/main/Preview/2023-01-10%205.33.15%20PM.gif)
+
+It also includes dark mode support
+
+![darkMode](https://github.com/mchirino89/RickAndMorty/blob/main/Preview/2023-01-10%205.33.21%20PM.gif)
 
 # Technologies
 
@@ -12,9 +19,13 @@ SPM dependencies used are my own
 * [MauriNet](https://github.com/GeekingwithMauri/MauriNet)
 * [MauriKit](https://github.com/GeekingwithMauri/MauriKit)
 
-This project was built and compile on [XCode 12.1](https://download.developer.apple.com/Developer_Tools/Xcode_12.1/Xcode_12.1.xip).
+This project was built and compile on [XCode 13.4](https://download.developer.apple.com/Developer_Tools/Xcode_13.4/Xcode_13.4.xip).
 
-The test API used was [Rick and Morty](https://rickandmortyapi.com) public one. Complex handling of oauth was beyond the scope of this POC so that one did the trick (mainly due to time constraints)
+The test API used was [Rick and Morty](https://rickandmortyapi.com) public one. Complex handling of oauth was beyond the scope of this PoC so that one did the trick (mainly due to time constraints)
+
+# Architecture organization
+
+The inner project organization is based on Uncle's Bob [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 
 # Reasoning
 
@@ -36,4 +47,3 @@ You might find odd for me to include this section since it looks like I'm sabota
 - Proper error handling for network requests
 - Maybe give a second though on the responsibility of `CharacterDataSource`, for scalability reasons it might be broken down in smaller components with single responsibilities.
 - Add infinite scrolling 
-- Randomize requests in order to check different characters on every fresh start

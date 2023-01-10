@@ -14,7 +14,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let rootCoordinator = MainCoordinator(characterRepo: CharacterStoredRepo(), cache: globalCache)
+        let rootCoordinator = MainCoordinator(characterRepo: CharacterStoredRepo(),
+                                              cache: globalCache)
         rootCoordinator.start()
 
         buildMainWindow(with: rootCoordinator.rootViewController)

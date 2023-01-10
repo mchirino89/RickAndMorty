@@ -166,8 +166,8 @@
 		5728C5FD257FA403003FC989 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				5728C5FC257FA3FB003FC989 /* Navigation */,
 				57CEE8DF2588514100F1EAF7 /* Actions */,
+				5728C5FC257FA3FB003FC989 /* Navigation */,
 				57CEE8DA2588513300F1EAF7 /* ViewModels */,
 			);
 			path = UseCases;
@@ -214,6 +214,7 @@
 			children = (
 				5717FB1D25A242F000F29149 /* CacheFramework */,
 				576C74E0257E463C00487859 /* Repositories */,
+				57F1952A257D9153002C0B3B /* Setup */,
 			);
 			path = Drivers;
 			sourceTree = "<group>";
@@ -404,7 +405,6 @@
 			children = (
 				5728C5FE257FA40F003FC989 /* Components */,
 				576C74DE257E462800487859 /* DTOs */,
-				57F1952A257D9153002C0B3B /* Setup */,
 				57F19529257D9148002C0B3B /* UI */,
 			);
 			path = InterfaceAdapters;
@@ -758,7 +758,8 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = F7CXK2PKWD;
 				ENABLE_TESTING_SEARCH_PATHS = NO;
-				INFOPLIST_FILE = "R&M/InterfaceAdapters/Setup/Info.plist";
+				EXCLUDED_ARCHS = "";
+				INFOPLIST_FILE = "R&M/Drivers/Setup/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -780,11 +781,12 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = F7CXK2PKWD;
 				ENABLE_TESTING_SEARCH_PATHS = NO;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Build/",
 				);
-				INFOPLIST_FILE = "R&M/InterfaceAdapters/Setup/Info.plist";
+				INFOPLIST_FILE = "R&M/Drivers/Setup/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
